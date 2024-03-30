@@ -75,7 +75,7 @@ namespace stardew_access
             Game1.options.setGamepadMode("force_on");
 
             CustomFluentFunctions.RegisterLanguageHelper("en", typeof(EnglishHelper));
-            ScreenReader.Say("Initializing Stardew Access", true);
+            ScreenReader.Say($"Initializing Stardew Access version {ModManifest.Version}", true);
 
             CustomSoundEffects.Initialize();
 
