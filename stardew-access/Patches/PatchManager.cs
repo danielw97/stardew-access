@@ -57,6 +57,7 @@ internal class PatchManager
             new LanguageSelectionMenuPatch(),
             new LetterViewerMenuPatch(),
             new LevelUpMenuPatch(),
+            new MasteryTrackerMenuPatch(),
             new MineElevatorMenuPatch(),
             new NamingMenuPatch(),
             new NumberSelectionMenuPatch(),

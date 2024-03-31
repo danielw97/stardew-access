@@ -463,6 +463,17 @@ menu-level_up-profession_chooser_button = Selected: {$profession_description_lis
   Left click to choose.
 menu-level_up-ok_button = {$title}, {$extra_info}, Learned recipes: {$learned_recipes}, Left click to close.
 
+### Mastery Menus
+
+menu-mastery-pedestial_info = {$final_path_text} {$current_points} out of {$required_points},
+  {$stars ->
+    [1] 1 star
+    *[other] {$stars} stars
+  }
+menu-mastery-walls-claim_button = {$name},
+  {$rewards},
+  Claim button
+
 ### Naming Menu
 
 menu-naming-done_naming_button = Done button
