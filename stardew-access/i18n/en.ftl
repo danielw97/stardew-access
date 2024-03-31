@@ -317,9 +317,15 @@ terrain_util-tree_type = {$type ->
     [7] Mushroom
     [8] Mahogany
     [9] Palm
+    [10] Bushy Green
+    [11] Leafy Green
+    [12] Fern Green
+    [13] Mystic
     *[other] Unknown tree type number {$type}
   }
 terrain_util-tree-seedling = seedling
+terrain_util-tree-stump = Stump
+terrain_util-tree-mossy = Mossy
 terrain_util-tree_growth_stage = {$stage ->
     [1] sprout
     [2] sapling
