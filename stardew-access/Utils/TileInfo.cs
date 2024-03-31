@@ -456,6 +456,18 @@ public class TileInfo
             }
             toReturn.category = CATEGORY.Interactables;
         }
+        else if (obj is Mannequin mannequin)
+        {
+            string itemsOnDisplay = string.Join(", ", new List<string>()
+            {
+                mannequin.hat.Value?.DisplayName ?? "",
+                mannequin.shirt.Value?.DisplayName ?? "",
+                mannequin.pants.Value?.DisplayName ?? "",
+                mannequin.boots.Value?.DisplayName ?? ""
+            }.Where(i => !string.IsNullOrWhiteSpace(i)));
+
+            toReturn.name = $"{obj.DisplayName}" + (string.IsNullOrWhiteSpace(itemsOnDisplay) ? "" : $", {itemsOnDisplay}");
+        }
         else if (obj is IndoorPot indoorPot)
         {
             string potContent = indoorPot.bush.Value != null
