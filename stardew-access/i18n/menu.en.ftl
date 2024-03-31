@@ -591,6 +591,8 @@ menu-special_orders_board-quest_completed = Quest {$name} completed! Open journa
 
 ### Title Menu
 
+menu-title-stardew_access_loaded = Stardew Access version {$version} Loaded
+menu-title-click_to_skip = Left click to skip the title screen
 menu-title-new_game_button = New game button
 menu-title-load_button = Load button
 menu-title-co_op_button = Co-op button
