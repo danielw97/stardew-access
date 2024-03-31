@@ -150,6 +150,10 @@ tile-pet_bowl-prefix = {$is_in_use ->
       *[1] Empty
     }
   } {$name}
+dynamic_tile-mastery_cave-pedestal = {$has_hat ->
+    [0] Empty Pedestal
+    *[1] Pedestal with a Hat
+  }
 
 ## Interactable Tiles
 
@@ -242,6 +246,7 @@ item-crafting_recipe_info = {$name} {$is_cooking_recipe ->
     [0] (crafting)
     *[1] (cooking)
   } {$description}
+item-mastery_cave-grandpa_letter = Grandpa's Letter
 
 building_name-shipping_bin = Shipping Bin
 building-parrot_perch-required_nuts = Parrots require {$item_count ->

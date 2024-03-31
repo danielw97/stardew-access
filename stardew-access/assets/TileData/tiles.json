@@ -867,6 +867,12 @@
       "X": [94],
       "Y": [103],
       "Category": "Fishing"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-forest-mastery_cave_door",
+      "X": [101],
+      "Y": [72],
+      "Category": "doors"
     }
   ],
   "GreenHouse": [
@@ -1995,6 +2001,44 @@
       "NameOrTranslationKey": "static_tile-manor_house-prize_ticket_machine",
       "X": [1],
       "Y": [5],
+      "Category": "interactables"
+    }
+  ],
+  "MasteryCave": [
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-mastery_pedestal",
+      "X": [7],
+      "Y": [8],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-wall_of_combat",
+      "X": [3],
+      "Y": [6],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-wall_of_foraging",
+      "X": [5],
+      "Y": [5],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-wall_of_farming",
+      "X": [7],
+      "Y": [5],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-wall_of_fishing",
+      "X": [9],
+      "Y": [5],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-mastery_cave-wall_of_mining",
+      "X": [11],
+      "Y": [6],
       "Category": "interactables"
     }
   ],

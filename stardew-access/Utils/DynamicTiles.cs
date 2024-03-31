@@ -10,6 +10,7 @@ namespace stardew_access.Utils;
 
 using Translation;
 using StardewValley.TerrainFeatures;
+using StardewValley.Menus;
 
 /// <summary>
 /// Provides methods to locate tiles of interest in various game locations that are conditional or unpredictable (I.E. not static).
@@ -36,6 +37,8 @@ using StardewValley.TerrainFeatures;
 /// The class also supports the following named locations:
 /// - Barn (and its upgraded versions)
 /// - Coop (and its upgraded versions)
+/// - Mastery Cave
+/// - Witch Hut
 ///
 /// The class does not yet support the following location types, but consider adding support in future updates:
 /// - AbandonedJojaMart
@@ -969,6 +972,7 @@ public class DynamicTiles
     {
         object locationType = currentLocation is not null and GameLocation ? currentLocation.Name ?? "Undefined GameLocation" : currentLocation!.GetType();
         string locationName = currentLocation.Name ?? "";
+
         if (locationName.Contains("coop", StringComparison.OrdinalIgnoreCase) || locationName.Contains("barn", StringComparison.OrdinalIgnoreCase))
         {
             var feedingBenchInfo = GetFeedingBenchInfo(currentLocation, x, y);
@@ -981,6 +985,18 @@ public class DynamicTiles
         if (locationName.Contains("witchhut", StringComparison.OrdinalIgnoreCase) && x == 4 && y == 11 && !Game1.player.mailReceived.Contains("hasPickedUpMagicInk"))
         {
             return ("item_name-magic_ink", CATEGORY.Interactables);
+        }
+
+        if (locationName.ToLower().Contains("masterycave"))
+        {
+            if (x == 10 && y == 9 && !MasteryTrackerMenu.hasCompletedAllMasteryPlaques())
+            {
+                return ("item-mastery_cave-grandpa_letter", CATEGORY.Interactables);
+            }
+            else if (x == 4 && y == 6)
+            {
+                return (Translator.Instance.Translate("dynamic_tile-mastery_cave-pedestal", new { has_hat = MasteryTrackerMenu.hasCompletedAllMasteryPlaques() ? 1 : 0 }), CATEGORY.Decor);
+            }
         }
 
         // Unimplemented locations are logged.

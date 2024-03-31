@@ -180,6 +180,7 @@ static_tile-forest-bridge_4 = Bridge 4
 static_tile-forest-bridge_5 = Bridge 5
 static_tile-forest-abandoned_house = Abandoned House
 static_tile-forest-sewage_pipe = sewage pipe
+static_tile-forest-mastery_cave_door = Mastery Cave
 
 # Greenhouse
 
@@ -391,6 +392,15 @@ static_tile-manor_house-mayors_room_door = Mayor's Room
 static_tile-manor_house-mayors_oven = Mayor's Oven
 static_tile-manor_house-mayors_fridge = Mayor's Fridge
 static_tile-manor_house-prize_ticket_machine = Prize Ticket Machine
+
+# Mastery Cave
+
+static_tile-mastery_cave-mastery_pedestal = Mastery Pedestal
+static_tile-mastery_cave-wall_of_combat = Wall of Combat
+static_tile-mastery_cave-wall_of_foraging = Wall of Foraging
+static_tile-mastery_cave-wall_of_farming = Wall of Farming
+static_tile-mastery_cave-wall_of_fishing = Wall of Fishing
+static_tile-mastery_cave-wall_of_mining = Wall of Mining
 
 # Mermaid House
 
