@@ -272,6 +272,8 @@ public class TileInfo
             {
                 foreach (var item in currentLocation.debris)
                 {
+                    if (item.Chunks.Count <= 0) continue;
+
                     int xPos = ((int)item.Chunks[0].position.Value.X / Game1.tileSize) + 1;
                     int yPos = ((int)item.Chunks[0].position.Value.Y / Game1.tileSize) + 1;
                     if (xPos != x || yPos != y) continue;
@@ -280,6 +282,8 @@ public class TileInfo
                         ? TokenParser.ParseText(ObjectUtils.GetObjectById(item.itemId.Value)?.DisplayName) ?? ""
                         : item.item.DisplayName;
                     int count = item.item is null ? item.Chunks.Count : item.item.Stack;
+
+                    if (string.IsNullOrWhiteSpace(name)) continue;
 
                     return (Translator.Instance.Translate("item-dropped_item-info", new { item_count = count, item_name = name }), CATEGORY.DroppedItems);
                 }
@@ -538,7 +542,7 @@ public class TileInfo
             });
             toReturn.category = CATEGORY.Doors;
         }
-        else if (correctNameAndCategory.name != null)
+        else if (correctNameAndCategory.name != null && !obj.ItemId.Contains("GreenRainWeeds"))
         {
             toReturn = correctNameAndCategory;
         }
