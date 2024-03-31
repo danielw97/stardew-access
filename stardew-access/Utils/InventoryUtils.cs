@@ -4,6 +4,7 @@ using stardew_access.Translation;
 using StardewValley.Buffs;
 using StardewValley.Tools;
 using StardewValley.TokenizableStrings;
+using StardewValley.Objects;
 
 namespace stardew_access.Utils;
 
@@ -114,7 +115,8 @@ internal static class InventoryUtils
             ? string.Join(", ", customBuffs)
             : GetBuffsFromItem(item);
         string description = item.getDescription();
-        string price = GetPrice(hoverPrice);
+        bool isShowingSellPrice = (Game1.player.stats.Get("Book_PriceCatalogue") != 0 && !(item is Furniture) && item.CanBeLostOnDeath() && !(item is Clothing) && !(item is Wallpaper) && (!(item is StardewValley.Object) || !(item as StardewValley.Object)!.bigCraftable.Value) && item.sellToStorePrice(-1L) > 0);
+        string price = isShowingSellPrice ? GetPrice(item.sellToStorePrice() * item.Stack) : GetPrice(hoverPrice);
         string requirements = GetExtraItemInfo(extraItemToShowIndex, extraItemToShowAmount);
         string enchants = GetEnchantmentsFromItem(item);
 
@@ -231,7 +233,7 @@ internal static class InventoryUtils
         if (buffs != null && buffs.Any())
         {
             // TODO: investigate using non-legacy format???
-            buffIconsToDisplay = buffs.SelectMany(buff => 
+            buffIconsToDisplay = buffs.SelectMany(buff =>
                 new BuffEffects(buff.CustomAttributes).ToLegacyAttributeFormat()).ToArray();
         }
         else

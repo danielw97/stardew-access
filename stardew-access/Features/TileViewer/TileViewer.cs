@@ -167,7 +167,7 @@ internal class TileViewer : FeatureBase
         {
             StartAutoWalking();
         }
-        else if (Game1.activeClickableMenu != null && MainClass.Config.OpenTileInfoMenuKey.JustPressed() && Context.IsPlayerFree)
+        else if (Game1.activeClickableMenu == null && MainClass.Config.OpenTileInfoMenuKey.JustPressed() && Context.IsPlayerFree)
         {
             Game1.activeClickableMenu = new TileInfoMenu((int)GetViewingTile().X, (int)GetViewingTile().Y);
         }
