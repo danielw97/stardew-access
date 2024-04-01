@@ -568,6 +568,10 @@ public class DynamicTiles
         {
             return ("entrance_name-secret_woods_entrance", CATEGORY.Doors);
         }
+        else if (Game1.MasterPlayer.mailReceived.Contains("raccoonTreeFallen") && x == 56 && y == 6)
+        {
+            return ("tile-forest-giant_tree_sump", forest.stumpFixed.Value ? CATEGORY.Decor : CATEGORY.Quest);
+        }
 
         return (null, null);
     }

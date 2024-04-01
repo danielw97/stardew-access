@@ -241,6 +241,7 @@ tile_name-pathway = Pathway
 tile_name-flooring = Flooring
 tile-volcano_dungeon-pressure_pad = Pressure Pad
 tile-volcano_dungeon-gate = Gate
+tile-forest-giant_tree_sump = Giant Tree Stump
 
 ## Entrances
 
@@ -295,6 +296,15 @@ item-crafting_recipe_info = {$name} {$is_cooking_recipe ->
     *[1] (cooking)
   } {$description}
 item-mastery_cave-grandpa_letter = Grandpa's Letter
+item-mannequin-info = {$name}{$facing_direction ->
+    [0] , Facing north
+    [1] , Facing east
+    [3] , Facing west
+    *[2] {EMPTYSTRING()}
+  }{$items_on_display ->
+    [null] {EMPTYSTRING()}
+    *[other] , {$items_on_display}
+  }
 
 building_name-shipping_bin = Shipping Bin
 building-parrot_perch-required_nuts = Parrots require {$item_count ->

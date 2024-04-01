@@ -176,7 +176,7 @@ public class TileInfo
             farmer != Game1.player && farmer.currentLocation == currentLocation
             && Convert.ToInt32(farmer.position.X) / 64 == x && Convert.ToInt32(farmer.position.Y) / 64 == y
         );
-            character ??= currentLocation.isCharacterAtTile(tile);
+        character ??= currentLocation.isCharacterAtTile(tile);
         if (character != null)
         {
             CATEGORY characterCategory;
@@ -340,9 +340,9 @@ public class TileInfo
         staticTile ??= MainClass.TileManager.GetNameAndCategoryAt((x, y), "stardew-access", currentLocation);
         if (staticTile is { } static_tile)
         {
-            #if DEBUG
+#if DEBUG
             Log.Verbose($"TileInfo: Got static tile {static_tile} from TileManager");
-            #endif
+#endif
             return (static_tile.name, static_tile.category);
         }
 
@@ -566,8 +566,8 @@ public class TileInfo
         return GetObjectNameAndCategory(currentLocation, obj, lessInfo);
     }
 
-    internal    static (string? name, CATEGORY category) GetObjectNameAndCategory(GameLocation currentLocation, StardewValley.Object obj, bool lessInfo = false)
-    { 
+    internal static (string? name, CATEGORY category) GetObjectNameAndCategory(GameLocation currentLocation, StardewValley.Object obj, bool lessInfo = false)
+    {
         (string? name, CATEGORY category) toReturn = (null, CATEGORY.Other);
         string qualifiedItemId = obj.QualifiedItemId;
         toReturn.name = obj.DisplayName;
@@ -601,7 +601,12 @@ public class TileInfo
                 mannequin.boots.Value?.DisplayName ?? ""
             }.Where(i => !string.IsNullOrWhiteSpace(i)));
 
-            toReturn.name = $"{obj.DisplayName}" + (string.IsNullOrWhiteSpace(itemsOnDisplay) ? "" : $", {itemsOnDisplay}");
+            toReturn.name = Translator.Instance.Translate("item-mannequin-info", tokens: new
+            {
+                name = obj.DisplayName,
+                facing_direction = mannequin.facing.Value,
+                items_on_display = string.IsNullOrWhiteSpace(itemsOnDisplay) ? "null" : itemsOnDisplay
+            });
         }
         else if (obj is IndoorPot indoorPot)
         {
@@ -736,13 +741,13 @@ public class TileInfo
         if (QualifiedItemIds.TryGetValue(qualifiedItemId, out var info))
         {
             object token;
-            string qualified_item_id = NormalizeQualifiedItemID(qualifiedItemId) ;
+            string qualified_item_id = NormalizeQualifiedItemID(qualifiedItemId);
             if (DescriptiveFluentTokens.Contains(info.itemName))
                 token = new { qualified_item_id, described = MainClass.Config.DisableDescriptiveDebris ? 0 : 1 };
             else
                 token = new { qualified_item_id };
             return (Translator.Instance.Translate(info.itemName, token), CATEGORY.FromString(info.category));
-            }
+        }
 
         // If the index is not found in the QualifiedItemIds dictionary, return the Others category.
         return (null, CATEGORY.Other);
