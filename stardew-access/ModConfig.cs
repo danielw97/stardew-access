@@ -456,6 +456,21 @@ internal class ModConfig
     public Boolean DisableBushVerbosity { get; set; } = false;
 
     /// <summary>
+    /// If enabled, does not speak debris descriptions.
+    /// </summary>
+    public Boolean DisableDescriptiveDebris { get; set; } = false;
+
+    /// <summary>
+    /// If enabled, doesn't speak colors for slimes and big slimes.
+    /// </summary>
+    public Boolean DisableColorfulSlime { get; set; } = false;
+
+    /// <summary>
+    /// If enabled, uses expanded color set for matching.
+    /// </summary>
+    public Boolean ExtraColors { get; set; } = false;
+
+    /// <summary>
     /// If enabled, does not pluralize inventory with fluent
     /// </summary>
     public Boolean DisableInventoryFluentPluralization { get; set; } = false;

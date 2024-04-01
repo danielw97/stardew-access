@@ -1,10 +1,13 @@
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json.Linq;
 using stardew_access.Translation;
+using static stardew_access.Utils.ColorMatcher;
 using static stardew_access.Utils.MachineUtils;
+using static stardew_access.Utils.ObjectUtils;
 using StardewValley;
 using StardewValley.Characters;
 using StardewValley.Locations;
+using StardewValley.Monsters;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
@@ -15,7 +18,7 @@ public class TileInfo
 {
     private static readonly string[] trackable_machines;
     private static readonly Dictionary<int, string> ResourceClumpNameTranslationKeys = [];
-    private static readonly Dictionary<int, (string category, string itemName)> ParentSheetIndexes = [];
+    private static readonly Dictionary<string, (string category, string itemName)> QualifiedItemIds = [];
     private static readonly Dictionary<string, Dictionary<(int, int), string>> BundleLocations = [];
 
     private static readonly Dictionary<Color, int> colorToSelectionMap = new()
@@ -43,15 +46,19 @@ public class TileInfo
         { new(254, 254, 254), 20 },
         // Add more color mappings as needed
     };
+    private static readonly HashSet<string> DescriptiveFluentTokens = [
+        "tile-stone-name",
+        "tile-twig-name"
+    ];
 
     static TileInfo()
     {
         JsonLoader.TryLoadJsonArray("trackable_machines.json", out trackable_machines, subdir: "assets/TileData");
         JsonLoader.TryLoadJsonDictionary("resource_clump_name_translation_keys.json", out ResourceClumpNameTranslationKeys, subdir: "assets/TileData");
-        JsonLoader.TryLoadNestedJson<int, (string, string)>(
-            "ParentSheetIndexes.json",
-            ProcessParentSheetIndex,
-            ref ParentSheetIndexes!,
+        JsonLoader.TryLoadNestedJson<string, (string, string)>(
+            "QualifiedItemIds.json",
+            ProcessQualifiedItemId,
+            ref QualifiedItemIds!,
             2,
             subdir: "assets/TileData"
         );
@@ -65,28 +72,22 @@ public class TileInfo
 
     }
 
-    private static void ProcessParentSheetIndex(List<string> path, JToken token, ref Dictionary<int, (string, string)> result)
+    private static void ProcessQualifiedItemId(List<string> path, JToken token, ref Dictionary<string, (string, string)> result)
     {
         string category = path[0];
         string itemName = path[1];
 
         if (token.Type == JTokenType.Array)
         {
-            foreach (JToken indexToken in token.Children())
+            foreach (JToken qualifiedItemIdToken in token.Children())
             {
-                if (int.TryParse(indexToken.ToString(), out int index))
-                {
-                    result[index] = (category, itemName);
-                }
-                else
-                {
-                    Log.Warn($"Invalid index format: '{indexToken}'. Expected an integer.");
-                }
+                string qualifiedItemId = qualifiedItemIdToken.ToString();
+                result[qualifiedItemId] = (category, itemName);
             }
         }
         else
         {
-            Log.Warn($"Expected an array for parent sheet indexes, but found: {token.Type}.");
+            Log.Warn($"Expected an array for qualified item ids, but found: {token.Type}.");
         }
     }
 
@@ -170,27 +171,157 @@ public class TileInfo
 
         var terrainFeature = currentLocation.terrainFeatures.FieldDict;
 
-        if (currentLocation.isCharacterAtTile(tile) is NPC npc)
+        var onlineFarmers = Game1.getOnlineFarmers();
+        Character? character = onlineFarmers.FirstOrDefault(farmer =>
+            farmer != Game1.player && farmer.currentLocation == currentLocation
+            && Convert.ToInt32(farmer.position.X) / 64 == x && Convert.ToInt32(farmer.position.Y) / 64 == y
+        );
+            character ??= currentLocation.isCharacterAtTile(tile);
+        if (character != null)
         {
-            CATEGORY category = npc.IsVillager || npc.CanSocialize ? CATEGORY.Farmers : CATEGORY.NPCs;
-            string npcName;
-            if (npc is Horse horse)
+            CATEGORY characterCategory;
+            string? characterName;
+            switch (character)
             {
-                if (string.IsNullOrEmpty(horse.displayName))
-                {
-                    npcName = Translator.Instance.Translate("npc_name-horse_with_no_name");
-                }
-                else
-                {
-                    npcName = horse.displayName;
-                }
+                case Farmer farmer:
+                    characterName = farmer.Name;
+                    characterCategory = CATEGORY.Farmers;
+                    break;
+                case Monster monster:
+                    characterCategory = CATEGORY.Monsters;
+                    bool dangerous = monster.Sprite.loadedTexture.EndsWith("dangerous", StringComparison.OrdinalIgnoreCase);
+                    bool hiding = false;
+                    string color;
+                    switch (monster)
+                    {
+                        case Bat bat when bat.Age == 789:
+                            characterName = Translator.Instance.Translate("monster_name-flying_purple_shorts");
+                            break;
+                        case BigSlime bigSlime:
+                            if (MainClass.Config.DisableColorfulSlime)
+                            {
+                                characterName = Monster.GetDisplayName(bigSlime.Name);
+                                color = "";
+                            }
+                            else
+                            {
+                                color = GetNearestColorName(bigSlime.c.R, bigSlime.c.G, bigSlime.c.B);
+                                characterName = $"{color} {Monster.GetDisplayName(bigSlime.Name)}";
+                            }
+                            string? item_name = null;
+                            if (bigSlime.heldItem.Value != null)
+                            {
+                                item_name = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)bigSlime.heldItem.Value, lessInfo).name;
+                            }
+                            object token = new
+                            {
+                                colorful = MainClass.Config.DisableColorfulSlime ? 0 : 1,
+                                color,
+                                holding = item_name != null,
+                                item_name
+                            };
+                            characterName = Translator.Instance.Translate("monster_name-big_slime", token);
+                            break;
+                        case Bug bug when bug.isArmoredBug.Value:
+                            characterName = Translator.Instance.Translate("monster_name-armored", new { monster_name = Monster.GetDisplayName(monster.Name) });
+                            break;
+                        case Fly fly when fly.hard:
+                            characterName = Translator.Instance.Translate("monster_name-mutant", new { monster_name = Monster.GetDisplayName(monster.Name) });
+                            break;
+                        case GreenSlime slime:
+                            if (MainClass.Config.DisableColorfulSlime || slime.prismatic.Value || slime.Name == "Tiger Slime")
+                            {
+                                characterName = Monster.GetDisplayName(slime.Name);
+                                break;
+                            }
+                            color = GetNearestColorName(slime.color.R, slime.color.G, slime.color.B);
+                            string slimeType = slime.Name == "Green Slime" ? Translator.Instance.Translate("monster_name-slime") : Monster.GetDisplayName(slime.Name);
+                            characterName = $"{color} {slimeType}";
+                            break;
+                        case Grub grub when grub.hard.Value:
+                            characterName = Translator.Instance.Translate("monster_name-mutant", new { monster_name = Monster.GetDisplayName(monster.Name) });
+                            break;
+                        case RockCrab crab:
+                            hiding = crab.Sprite.currentFrame < 16 && crab.Sprite.currentFrame % 4 == 0;
+                            if (hiding)
+                            {
+                                switch (crab.Name)
+                                {
+                                    case "Rock Crab" when dangerous:
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)846"), lessInfo);
+                                        break;
+                                    case "Rock Crab":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)32"), lessInfo);
+                                        break;
+                                    case "Lava Crab" when dangerous:
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)764"), lessInfo);
+                                        break;
+                                    case "Lava Crab":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)58"), lessInfo);
+                                        break;
+                                    case "Iridium Crab":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)765"), lessInfo);
+                                        break;
+                                    case "False Magma Cap":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)851"), lessInfo);
+                                        break;
+                                    case "Stick Bug":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)294"), lessInfo);
+                                        break;
+                                    case "Truffle Crab":
+                                        (characterName, characterCategory) = GetObjectNameAndCategory(currentLocation, (StardewValley.Object)ItemRegistry.Create("(O)430"), lessInfo);
+                                        break;
+                                    default:
+                                        characterName = Monster.GetDisplayName(monster.Name);
+                                        characterCategory = CATEGORY.Monsters;
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                characterName = crab.Name switch
+                                {
+                                    "Truffle Crab" => Translator.Instance.Translate("monster_name-truffle_crab"),
+                                    _ => Monster.GetDisplayName(monster.Name),
+                                };
+                            }
+                            break;
+                        case Skeleton skeleton when skeleton.isMage.Value:
+                            characterName = Translator.Instance.Translate("monster_name-mage", new { monster_name = Monster.GetDisplayName(monster.Name) });
+                            break;
+                        default:
+                            characterName = Monster.GetDisplayName(monster.Name);
+                            break;
+                    }
+                    if (dangerous && !hiding)
+                        characterName = Translator.Instance.Translate("monster_name-dangerous", new { monster_name = characterName });
+                    break;
+                case NPC npc:
+                    if (npc is Horse horse)
+                    {
+                        if (string.IsNullOrEmpty(horse.displayName))
+                        {
+                            characterName = Translator.Instance.Translate("npc_name-horse_with_no_name");
+                        }
+                        else
+                        {
+                            characterName = horse.displayName;
+                        }
+                    }
+                    else
+                    {
+                        characterName = npc.displayName;
+                    }
+                    characterCategory = CATEGORY.NPCs;
+                    break;
+                default:
+                    characterName = character.Name;
+                    characterCategory = CATEGORY.Unknown;
+                    break;
             }
-            else
-            {
-                npcName = npc.displayName;
-            }
-
-            return (npcName, category);
+            if (characterName != null && MainClass.Config.ReadTileDebug && character is not Farmer)
+                characterName = $"{characterName} ({character.Sprite.loadedTexture})";
+            return (characterName, characterCategory);
         }
 
         string? farmAnimal = GetFarmAnimalAt(currentLocation, x, y);
@@ -209,9 +340,9 @@ public class TileInfo
         staticTile ??= MainClass.TileManager.GetNameAndCategoryAt((x, y), "stardew-access", currentLocation);
         if (staticTile is { } static_tile)
         {
-#if DEBUG
+            #if DEBUG
             Log.Verbose($"TileInfo: Got static tile {static_tile} from TileManager");
-#endif
+            #endif
             return (static_tile.name, static_tile.category);
         }
 
@@ -429,18 +560,22 @@ public class TileInfo
     /// <returns>A tuple containing the object's name and category.</returns>
     public static (string? name, CATEGORY category) GetObjectAtTile(GameLocation currentLocation, int x, int y, bool lessInfo = false)
     {
-        (string? name, CATEGORY category) toReturn = (null, CATEGORY.Other);
-
         // Get the object at the specified tile
         StardewValley.Object obj = currentLocation.getObjectAtTile(x, y);
-        if (obj == null) return toReturn;
+        if (obj == null) return (null, CATEGORY.Other);
+        return GetObjectNameAndCategory(currentLocation, obj, lessInfo);
+    }
 
-        int index = obj.ParentSheetIndex;
+    internal    static (string? name, CATEGORY category) GetObjectNameAndCategory(GameLocation currentLocation, StardewValley.Object obj, bool lessInfo = false)
+    { 
+        (string? name, CATEGORY category) toReturn = (null, CATEGORY.Other);
+        string qualifiedItemId = obj.QualifiedItemId;
         toReturn.name = obj.DisplayName;
 
-        // TODO Update this to use the QualifiedItemIds instead
-        // Get object names and categories based on index
-        (string? name, CATEGORY category) correctNameAndCategory = GetCorrectNameAndCategoryFromIndex(index);
+        // Get object names and categories based on qualified item id
+        (string? name, CATEGORY category) correctNameAndCategory = GetCorrectNameAndCategoryFromQualifiedItemId(qualifiedItemId);
+        if (correctNameAndCategory.name == "")
+            correctNameAndCategory.name = obj.DisplayName;
 
         // Check the object type and assign the appropriate name and category
         if (obj is Chest chest)
@@ -481,15 +616,7 @@ public class TileInfo
         }
         else if (obj is Furniture furniture)
         {
-            if (lessInfo && (furniture.TileLocation.X != x || furniture.TileLocation.Y != y))
-            {
-                toReturn.category = CATEGORY.Other;
-                toReturn.name = null;
-            }
-            else
-            {
-                toReturn.category = CATEGORY.Furniture;
-            }
+            toReturn.category = CATEGORY.Furniture;
         }
         else if (obj is Torch torch)
         {
@@ -556,9 +683,10 @@ public class TileInfo
         }
         else if (correctNameAndCategory.name != null && !obj.ItemId.Contains("GreenRainWeeds"))
         {
+            correctNameAndCategory.name = MainClass.Config.ReadTileDebug ? $"{correctNameAndCategory.name} (DisplayName: {obj.DisplayName})" : correctNameAndCategory.name;
             toReturn = correctNameAndCategory;
         }
-        else if (obj.name.Equals("stone", StringComparison.OrdinalIgnoreCase))
+        /*else if (obj.name.Equals("stone", StringComparison.OrdinalIgnoreCase))
             toReturn.category = CATEGORY.Debris;
         else if (obj.name.Equals("twig", StringComparison.OrdinalIgnoreCase))
             toReturn.category = CATEGORY.Debris;
@@ -567,7 +695,7 @@ public class TileInfo
         else if (obj.name.Contains("earth crystal", StringComparison.OrdinalIgnoreCase))
             toReturn.category = CATEGORY.MineItems;
         else if (obj.name.Contains("frozen tear", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.MineItems;
+            toReturn.category = CATEGORY.MineItems;*/
 
         if (toReturn.category == CATEGORY.Machines || toReturn.category == CATEGORY.Ready || toReturn.category == CATEGORY.Pending) // Fix for `Harvestable table` and `Busy nodes`
         {
@@ -578,11 +706,10 @@ public class TileInfo
                 toReturn.name = Translator.Instance.Translate("tile-busy-prefix", new { content = toReturn.name });
         }
 
-        if (MainClass.Config.ReadTileDebug)
+        if (MainClass.Config.ReadTileDebug && !string.IsNullOrEmpty(toReturn.name))
         {
             if (!string.IsNullOrEmpty(obj.QualifiedItemId))
                 toReturn.name = $"{toReturn.name} ({obj.QualifiedItemId})";
-            Log.Trace($"Owner is {obj.owner}", true);
             Farmer farmerOwner = Game1.getFarmerMaybeOffline(obj.owner.Value);
             string ownerName;
             if (farmerOwner == null)
@@ -598,20 +725,26 @@ public class TileInfo
     }
 
     /// <summary>
-    /// Retrieves the correct name and category for an object based on its index and name.
+    /// Retrieves the correct name and category for an object based on its QualifiedItemId.
     /// </summary>
-    /// <param name="index">The object's index value.</param>
+    /// <param name="qualifiedItemId">The object's QualifiedItemId string.</param>
     /// <param name="objName">The object's name.</param>
     /// <returns>A tuple containing the object's correct name and category.</returns>
-    private static (string? name, CATEGORY category) GetCorrectNameAndCategoryFromIndex(int index)
+    private static (string? name, CATEGORY category) GetCorrectNameAndCategoryFromQualifiedItemId(string qualifiedItemId)
     {
-        // Use the ParentSheetIndexes dictionary for fast lookups.
-        if (ParentSheetIndexes.TryGetValue(index, out var info))
+        // Use the QualifiedItemIds dictionary for fast lookups.
+        if (QualifiedItemIds.TryGetValue(qualifiedItemId, out var info))
         {
-            return (info.itemName, CATEGORY.FromString(info.category));
-        }
+            object token;
+            string qualified_item_id = NormalizeQualifiedItemID(qualifiedItemId) ;
+            if (DescriptiveFluentTokens.Contains(info.itemName))
+                token = new { qualified_item_id, described = MainClass.Config.DisableDescriptiveDebris ? 0 : 1 };
+            else
+                token = new { qualified_item_id };
+            return (Translator.Instance.Translate(info.itemName, token), CATEGORY.FromString(info.category));
+            }
 
-        // If the index is not found in the ParentSheetIndexes dictionary, return the Others category.
+        // If the index is not found in the QualifiedItemIds dictionary, return the Others category.
         return (null, CATEGORY.Other);
     }
     #endregion  
