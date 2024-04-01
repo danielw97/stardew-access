@@ -476,6 +476,11 @@ internal class ModConfig
     public Boolean DisableInventoryFluentPluralization { get; set; } = false;
 
     /// <summary>
+    /// <summary>
+    /// If disabled, speaks "You've got mail!" with tts instead of playing the sound.
+    /// </summary>
+    public Boolean YouveGotMailSound { get; set; } = true;
+
     /// Sets speech rate for the Mac TTS.
     /// </summary>
     public Single MacSpeechRate { get; set; } = 220;

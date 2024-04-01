@@ -99,6 +99,7 @@ public class MainClass : Mod
         helper.Events.Content.LocaleChanged += OnLocaleChanged;
         helper.Events.Display.Rendering += OnRenderingStart;
         helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+        helper.Events.GameLoop.OneSecondUpdateTicked += OnOneSecondUpdateTicked;
         helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         helper.Events.GameLoop.DayStarted += OnDayStarted;
         helper.Events.Display.MenuChanged += OnMenuChanged;
@@ -125,6 +126,18 @@ public class MainClass : Mod
     {
         CheckedMailToday = false;
         ObjectTracker.Instance.GetLocationObjects();
+    }
+
+    private void OnOneSecondUpdateTicked(object? sender, OneSecondUpdateTickedEventArgs e)
+    {
+        if (!CheckedMailToday && (Game1.currentLocation is Farm || (Game1.currentLocation is StardewValley.Locations.IslandWest islandWest && islandWest.farmhouseMailbox.Value)) && Game1.player.mailbox is not null && Game1.player.mailbox.Count > 0)
+        {
+            if (Config.YouveGotMailSound)
+                Game1.playSound("youve_got_mail");
+            else
+                ScreenReader.TranslateAndSayWithChecker("feature-speak_youve_got_mail", false);
+            CheckedMailToday = true;
+        }
     }
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e)
@@ -190,12 +203,6 @@ public class MainClass : Mod
         // exit if warp event is for other players
         if (!e.IsLocalPlayer) return;
         TileUtils.CleanupMaps(e.OldLocation, e.NewLocation);
-        if (!CheckedMailToday && e.NewLocation.NameOrUniqueName == "Farm" && Game1.player.mailbox is not null && Game1.player.mailbox.Count > 0)
-        {
-            //ScreenReader.Say("You've got mail!", true);
-            Game1.playSound("youve_got_mail");
-            CheckedMailToday = true;
-        }
         FeatureManager.OnPlayerWarpedEvent(sender, e);
     }
 

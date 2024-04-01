@@ -388,7 +388,7 @@ public class DynamicTiles
             var mailbox = Game1.player.mailbox;
             if (mailbox is not null && mailbox.Count > 0)
             {
-                name = Translator.Instance.Translate("tile-mail_box-unread_mail_count-prefix", new
+                name = Translator.Instance.Translate("tile_name-mail_box-unread_mail_count-prefix", new
                 {
                     mail_count = mailbox.Count,
                     content = name
@@ -483,7 +483,7 @@ public class DynamicTiles
             var mailbox = Game1.player.mailbox;
             if (mailbox is not null && mailbox.Count > 0)
             {
-                mailboxName = Translator.Instance.Translate("tile-mail_box-unread_mail_count-prefix", new
+                mailboxName = Translator.Instance.Translate("tile_name-mail_box-unread_mail_count-prefix", new
                 {
                     mail_count = mailbox.Count,
                     content = mailboxName
@@ -758,6 +758,13 @@ public class DynamicTiles
         if (foundPerch != null)
         {
             if (foundPerch.upgradeName.Value == "GoldenParrot") return Translator.Instance.Translate("building-golden_parrot");
+            if (islandLocation is IslandWest islandWest)
+            {
+                if (islandWest.farmhouseMailbox.Value && foundPerch.tilePosition.X == 81 && foundPerch.tilePosition.Y == 40)
+                {
+                    return "tile_name-mail_box";
+                }
+            }
             string toSpeak = Translator.Instance.Translate("building-parrot_perch-required_nuts", new { item_count = foundPerch.requiredNuts.Value });
 
             // Return appropriate string based on the current state of the parrot perch
@@ -797,7 +804,20 @@ public class DynamicTiles
         }
         else if (parrot != null)
         {
-            return (parrot, CATEGORY.Buildings);
+            if (islandLocation is IslandWest islandWest && islandWest.farmhouseMailbox.Value && parrot == "tile_name-mail_box")
+            {
+                var mailbox = Game1.player.mailbox;
+                string content = Translator.Instance.Translate(parrot);
+                if (mailbox != null && mailbox.Count > 0)
+                {
+                    return (Translator.Instance.Translate("tile_name-mail_box-unread_mail_count-prefix", new { mail_count = mailbox.Count, content }), CATEGORY.Ready);
+                }
+                return (content, CATEGORY.Interactables);
+            }
+            else
+            {
+                return (parrot, CATEGORY.Buildings);
+            }
         }
 
         return islandLocation switch

@@ -69,6 +69,7 @@ feature-speak_position = {$verbose_coordinates ->
     [0] {$x_pos}, {$y_pos}
     *[1] X: {$x_pos}, Y: {$y_pos}
   }
+feature-speak_youve_got_mail = You've got mail!
 feature-warnings-health = Warning! Health is at {$value} percent!
 feature-warnings-stamina = Warning! Stamina is at {$value} percent!
 feature-warnings-time = Warning! Time is {$value}
@@ -218,7 +219,7 @@ tile_name-special_quest_board = Special Quest Board
 tile-museum_piece_showcase-suffix = {$content} Showcase
 tile_name-fridge = Fridge
 tile_name-mail_box = Mail Box
-tile-mail_box-unread_mail_count-prefix = {$mail_count} {$mail_count ->
+tile_name-mail_box-unread_mail_count-prefix = {$mail_count} {$mail_count ->
     [1] unread letter in
     *[0] unread letters in
   } {$content}
