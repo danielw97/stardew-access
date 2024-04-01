@@ -305,6 +305,7 @@ building-parrot_perch-upgrade_state_idle = Empty Parrot Perch
 building-parrot_perch-upgrade_state_start_building = Parrots started building request
 building-parrot_perch-upgrade_state_building = Parrots building request
 building-parrot_perch-upgrade_state_complete = Request completed
+building-golden_parrot = Golden Parrot
 
 # NPCs
 

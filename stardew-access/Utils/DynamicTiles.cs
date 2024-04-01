@@ -753,6 +753,7 @@ public class DynamicTiles
         // If a parrot perch was found at the specified tile coordinates
         if (foundPerch != null)
         {
+            if (foundPerch.upgradeName.Value == "GoldenParrot") return Translator.Instance.Translate("building-golden_parrot");
             string toSpeak = Translator.Instance.Translate("building-parrot_perch-required_nuts", new { item_count = foundPerch.requiredNuts.Value });
 
             // Return appropriate string based on the current state of the parrot perch
