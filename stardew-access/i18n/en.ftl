@@ -129,48 +129,48 @@ tile-grass-name = {$grass_type ->
   }
 tile-twig-name = {$described ->
     [0] Twig
-    *[other] = {$qualified_item_id ->
-        [O294] = Forked 
-        [O295] = Branching 
-        *[other] = {EMPTYSTRING()}
+    *[other] {$qualified_item_id ->
+        [O294] Forked 
+        [O295] Branching 
+        *[other] {EMPTYSTRING()}
       }Twig
   }
 tile-stone-name = {$described ->
     [0] {$qualified_item_id ->
-        [O46] = Mystic 
-        [O343] = {EMPTYSTRING()} 
-        [O450] = {EMPTYSTRING()} 
-        [O668] = {EMPTYSTRING()} 
-        [O670] = {EMPTYSTRING()} 
-        [O845] = {EMPTYSTRING()} 
-        [O846] = {EMPTYSTRING()} 
-        [O847] = {EMPTYSTRING()} 
-        *[other] = Colored 
+        [O46] Mystic 
+        [O343] {EMPTYSTRING()} 
+        [O450] {EMPTYSTRING()} 
+        [O668] {EMPTYSTRING()} 
+        [O670] {EMPTYSTRING()} 
+        [O845] {EMPTYSTRING()} 
+        [O846] {EMPTYSTRING()} 
+        [O847] {EMPTYSTRING()} 
+        *[other] Colored 
       }Stone
-    *[other] = {$qualified_item_id ->
-        [O32] = Dull Brown Pointed Stone
-        [O34] = Mounded Gray Stone
-        [O36] = Ovular Gray Stone
-        [O38] = Lumpy Brown Stone
-        [O40] = Smooth Warm Brown Stone
-        [O42] = Segmented Rusty Brown Stone
-        [O46] = Mystic Purple Stone With Blue Swirls
-        [O48] = blue pointed stone
-        [O50] = Smooth Blue Stone
-        [O52] = Ovular Turquoise Stone
-        [O54] = Lumpy Aquamarine
-        [O56] = Pointed Red Stone
-        [O58] = Flame-Like Red Stone
-        [O343] = Small Gray Stone
-        [O450] = Extrusive Gray Stone
-        [O668] = Bean-Shaped Gray Stone
-        [O670] = Rounded Gray Stone
-        [O760] = Lumpy Dark Gray Stone
-        [O762] = Smooth Dark Gray Stone
-        [O845] = Bumpy Dark Purple Stone
-        [O846] = Mounded Dark Blue-Gray Stone
-        [O847] = Extrusive Dark Purple Stone
-        *[other] = Stone
+    *[other] {$qualified_item_id ->
+        [O32] Dull Brown Pointed Stone
+        [O34] Mounded Gray Stone
+        [O36] Ovular Gray Stone
+        [O38] Lumpy Brown Stone
+        [O40] Smooth Warm Brown Stone
+        [O42] Segmented Rusty Brown Stone
+        [O46] Mystic Purple Stone With Blue Swirls
+        [O48] blue pointed stone
+        [O50] Smooth Blue Stone
+        [O52] Ovular Turquoise Stone
+        [O54] Lumpy Aquamarine
+        [O56] Pointed Red Stone
+        [O58] Flame-Like Red Stone
+        [O343] Small Gray Stone
+        [O450] Extrusive Gray Stone
+        [O668] Bean-Shaped Gray Stone
+        [O670] Rounded Gray Stone
+        [O760] Lumpy Dark Gray Stone
+        [O762] Smooth Dark Gray Stone
+        [O845] Bumpy Dark Purple Stone
+        [O846] Mounded Dark Blue-Gray Stone
+        [O847] Extrusive Dark Purple Stone
+        *[other] Stone
       }
   }
 tile-sprinkler-pressure_nozzle-prefix = Pressurized {$content}
