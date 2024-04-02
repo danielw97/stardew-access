@@ -54,7 +54,8 @@ public static class TerrainUtils
             detailString.Append(Translator.Instance.Translate("terrain_util-crop-soil"));
         }
 
-        return detailString.ToString().Trim();
+        string toReturn = detailString.ToString().Trim();
+        return toReturn == "" ? null : toReturn;
     }
 
     public static (string TreeType, int GrowthStage, bool IsHarvestable) GetFruitTreeInfo(FruitTree fruitTree)

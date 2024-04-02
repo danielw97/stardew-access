@@ -370,7 +370,7 @@ public class TileInfo
         }
 
         LargeTerrainFeature? ltf = currentLocation.getLargeTerrainFeatureAt(x, y);
-        (string? name, CATEGORY? category) ltfInfo = (TerrainUtils.GetTerrainFeatureInfoAndCategory(ltf, lessInfo));
+        (string? name, CATEGORY? category) ltfInfo = (TerrainUtils.GetTerrainFeatureInfoAndCategory(ltf, Game1.currentLocation is MineShaft && !MainClass.Config.ReadHoedDirtInMineShafts));
         if (ltfInfo.name != null)
         {
             if (ltf is Tent tent && (int)tent.Tile.X == x && (int)tent.Tile.Y == y)
@@ -383,7 +383,7 @@ public class TileInfo
 
         if (terrainFeature.TryGetValue(tile, out var tf))
         {
-            (string? name, CATEGORY? category) tfInfo = (TerrainUtils.GetTerrainFeatureInfoAndCategory(tf.Value, lessInfo));
+            (string? name, CATEGORY? category) tfInfo = (TerrainUtils.GetTerrainFeatureInfoAndCategory(tf.Value, Game1.currentLocation is MineShaft && !MainClass.Config.ReadHoedDirtInMineShafts));
             if (tfInfo.name != null)
             {
                 return tfInfo;
