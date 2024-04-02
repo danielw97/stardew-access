@@ -560,14 +560,6 @@ public class DynamicTiles
         {
             return ("tile_name-traveling_cart_pig", CATEGORY.NPCs);
         }
-        else if (forest.obsolete_log != null && x == 2 && y == 7) // TODO Check for conflicts
-        {
-            return ("item_name-log", CATEGORY.Interactables);
-        }
-        else if (forest.obsolete_log == null && x == 0 && y == 7) // TODO Check for conflicts
-        {
-            return ("entrance_name-secret_woods_entrance", CATEGORY.Doors);
-        }
         else if (Game1.MasterPlayer.mailReceived.Contains("raccoonTreeFallen") && x == 56 && y == 6)
         {
             return ("tile-forest-giant_tree_sump", forest.stumpFixed.Value ? CATEGORY.Decor : CATEGORY.Quest);
