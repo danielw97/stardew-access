@@ -175,7 +175,7 @@ internal static class InventoryUtils
             });
             prevTranslatedName = itemName;
 #if DEBUG
-            Log.Verbose("Updated inventory translation cache");
+            Log.Verbose($"Updated inventory translation cache for {itemName}", true);
 #endif
         }
 

@@ -54,9 +54,6 @@ internal class ReadTile : FeatureBase
         // Exit if in a menu
         if (Game1.activeClickableMenu != null)
         {
-            #if DEBUG
-            Log.Verbose("OnButtonPressed: returning due to 'Game1.activeClickableMenu' not being null AKA in a menu");
-            #endif
             return false;
         }
 
