@@ -481,6 +481,12 @@ internal class ModConfig
     /// </summary>
     public Boolean YouveGotMailSound { get; set; } = true;
 
+    /// <summary>
+    /// <summary>
+    /// If enabled, toggles on in-game cheats / debug commands.
+    /// </summary>
+    public Boolean EnableCheats { get; set; } = false;
+
     /// Sets speech rate for the Mac TTS.
     /// </summary>
     public Single MacSpeechRate { get; set; } = 220;

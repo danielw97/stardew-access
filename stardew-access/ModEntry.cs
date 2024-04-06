@@ -119,6 +119,11 @@ public class MainClass : Mod
 
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs? e)
     {
+        if (Config.EnableCheats)
+        {
+            Program.enableCheats = true;
+            Log.Info("Enabled debug cheats");
+        }
         TileManager.Initialize();
     }
 
@@ -177,7 +182,7 @@ public class MainClass : Mod
             FirstRun = false;
             ModHelper!.Events.Display.Rendering -= OnRenderingStart;
             Log.Trace("Removed OnFirstWindowResized");
-            ScreenReader.TranslateAndSayWithMenuChecker("menu-title-stardew_access_loaded", true, new { version = ModManifest.Version });
+            ScreenReader.TranslateAndSayWithMenuChecker("menu-title-stardew_access_loaded", true, new { version = ModManifest.Version, cheats = Program.enableCheats ? 1 : 0 });
         }
     }
 

@@ -591,7 +591,10 @@ menu-special_orders_board-quest_completed = Quest {$name} completed! Open journa
 
 ### Title Menu
 
-menu-title-stardew_access_loaded = Stardew Access version {$version} Loaded
+menu-title-stardew_access_loaded = Stardew Access version {$version} Loaded {$cheats ->
+    [1] with cheats enabled
+    *[0] {EMPTYSTRING()}
+  }
 menu-title-click_to_skip = Left click to skip the title screen
 menu-title-new_game_button = New game button
 menu-title-load_button = Load button
