@@ -336,7 +336,7 @@ npc_name-horse_with_no_name = A horse with no name
 monster_name-armored = Armored {$monster_name}
 monster_name-big_slime = Big {$colorful ->
     [0] {EMPTYSTRING()}
-    *[1] = {$color} 
+    *[1] {$color} 
   }Slime{$holding ->
     [0] {EMPTYSTRING()}
     *[1] holding {$item_name}

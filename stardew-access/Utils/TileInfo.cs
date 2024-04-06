@@ -218,8 +218,8 @@ public class TileInfo
                             {
                                 colorful = MainClass.Config.DisableColorfulSlime ? 0 : 1,
                                 color,
-                                holding = item_name != null,
-                                item_name
+                                holding = item_name != null ? 1 : 0,
+                                item_name = item_name ?? ""
                             };
                             characterName = Translator.Instance.Translate("monster_name-big_slime", token);
                             break;
