@@ -52,10 +52,10 @@ internal class ReadTile : FeatureBase
     public override bool OnButtonPressed(object? sender, ButtonPressedEventArgs e)
     {
         // Exit if in a menu
-        if (Game1.activeClickableMenu != null)
+        /*if (!(Game1.activeClickableMenu == null || (Game1.activeClickableMenu is StardewValley.Menus.CarpenterMenu cmenu && cmenu.onFarm)))
         {
             return false;
-        }
+        }*/
 
         // Manual read tile at player's position
         if (MainClass.Config.ReadStandingTileKey.JustPressed())
@@ -123,7 +123,7 @@ internal class ReadTile : FeatureBase
             #endregion
 
             // The event with id 13 is the Haley's six heart event, the one at the beach requiring the player to find the bracelet
-            if (Context.IsPlayerFree || (Game1.CurrentEvent is not null && Game1.CurrentEvent.id == "13"))
+            if (Context.IsPlayerFree || (Game1.CurrentEvent is not null && Game1.CurrentEvent.id == "13") || (Game1.activeClickableMenu is StardewValley.Menus.CarpenterMenu menu && menu.onFarm))
             {
                 if (!manuallyTriggered && _prevTile != tile)
                 {
