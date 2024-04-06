@@ -227,7 +227,8 @@ static_tile-island_field_office-island_survey = Island Survey
 
 static_tile-island_north-dig_site_parrot_express = Dig Site Parrot Express
 static_tile-island_north-volcano_parrot_express = Volcano Parrot Express
-static_tile-island_north-volcano_entrance = Volcano Entrance
+static_tile-island_north-volcano_entrance_east = Volcano Entrance (East)
+static_tile-island_north-volcano_entrance_west = Volcano Entrance (West)
 
 ## Island Shrine
 

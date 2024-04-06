@@ -1059,7 +1059,14 @@
       "Category": "interactables"
     },
     {
-      "NameOrTranslationKey": "static_tile-island_north-volcano_entrance",
+      "NameOrTranslationKey": "static_tile-island_north-volcano_entrance_east",
+      "X": [39, 40, 41, 42],
+      "Y": [20],
+      "Suffix": "",
+      "Category": "doors"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-volcano_entrance_west",
       "X": [12],
       "Y": [30],
       "Suffix": "",
