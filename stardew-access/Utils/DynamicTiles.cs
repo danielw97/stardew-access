@@ -611,6 +611,10 @@ public class DynamicTiles
         {
             return ("npc_name-island_trader", CATEGORY.Interactables);
         }
+        else if (!islandNorth.caveOpened.Value && y == 47 && (x == 21 || x == 22))  
+        {
+            return ("tile-resource_clump-boulder-name", CATEGORY.ResourceClumps);
+        }
 
         // Return (null, null) if no relevant object is found
         return (null, null);
