@@ -7,6 +7,7 @@ using static stardew_access.Utils.ObjectUtils;
 using StardewValley;
 using StardewValley.Characters;
 using StardewValley.Locations;
+using StardewValley.Menus;
 using StardewValley.Monsters;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
@@ -141,7 +142,7 @@ public class TileInfo
         String? name = GetNameAtTile(tile);
 
         // Prepend the player's name if the viewing tile is occupied by the player itself
-        if (CurrentPlayer.PositionX == (int)tile.X && CurrentPlayer.PositionY == (int)tile.Y)
+        if (!(Game1.activeClickableMenu is CarpenterMenu menu && menu.onFarm) && CurrentPlayer.PositionX == (int)tile.X && CurrentPlayer.PositionY == (int)tile.Y)
         {
             name = $"{Game1.player.displayName}, {name}";
         }

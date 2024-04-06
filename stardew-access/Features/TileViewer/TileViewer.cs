@@ -109,12 +109,12 @@ internal class TileViewer : FeatureBase
     public override bool OnButtonPressed(object? sender, ButtonPressedEventArgs e)
     {
         // Exit if in a menu
-        if (Game1.activeClickableMenu != null && !IsCarpenterMenuBuilderViewport())
+        if (!IsCarpenterMenuBuilderViewport() && Game1.activeClickableMenu != null)
         {
             return false;
         }
 
-        if (Game1.activeClickableMenu != null && MainClass.Config.ToggleRelativeCursorLockKey.JustPressed())
+        if (Game1.activeClickableMenu == null && MainClass.Config.ToggleRelativeCursorLockKey.JustPressed())
         {
             _relativeOffsetLock = !_relativeOffsetLock;
             if (_relativeOffsetLock)
@@ -302,7 +302,7 @@ internal class TileViewer : FeatureBase
         }
         else if (!TryMoveTileView(delta)) return;
         Vector2 position = !isCarpenterMenu ? GetTileCursorPosition() : CarpenterMenuPatch.MousePosition!.Value + new Vector2(Game1.viewport.X, Game1.viewport.Y);
-        string name = TileInfo.GetNameAtTileWithBlockedOrEmptyIndication(position/64);
+        string name = TileInfo.GetNameAtTileWithBlockedOrEmptyIndication(!isCarpenterMenu ? GetViewingTile() : position/64);
         
         MainClass.ScreenReader.Say(precise
             ? $"{name}, {position.X}, {position.Y}"
