@@ -610,7 +610,7 @@ public class TileInfo
         }
         else if (obj is IndoorPot indoorPot)
         {
-            string potContent = indoorPot.bush.Value != null
+            string? potContent = indoorPot.bush.Value != null
                 ? TerrainUtils.GetBushInfoString(indoorPot.bush.Value)
                 : TerrainUtils.GetDirtInfoString(indoorPot.hoeDirt.Value, true);
             toReturn.name = $"{obj.DisplayName}, {potContent}";

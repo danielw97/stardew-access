@@ -70,7 +70,7 @@ internal class TileViewer : FeatureBase
     {
         if (IsCarpenterMenuBuilderViewport())
         {    
-            return CarpenterMenuPatch.mousePosition!.Value;
+            return CarpenterMenuPatch.MousePosition!.Value;
         }
         Vector2 target = PlayerPosition;
         if (_relativeOffsetLock)
@@ -297,11 +297,11 @@ internal class TileViewer : FeatureBase
             int newX = (int)newPosition.X, newY = (int)newPosition.Y;
             if (CarpenterMenuPatch.carpenterMenu != null)
             {
-                CarpenterMenuPatch.mousePosition = newPosition;
+                CarpenterMenuPatch.MousePosition = newPosition;
             }
         }
         else if (!TryMoveTileView(delta)) return;
-        Vector2 position = !isCarpenterMenu ? GetTileCursorPosition() : CarpenterMenuPatch.mousePosition!.Value + new Vector2(Game1.viewport.X, Game1.viewport.Y);
+        Vector2 position = !isCarpenterMenu ? GetTileCursorPosition() : CarpenterMenuPatch.MousePosition!.Value + new Vector2(Game1.viewport.X, Game1.viewport.Y);
         string name = TileInfo.GetNameAtTileWithBlockedOrEmptyIndication(position/64);
         
         MainClass.ScreenReader.Say(precise

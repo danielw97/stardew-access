@@ -21,7 +21,7 @@ internal class GameStateNarrator : FeatureBase
     /// <summary>
     /// Stores the last 9 spoken hud messages.
     /// </summary>
-    public static List<string> HudMessagesBuffer = new();
+    public static List<string> HudMessagesBuffer = [];
 
     public new static GameStateNarrator Instance
     {

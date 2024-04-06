@@ -14,7 +14,7 @@ internal class CarpenterMenuPatch : IPatch
     internal static string prevBlueprintInfo = "";
     internal static bool isOnFarm = false, isUpgrading = false, isDemolishing = false, isPainting = false, isConstructing = false, isMoving = false, isMagicalConstruction = false;
     private static Vector2? _mousePosition = null;
-    internal static Vector2? mousePosition
+    internal static Vector2? MousePosition
     {
         get { return _mousePosition; }
         set
@@ -62,7 +62,7 @@ internal class CarpenterMenuPatch : IPatch
                 isPainting = false;
                 isMoving = false;
                 isConstructing = false;
-                mousePosition = null;
+                MousePosition = null;
 
                 CarpenterMenu.BlueprintEntry currentBlueprint = __instance.Blueprint;
                 if (currentBlueprint == null) return;
@@ -96,12 +96,12 @@ internal class CarpenterMenuPatch : IPatch
                     isMoving = true;
                 else
                     isConstructing = true;
-                if (mousePosition == null)
+                if (MousePosition == null)
                 {
                     var location = carpenterMenu.GetInitialBuildingPlacementViewport(carpenterMenu.TargetLocation);
-                    mousePosition = new(Game1.viewport.Width / 2f, Game1.viewport.Height / 2f);
+                    MousePosition = new(Game1.viewport.Width / 2f, Game1.viewport.Height / 2f);
                 }
-                if (mousePosition!= null && mousePosition.HasValue) Game1.setMousePosition((int)mousePosition.Value.X, (int)mousePosition.Value.Y);
+                if (MousePosition!= null && MousePosition.HasValue) Game1.setMousePosition((int)MousePosition.Value.X, (int)MousePosition.Value.Y);
             }
         }
         catch (Exception e)
