@@ -431,16 +431,13 @@ menu-item_list-ok_button = {$title}
 
 menu-letter_viewer-letter_message = {$message_content}{$is_money_included ->
     [0] {EMPTYSTRING()}
-    *[1] 
-      Got {$received_money}g
+    *[1] , Got {$received_money}g
   }{$learned_any_recipe ->
     [0] {EMPTYSTRING()}
-    *[1] 
-      Learned {$learned_recipe} recipe
+    *[1] , {$learned_recipe}
   }{$is_quest ->
     [0] {EMPTYSTRING()}
-    *[1] 
-      Left click to accept quest
+    *[1] , Left click to accept quest
   }
 menu-letter_viewer-pagination_text-prefix = Page {$current_page} of {$total_pages}
   {$content}
