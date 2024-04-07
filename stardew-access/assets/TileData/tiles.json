@@ -2833,19 +2833,37 @@
     {
       "NameOrTranslationKey": "static_tile-common-river",
       "X": [94],
-      "Y": [10],
+      "Y": [12],
       "Category": "Fishing"
     },
     {
-      "NameOrTranslationKey": "static_tile-town-joja_bridge",
+      "NameOrTranslationKey": "static_tile-town-wooden_bridge",
       "X": [92,93,94,95,96],
-      "Y": [11],
+      "Y": [13],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-town-joja_bridge",
+      "X": [70, 71, 72, 73, 74, 75, 76, 77],
+      "Y": [53, 54],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-town-joja_billboard",
+      "X": [84, 85, 86, 87],
+      "Y": [48],
+      "Category": "decor"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-town-museum_bridge",
+      "X": [75, 76, 77, 78, 79, 80, 81, 82],
+      "Y": [94, 95],
       "Category": "bridges"
     },
     {
       "NameOrTranslationKey": "static_tile-town-beach_bridge",
-      "X": [75,76,77,78,79,80,81,82],
-      "Y": [4, 5],
+      "X": [53, 54, 55],
+      "Y": [101, 102, 103, 104, 105, 106, 107, 108, 109],
       "Category": "bridges"
     },
     {
