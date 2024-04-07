@@ -70,6 +70,7 @@ feature-speak_position = {$verbose_coordinates ->
     *[1] X: {$x_pos}, Y: {$y_pos}
   }
 feature-speak_youve_got_mail = You've got mail!
+feature-speak_cheater = You're a dirty cheater!
 feature-warnings-health = Warning! Health is at {$value} percent!
 feature-warnings-stamina = Warning! Stamina is at {$value} percent!
 feature-warnings-time = Warning! Time is {$value}

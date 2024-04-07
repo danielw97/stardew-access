@@ -9,6 +9,7 @@ public class FeatureManager
 {
     private static readonly List<FeatureBase> AllFeatures =
     [
+        KonamiCode.Instance,
         PlayerTriggered.Instance,
         ReadTile.Instance,
         TileViewer.Instance,
