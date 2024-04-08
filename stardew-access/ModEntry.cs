@@ -77,7 +77,7 @@ public class MainClass : Mod
 
         CustomSoundEffects.Initialize();
 
-        CommandManager.AddAll(helper);
+        CommandManager.RegisterAll(helper);
 
         PatchManager.PatchAll(new Harmony(ModManifest.UniqueID));
 
@@ -166,7 +166,7 @@ public class MainClass : Mod
                 {
                     prevDate = CurrentPlayer.Date;
                     Log.Debug("Refreshing buildlist...");
-                    TileMarkingCommands.BuildList();
+                    TileMarkingCommands.BuildList([]);
                 }
             }
         }

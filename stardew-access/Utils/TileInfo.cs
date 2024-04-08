@@ -322,7 +322,6 @@ public class TileInfo
             }
             if (characterName != null && MainClass.Config.ReadTileDebug && character is not Farmer)
                 characterName = $"{characterName} ({character.Sprite.loadedTexture})";
-            Log.Info($"{characterName} {characterCategory}");
             return (characterName, characterCategory);
         }
 
