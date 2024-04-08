@@ -51,6 +51,7 @@ internal class PatchManager
             new AnimalQueryMenuPatch(),
             new BuildingSkinMenuPatch(),
             new CarpenterMenuPatch(),
+            new ChooseFromIconsMenuPatch(),
             new ChooseFromListMenuPatch(),
             new ConfirmationDialogMenuPatch(),
             new ItemListMenuPatch(),

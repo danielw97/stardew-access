@@ -19,6 +19,7 @@ internal class IClickableMenuPatch : IPatch
         typeof(Billboard),
         typeof(CarpenterMenu),
         typeof(CharacterCustomization),
+        typeof(ChooseFromIconsMenu),
         typeof(ConfirmationDialog),
         typeof(CoopMenu),
         typeof(FarmhandMenu),

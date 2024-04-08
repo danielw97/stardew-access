@@ -1,6 +1,5 @@
 using stardew_access.Translation;
 using StardewModdingAPI;
-using StardewValley;
 
 namespace stardew_access.Commands;
 

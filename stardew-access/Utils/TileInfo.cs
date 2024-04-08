@@ -592,6 +592,18 @@ public class TileInfo
             }
             toReturn.category = CATEGORY.Interactables;
         }
+        else if (obj.QualifiedItemId == "(BC)StatueOfBlessings")
+        {
+            if (Game1.player.hasBuffWithNameContainingString("statue_of_blessings_"))
+            {
+                foreach (var buff in Game1.player.buffs.AppliedBuffs)
+                {
+                    if (!buff.Value.id.Contains("statue_of_blessings_")) continue;
+                    toReturn.name = $"{toReturn.name}, {buff.Value.displayName}";
+                    break;
+                }
+            }
+        }
         else if (obj is Mannequin mannequin)
         {
             string itemsOnDisplay = string.Join(", ", new List<string>()
