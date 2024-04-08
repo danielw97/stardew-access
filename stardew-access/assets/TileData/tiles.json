@@ -369,20 +369,6 @@
       "Category": "interactables"
     }
   ],
-  "BathHouse_MensLocker": [
-    {
-      "NameOrTranslationKey": "static_tile-bathhouse_locker-entry_room_door",
-      "X": [3],
-      "Y": [27],
-      "Category": "doors"
-    },
-    {
-      "NameOrTranslationKey": "static_tile-bathhouse_locker-pool_entrance",
-      "X": [15],
-      "Y": [27],
-      "Category": "doors"
-    }
-  ],
   "BathHouse_Pool": [
     {
       "NameOrTranslationKey": "static_tile-bathhouse_pool-womens_locker_room_door",

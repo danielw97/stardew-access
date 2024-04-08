@@ -93,11 +93,6 @@ static_tile-archaeology_house-childrens_book = Children's Book
 
 # Bathouse
 
-## Men/Women locker room
-
-static_tile-bathhouse_locker-entry_room_door = Entry Room
-static_tile-bathhouse_locker-pool_entrance = Pool Entrance
-
 ## Pool
 
 static_tile-bathhouse_pool-womens_locker_room_door = Women's Locker Room
