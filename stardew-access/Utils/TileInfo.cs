@@ -246,6 +246,7 @@ public class TileInfo
                             hiding = crab.Sprite.currentFrame < 16 && crab.Sprite.currentFrame % 4 == 0;
                             if (hiding)
                             {
+                                // Thanks to @TheSuperGamer20578 for identifying specific rocks used by Rock / Lava crabs, both dangerous and regular variants.
                                 switch (crab.Name)
                                 {
                                     case "Rock Crab" when dangerous:
