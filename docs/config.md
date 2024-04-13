@@ -2,10 +2,10 @@
 
 The mod can be configured by a `config.json` file that can be found in the mod's folder (if you can't find it than try
 running game once).
-The file is a json type so you can edit it using any text editor on your computer or you can use onlne json editors
+The file is a .json type so you can edit it using any text editor on your computer or you can use online json editors
 like [Json Editor Online](https://jsoneditoronline.org/).
 For the list of button codes
-visit [this page](https://stardewvalleywiki.com/Modding:Player_Guide/Key_Bindings#Button_codes).
+visit [Player Guide/Key Bindings](https://stardewvalleywiki.com/Modding:Player_Guide/Key_Bindings#Button_codes).
 
 ## Table Of Contents
 

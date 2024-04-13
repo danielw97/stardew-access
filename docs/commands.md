@@ -3,8 +3,7 @@
 This page contains the list of all commands added by the mod.
 You can install the [Chat Commands](https://www.nexusmods.com/stardewvalley/mods/2092) mod which will enable entering
 the commands from the in-game chat box instead of using the terminal.
-For a list of commands added SMAPI, you can visit the
-page [here](https://stardewvalleywiki.com/Modding:Console_commands).
+For a list of commands added by SMAPI, you can visit the [Console commands](https://stardewvalleywiki.com/Modding:Console_commands) page.
 
 ## Table Of Contents
 

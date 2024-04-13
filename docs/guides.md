@@ -21,7 +21,7 @@ This assumes that you have installed the game and the mod as well, go to the [se
 Once the game is loaded and you have entered the title screen, select the new game button to open the new game menu (also known as the character customization menu).
 You can use wasd keys to navigate through the menus and `Control + Enter` or `[` key to select a button or other UI elements.
 Once you're in the new game menu, use the left and right arrow keys to go to next or previous element and again, `Control + Enter` or `[` key to select it.
-Check the full list of keybindings in this menu [here](keybindings.md#new-game-or-character-customization-menu-keys).
+Check the [full list of character customization menu keybindings](keybindings.md#new-game-or-character-customization-menu-keys) .
 In case of a text box, first select the element with `[` or `Control + Enter` and then type the text you want and press `Escape` key to unselect the text box.
 And in case of a slider, use up and down arrow keys or page up and page down keys to change the value.
 By default, options related to character appearance are hidden, press `Left Control + Space` to make it visible and then you can edit the farmer's appearance.
