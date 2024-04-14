@@ -14,9 +14,9 @@
                 * [For GOG Galaxy](#for-gog-galaxy)
         * [For Linux](#for-linux)
         * [For MacOS](#for-macos)
-    * [Installing Project Fluent](#installing-project-fluent)
-* [Mod Installation](#mod-installation)
-* [Updating The Mod](#updating-the-mod)
+    * [Installing Kokoro and Project Fluent](#installing-kokoro-and-project-fluent)
+* [Stardew Access Installation](#stardew-access-installation)
+* [Updating Stardew Access](#updating-stardew-access)
 * [Other Mods](#other-mods)
     * [Essentials](#essentials)
     * [Recommended](#recommended)
@@ -113,8 +113,8 @@ _(Note that this gets automatically taken care of for the xbox version while ins
 4. If you installed Steam through Flatpak, see these instructions:
 5. instructions for Flatpak
 6. Run the `install on Linux.sh` file, and follow the on-screen instructions.
-    - (If the installer asks for your game install path, see how to find your game
-      folder - [here](https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started#Find_your_game_folder).)
+    - (If the installer asks for your game install path, see how to
+       [find your game folder here](https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started#Find_your_game_folder).)
 
 #### For MacOS
 
@@ -139,7 +139,7 @@ Installation of Project Fluent and Kokoro is essentially the same as installing 
    from [Github](https://github.com/Shockah/Stardew-Valley-Mods/releases/download/release%2Fproject-fluent%2F1.1.0/ProjectFluent.1.1.0.zip).
     - Do note that the Github link is only temporary and might get removed in future as the owner only publishes mod
       updates to Nexus.
-      2. Download the v3.0.0 of Kokoro from
+2. Download the v3.0.0 of Kokoro from
    [this Nexus direct link](https://www.nexusmods.com/stardewvalley/mods/15682?tab=files&file_id=82817)
 3. Extract both zip files and move the contents of each into the `Mods` folder in your game's folder.
 
