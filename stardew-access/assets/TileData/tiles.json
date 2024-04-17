@@ -785,8 +785,8 @@
   "FarmHouse": [
     {
       "NameOrTranslationKey": "static_tile-farmhouse-cellar_door",
-      "X": [4, 5],
-      "Y": [25],
+      "X": [19, 20],
+      "Y": [35],
       "Category": "doors",
       "Conditions": ["FarmHouse:3"]
     }
