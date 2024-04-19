@@ -219,6 +219,22 @@ menu-skills_page-player_info = {$name}, {$title}{$golden_walnut_count ->
     [0] {EMPTYSTRING()}
     [1] , 1 Qi gem
     *[other] , {$qi_gem_count} Qi gems
+  }{$house_upgrade_level ->
+    [1] {EMPTYSTRING()}
+    [2] , house upgraded to second level
+    [3] , house upgraded to third level
+    [4] , house upgraded to fourth level
+    *[other] , house upgraded to level {$house_upgrade_level}
+  }{$lowest_mine_level ->
+    [0] {EMPTYSTRING()}
+    *[other] , lowest mine level reached: {$lowest_mine_level}
+  }{$stardrop_count ->
+    [0] {EMPTYSTRING()}
+    [1] , 1 Stardrop
+    *[other] , {$stardrop_count} Stardrops
+  }{$mastery_level ->
+    [-1] {EMPTYSTRING()}
+    *[other] , Mastery level {$mastery_level}, {$current_mastery_points} out of {$required_mastery_points} points
   }
 menu-skills_page-skill_info = {$name} at level {$level},
   {$buffs}
