@@ -119,6 +119,10 @@ internal static class InventoryUtils
         string price = isShowingSellPrice ? GetPrice(item.sellToStorePrice() * item.Stack) : GetPrice(hoverPrice);
         string requirements = GetExtraItemInfo(extraItemToShowIndex, extraItemToShowAmount);
         string enchants = GetEnchantmentsFromItem(item);
+        string equippedBait = (item is FishingRod fishingRod && fishingRod.GetBait() is not null) ? GetPluralNameOfItem(fishingRod.GetBait()) : "";
+        string equippedTackles = (item is FishingRod fishingRod2 && fishingRod2.GetTackle().Count > 0)
+            ? string.Join(", ", fishingRod2.GetTackle().Select(x => x is not null ? x.DisplayName : "").Where(x => !string.IsNullOrWhiteSpace(x)))
+            : "";
 
         string details;
         string toReturn = name;
@@ -128,6 +132,8 @@ internal static class InventoryUtils
             details = string.Join(", ", new string[]
             {
                 quality,
+                equippedBait,
+                equippedTackles,
                 enchants,
                 requirements,
                 price,
@@ -141,6 +147,8 @@ internal static class InventoryUtils
             details = string.Join(", ", new string[]
             {
                 quality,
+                equippedBait,
+                equippedTackles,
                 enchants,
                 requirements,
                 price
