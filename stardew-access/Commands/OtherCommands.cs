@@ -87,4 +87,11 @@ public class OtherCommands
         if (fromChatBox) Game1.chatBox.addInfoMessage(text);
         else Log.Info(text);
     }
+
+    public static void TtsBuffer_ttl(string[] args, bool fromChatBox = false)
+    {
+        int index = int.Parse(args[0]);
+        Log.Info(MainClass.ScreenReader.SpokenBuffer[^index]);
+        MainClass.ScreenReader.Say(MainClass.ScreenReader.SpokenBuffer[^index], true, excludeFromBuffer: true);
+    }
 }

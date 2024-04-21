@@ -26,6 +26,7 @@ public class CommandManager
         {"snapmouse", "Toggle snap mouse feature."},
         {"warning", "Toggle warnings feature."},
         {"tts", "Toggles the screen reader/tts"},
+        {"ttl", "Speaks the last spojanodnsjlkz,"},
         // Radar
         {"radar", "Toggle radar feature."},
         {"rdebug", "Toggle debugging in radar feature."},
@@ -74,7 +75,7 @@ public class CommandManager
                     _commands.Add(commandName, (CustomCommandsDelegate)methodInfo.CreateDelegate(typeof(CustomCommandsDelegate)));
 
                     // Add the command to ConsoleCommands to be able to use it in terminals as usual.
-                    modHelper.ConsoleCommands.Add(commandName, Descriptions[commandName], (_, args) => methodInfo.Invoke(null, [args]));
+                    modHelper.ConsoleCommands.Add(commandName, Descriptions[commandName], (_, args) => methodInfo.Invoke(null, [args, false]));
 
                     Log.Verbose($"CommandManager: Registered command with name: {commandName}");
                 }
