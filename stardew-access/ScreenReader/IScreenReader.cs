@@ -5,7 +5,8 @@ namespace stardew_access.ScreenReader;
 
 public interface IScreenReader
 {
-    public string PrevTextTile {
+    public string PrevTextTile
+    {
         get;
         set;
     }

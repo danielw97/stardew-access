@@ -2,18 +2,31 @@ namespace stardew_access.Utils;
 
 public class BoundedQueue<T>
 {
-    T[] _arr;
+    T[] _queue;
     int _front;
     int _rear;
     bool _duplicacy;
 
     public int Size { get; private set; }
 
+    public int Count
+    {
+        get
+        {
+            if (IsEmpty()) return 0;
+            if (IsFull()) return Size;
+
+            return _rear >= _front
+                ? _rear - _front + 1
+                : Size - (_front - _rear - 1);
+        }
+    }
+
     public BoundedQueue(int size, bool allowDuplicacy)
     {
         Size = size;
         _duplicacy = allowDuplicacy;
-        _arr = new T[Size];
+        _queue = new T[Size];
         _front = _rear = -1;
     }
 
@@ -25,15 +38,26 @@ public class BoundedQueue<T>
         if (IsEmpty())
         {
             _front = _rear = 0;
-            _arr[_rear] = val;
+            _queue[_rear] = val;
             return;
         }
 
-        if (_duplicacy && val.Equals(_arr[_rear])) return;
+        if (_duplicacy && val.Equals(_queue[_rear])) return;
 
         if (IsFull()) _front = NextIndex(_front);
         _rear = NextIndex(_rear);
-        _arr[_rear] = val;
+        _queue[_rear] = val;
+    }
+
+    public T Remove()
+    {
+        if (IsEmpty()) return default(T)!;
+
+        T deleted = _queue[_front];
+        _front = _front == _rear ? -1 : NextIndex(_front);
+        _rear = _front == -1 ? -1 : _rear;
+
+        return deleted;
     }
 
     public bool IsEmpty() => _front is -1 && _rear is -1;
@@ -42,12 +66,12 @@ public class BoundedQueue<T>
 
     private int NextIndex(int index, int interval = 1) => (index + interval) % Size;
 
-    private int PreviousIndex(int index, int interval = 1) => (index - interval) < 0 ? (Size + index - interval) % Size : index - interval;
+    private int PreviousIndex(int index, int interval = 1) => (index - (interval % Size)) < 0 ? Size + index - (interval % Size) : index - (interval % Size);
 
     public T this[Index index]
     {
         get => index.IsFromEnd
-            ? _arr[PreviousIndex(_rear, interval: index.Value - 1)]
-            : _arr[NextIndex(_front, interval: index.Value)];
+            ? _queue[PreviousIndex(_rear, interval: index.Value - 1)]
+            : _queue[NextIndex(_front, interval: index.Value)];
     }
 }
