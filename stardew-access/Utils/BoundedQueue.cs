@@ -58,7 +58,7 @@ public class BoundedQueue<T>
             return;
         }
 
-        if (_duplicacy && val.Equals(_queue[_rear])) return;
+        if (!_duplicacy && val.Equals(_queue[_rear])) return;
 
         if (IsFull()) _front = NextIndex(_front);
         _rear = NextIndex(_rear);
