@@ -81,13 +81,13 @@ public class ScreenReaderImpl : IScreenReader
         if (!MainClass.Config.TTS) return false;
         if (text.Contains('^')) text = text.Replace('^', '\n');
 
+        if (!excludeFromBuffer) SpokenBuffer.Add(text);
+
         if (!CrossSpeakManager.Instance.Speak(text, interrupt))
         {
             Log.Error($"Failed to output text: {text}");
             return false;
         }
-
-        if (!excludeFromBuffer) SpokenBuffer.Add(text);
 
 #if DEBUG
         Log.Verbose($"Speaking(interrupt: {interrupt}) = {text}");

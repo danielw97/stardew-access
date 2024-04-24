@@ -2,6 +2,7 @@ using stardew_access.Translation;
 using stardew_access.Utils;
 using StardewModdingAPI.Events;
 using StardewValley;
+using Timer = System.Timers.Timer;
 
 namespace stardew_access.Features;
 
@@ -17,11 +18,41 @@ public class PlayerTriggered : FeatureBase
         }
     }
 
+    private static Timer repeatTextTimer = new(500);
+    private static int repeatTextIndex, repeatTextTimerCount;
+
+    private PlayerTriggered()
+    {
+        repeatTextTimer.Elapsed += (_, _) =>
+        {
+            repeatTextTimerCount--;
+            if (repeatTextTimerCount == 0) // Only resets everything when the last timer call has elapsed
+            {
+                repeatTextIndex = 1;
+                repeatTextTimer.Stop();
+            }
+        };
+        repeatTextIndex = 1;
+        repeatTextTimerCount = 0;
+    }
+
     public override void Update(object? sender, UpdateTickedEventArgs e)
     { }
 
     public override bool OnButtonPressed(object? sender, ButtonPressedEventArgs e)
     {
+        if (MainClass.Config.RepeatLastTextKey.JustPressed())
+        {
+#if DEBUG
+            Log.Verbose($"PlayerTriggered->OnButtonPressed->RepeatLastTextKeyEvent: Repeating the {repeatTextIndex}th from last");
+#endif
+            MainClass.ScreenReader.Say(MainClass.ScreenReader.SpokenBuffer[^repeatTextIndex], true, excludeFromBuffer: true);
+            repeatTextIndex++;
+            repeatTextTimerCount++;
+            repeatTextTimer.Start();
+            return true;
+        }
+
         // Exit if in a menu
         if (Game1.activeClickableMenu != null)
         {
@@ -31,7 +62,7 @@ public class PlayerTriggered : FeatureBase
         // Narrate Current Location
         if (MainClass.Config.LocationKey.JustPressed())
         {
-            MainClass.ScreenReader.Say(Game1.currentLocation.GetParentLocation() is Farm  ? Game1.currentLocation.Name : Game1.currentLocation.DisplayName, true);
+            MainClass.ScreenReader.Say(Game1.currentLocation.GetParentLocation() is Farm ? Game1.currentLocation.Name : Game1.currentLocation.DisplayName, true);
             return true;
         }
 
@@ -101,5 +132,5 @@ public class PlayerTriggered : FeatureBase
 
         return false;
     }
-    
+
 }

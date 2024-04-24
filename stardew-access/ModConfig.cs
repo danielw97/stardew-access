@@ -420,6 +420,8 @@ internal class ModConfig
     /// </summary>
     public KeybindList TimeNSeasonKey { get; set; } = KeybindList.Parse("Q");
 
+    public KeybindList RepeatLastTextKey { get; set; } = KeybindList.Parse("LeftAlt + Space, RightAlt + Space");
+
     /// <summary>
     /// Whether to speak 'X:' and 'Y:' along with co-ordinates or not.
     /// </summary>
