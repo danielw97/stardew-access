@@ -26,7 +26,7 @@ public class CommandManager
         {"snapmouse", "Toggle snap mouse feature."},
         {"warning", "Toggle warnings feature."},
         {"tts", "Toggles the screen reader/tts"},
-        {"ttl", "Speaks the last spojanodnsjlkz,"},
+        {"rlt", "Repeat the last spoken texts."},
         // Radar
         {"radar", "Toggle radar feature."},
         {"rdebug", "Toggle debugging in radar feature."},

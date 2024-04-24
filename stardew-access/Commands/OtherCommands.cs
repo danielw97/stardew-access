@@ -88,10 +88,20 @@ public class OtherCommands
         else Log.Info(text);
     }
 
-    public static void TtsBuffer_ttl(string[] args, bool fromChatBox = false)
+    public static void RepeatLastText_rlt(string[] args, bool fromChatBox = false)
     {
-        int index = int.Parse(args[0]);
-        Log.Info(MainClass.ScreenReader.SpokenBuffer[^index]);
-        MainClass.ScreenReader.Say(MainClass.ScreenReader.SpokenBuffer[^index], true, excludeFromBuffer: true);
+        if (int.TryParse(args[0], out int index))
+        {
+#if DEBUG
+            Log.Verbose($"OtherCommands->RepeatLastText: Repeating the {index}th from last");
+#endif
+            MainClass.ScreenReader.Say(MainClass.ScreenReader.SpokenBuffer[^index], true, excludeFromBuffer: true);
+        }
+        else
+        {
+            string text = "Unable to parse the index provided.";
+            if (fromChatBox) Game1.chatBox.addInfoMessage(text);
+            else Log.Info(text);
+        }
     }
 }

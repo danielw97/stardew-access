@@ -1,5 +1,8 @@
 namespace stardew_access.Utils;
 
+/// <summary>
+/// A circular queue which dequeues the first element when enqueueing an element on a full queueu.
+/// </summary>
 public class BoundedQueue<T>
 {
     T[] _queue;
@@ -7,8 +10,14 @@ public class BoundedQueue<T>
     int _rear;
     bool _duplicacy;
 
+    /// <summary>
+    /// The size or maximum limit of the queue
+    /// </summary>
     public int Size { get; private set; }
 
+    /// <summary>
+    /// Number of elements in the queue
+    /// </summary>
     public int Count
     {
         get
@@ -22,6 +31,8 @@ public class BoundedQueue<T>
         }
     }
 
+    /// <param name="size">The maximum limit of the queue.</param>
+    /// <param name="allowDuplicacy">If false, it will not enqueue the element if it is equal to the last element.</param>
     public BoundedQueue(int size, bool allowDuplicacy)
     {
         Size = size;
@@ -30,6 +41,11 @@ public class BoundedQueue<T>
         _front = _rear = -1;
     }
 
+    /// <summary>
+    /// Add the element from the rear.
+    /// If the queue is full, dequeue the first element and then enqueue the new element.
+    /// </summary>
+    /// <param name="val">The element to be enqueued.</param>
     public void Add(T val)
     {
         if (val is null) return;
@@ -49,6 +65,10 @@ public class BoundedQueue<T>
         _queue[_rear] = val;
     }
 
+    /// <summary>
+    /// Remove the first element.
+    /// </summary>
+    /// <returns>The removed element.</returns>
     public T Remove()
     {
         if (IsEmpty()) return default(T)!;
