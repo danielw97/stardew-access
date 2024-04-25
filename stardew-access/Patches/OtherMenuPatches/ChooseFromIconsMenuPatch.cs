@@ -1,4 +1,5 @@
 using HarmonyLib;
+using stardew_access.Translation;
 using StardewValley;
 using StardewValley.Menus;
 
@@ -14,11 +15,41 @@ internal class ChooseFromIconsMenuPatch : IPatch
         );
     }
 
-    private static void DrawPatch(ChooseFromIconsMenu __instance)
+    private static void DrawPatch(ChooseFromIconsMenu __instance, string ___which, int ___selected)
     {
         try
         {
             int x = Game1.getMouseX(true), y = Game1.getMouseY(true); // Mouse x and y position
+
+            // Bobber Machine
+            if (___which == "bobbers")
+            {
+                foreach (var icon in __instance.icons)
+                {
+                    if (icon is not { visible: true } || !icon.containsPoint(x, y)) continue;
+
+                    int index = int.Parse(icon.name);
+
+                    if (index == -2)
+                    {
+                        // The random button
+                        MainClass.ScreenReader.TranslateAndSayWithMenuChecker("menu-naming-random_button", true);
+                        return;
+                    }
+
+                    string styleName = Translator.Instance.Translate("menu-choose_from_icons-bobber_styles", tokens: new
+                    {
+                        bobber_id = index > (int)(Game1.player.fishCaught.Count() / 2) ? "locked" : $"id_{index + 1}",
+                        selected = ___selected == index ? 1 : 0
+                    }, translationCategory: TranslationCategory.Menu);
+
+                    MainClass.ScreenReader.SayWithMenuChecker(styleName, true, customQuery: $"{styleName} {icon.myID}");
+                    return;
+                }
+                return;
+            }
+
+            // Dwarf Statue
             foreach (var icon in __instance.icons)
             {
                 if (icon is not { visible: true } || !icon.containsPoint(x, y)) continue;

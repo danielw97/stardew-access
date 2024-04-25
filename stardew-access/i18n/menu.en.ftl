@@ -418,6 +418,55 @@ menu-carpenter-construct_building_button = Construct building{$can_construct ->
     *[1] {EMPTYSTRING()}
   }
 
+### Choose From Icons Menu
+
+menu-choose_from_icons-bobber_styles = {$bobber_id ->
+    [locked] Locked
+    [id_1] Red
+    [id_2] Blue
+    [id_3] Green
+    [id_4] Yellow
+    [id_5] Red and blue
+    [id_6] Green and yellow
+    [id_7] Pink ball
+    [id_8] Smiley
+    [id_9] Skull
+    [id_10] Duck
+    [id_11] Dog
+    [id_12] Light blue ball
+    [id_13] Clay
+    [id_14] Sap
+    [id_15] Junimo
+    [id_16] Cat
+    [id_17] Heart
+    [id_18] Joja Cola
+    [id_19] Bear?
+    [id_20] Hook
+    [id_21] Pink Cat
+    [id_22] Frigate
+    [id_23] Jelly starfish
+    [id_24] Boot
+    [id_25] Twig
+    [id_26] Lotus
+    [id_27] Baseball
+    [id_28] Burger
+    [id_29] Light blue and purple
+    [id_30] Green orb??
+    [id_31] Yellow Cake??
+    [id_32] Dust sprite with red eyes?
+    [id_33] Emerald
+    [id_34] Green Fireball
+    [id_35] Snowball
+    [id_36] Crystal
+    [id_37] Goat? Cow?
+    [id_38] Diamond
+    [id_39] Starfruit
+    *[other] Unknown bobber style with id {$bobber_id}
+  } {$selected ->
+    [0] {EMPTYSTRING()}
+    *[1] Selected
+  }
+
 ### Choose From List Menu
 
 menu-choose_from_list-ok_button = Select {$option} button

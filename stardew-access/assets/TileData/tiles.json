@@ -797,6 +797,24 @@
       "X": [4,5,6],
       "Y": [5],
       "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-fishshop-bobber_machine",
+      "X": [10],
+      "Y": [4],
+      "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-fishshop-miniature_frigate",
+      "X": [9],
+      "Y": [4],
+      "Category": "decor"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-fishshop-tackle_box",
+      "X": [8],
+      "Y": [4],
+      "Category": "decor"
     }
   ],
   "Forest": [

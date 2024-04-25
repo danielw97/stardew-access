@@ -167,6 +167,12 @@ static_tile-farm-lumber_pile = Lumber Pile
 
 static_tile-farmhouse-cellar_door = cellar
 
+# FishShop
+
+static_tile-fishshop-bobber_machine = Bobber Machine
+static_tile-fishshop-miniature_frigate = Miniature Frigate
+static_tile-fishshop-tackle_box = Tackle Box
+
 # Forest
 
 static_tile-forest-bridge_1 = Bridge 1
