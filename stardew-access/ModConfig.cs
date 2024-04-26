@@ -506,6 +506,11 @@ internal class ModConfig
     /// </summary>
     public int FixFishingMotionType { get; set; } = 999;
 
+    /// <summary>
+    /// if true, the <see cref="stardew_access.Utils.CurrentPlayer.TimeOfDay"/> will return the time in the 24-hourformat.
+    /// </summary>
+    public bool Use24HourFormat { get; set; } = false;
+
     // TODO Add the exclusion and focus list too
     // public String ExclusionList { get; set; } = "test";
 }
