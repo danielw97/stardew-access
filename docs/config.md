@@ -5,9 +5,10 @@ You can edit the config with any text editor of your choice. It is **strongly** 
 
 ## Table Of Contents
 
+- [Config Directories](#config-directories)
 - [More Info About JSON](#more-info-about-json)
 - [Text Editors](#text-editors)
-- [Mouse Sim Keys Config](#mouse-sim-keys-config)
+- [Muse Sim Keys Config](#mouse-sim-keys-config)
 - [Read Tile Configs](#read-tile-configs)
 - [Tile Viewer Configs](#tile-viewer-configs)
 - [Grid Movement Configs](#grid-movement-configs)
@@ -23,6 +24,25 @@ You can edit the config with any text editor of your choice. It is **strongly** 
 - [miscellaneous Configs](#miscellaneous-configs)
 - [Default Config](#default-config)
 - [Other Pages](#other-pages)
+
+## Config Directories
+
+Once you have found the Stardew Valley installation directory, navigate to the following directory to locate `config.json`:
+
+`%StardewValleyDir%/Mods/stardew-access/`
+
+`%StardewValleyDir%` represents your Stardew Valley installation path. Below are the most common directories where Stardew Valley is installed:
+
+- Windows
+    - Steam: `C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley`
+    - Xbox App: `C:\Program Files\ModifiableWindowsApps\Stardew Valley`
+    - GOG: `C:\Program Files (x86)\GOG Galaxy\Games\Stardew Valley`
+- Mac OS
+    - Steam: `~/Library/Application Support/Steam/SteamApps/common/Stardew Valley/Contents/MacOS`
+    - GOG: `/Applications/Stardew Valley.app/Contents/MacOS`
+- Linux
+    - GOG: `~/GOGGames/StardewValley/game`
+    - Steam: `~/.local/share/Steam/steamapps/common/Stardew Valley`
 
 ## More Info About JSON:
 
