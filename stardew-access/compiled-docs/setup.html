@@ -1,34 +1,32 @@
-<h1 id="mod-setup">Mod Setup</h1>
+<h1 id="setup">Setup</h1>
 
 <h2 id="table-of-contents">Table of Contents</h2>
 
-<!-- TOC -->
-
 <ul>
-  <li><a href="#table-of-contents">Table of Contents</a></li>
-  <li><a href="#requirements">Requirements</a>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#smapi-setup">SMAPI setup</a>
     <ul>
-      <li><a href="#smapi-setup">SMAPI setup</a>
+      <li><a href="#windows">Windows</a>
         <ul>
-          <li><a href="#for-windows">For Windows</a>
+          <li><a href="#xbox-app-setup">Xbox App Setup</a></li>
+          <li><a href="#integrating-with-the-game-client">Integrating with The Game Client</a>
             <ul>
-              <li><a href="#xbox-setup">Xbox Setup</a></li>
-              <li><a href="#configuring-the-game-client">Configuring the game client</a>
-                <ul>
-                  <li><a href="#for-steam">For Steam</a></li>
-                  <li><a href="#for-gog-galaxy">For GOG Galaxy</a></li>
-                </ul>
-              </li>
+              <li><a href="#xbox-app">Xbox App</a></li>
+              <li><a href="#steam">Steam</a></li>
+              <li><a href="#gog-galaxy">GOG Galaxy</a></li>
             </ul>
           </li>
-          <li><a href="#for-linux">For Linux</a></li>
-          <li><a href="#for-macos">For MacOS</a></li>
         </ul>
       </li>
+      <li><a href="#linux">Linux</a></li>
+      <li><a href="#macos">MacOS</a></li>
+    </ul>
+  </li>
+  <li><a href="#installing-stardew-access">Installing Stardew Access</a>
+    <ul>
       <li><a href="#installing-kokoro-and-project-fluent">Installing Kokoro and Project Fluent</a></li>
     </ul>
   </li>
-  <li><a href="#stardew-access-installation">Stardew Access Installation</a></li>
   <li><a href="#updating-stardew-access">Updating Stardew Access</a></li>
   <li><a href="#other-mods">Other Mods</a>
     <ul>
@@ -39,8 +37,6 @@
   <li><a href="#other-pages">Other Pages</a></li>
 </ul>
 
-<!-- TOC -->
-
 <h2 id="requirements">Requirements</h2>
 
 <ol>
@@ -49,61 +45,63 @@
   <li><a href="#installing-kokoro-and-project-fluent">Project Fluent</a></li>
 </ol>
 
-<h3 id="smapi-setup">SMAPI setup</h3>
+<h2 id="smapi-setup">SMAPI setup</h2>
 
-<h4 id="for-windows">For Windows</h4>
+<h3 id="windows">Windows</h3>
 
-<p><em>Note: Follow the <a href="#xbox-setup">Xbox Setup</a> if using the xbox/gamepass version of the game.</em></p>
+<p><strong>Important Note:</strong> If you are launching the game from the Xbox app, proceed to <a href="#xbox-setup">Xbox Setup</a>, otherwise proceed with the instructions below.</p>
 
 <ol>
-  <li>Before installing SMAPI, run the game at least once.</li>
+  <li>Run Stardew Valley at least once before attempting to install anything.</li>
   <li>Download the <a href="https://smapi.io/">latest version of SMAPI</a>.</li>
-  <li>Extract the .zip file somewhere. (Your downloads folder is fine)</li>
+  <li>Extract the .zip file somewhere. (Your downloads folder is fine).</li>
+  <li>Open the new folder once it has finished unzipping. You may need to open two folders to get to the contents.</li>
   <li>Double-click <code>install on Windows.bat</code>, and follow the on-screen instructions.</li>
 </ol>
 
-<h5 id="xbox-setup">Xbox Setup</h5>
+<h4 id="xbox-app-setup">Xbox App Setup</h4>
 
-<p><strong>Before you install SMAPI:</strong></p>
+<p><strong>Before installing SMAPI:</strong></p>
 
 <ol>
+  <li>Make sure you have Run Stardew Valley at least once.</li>
   <li>Open the Stardew Valley section in the Xbox app.</li>
   <li>Click the <code>3 dots button</code> (should be next to the share button) then <code>Manage button</code></li>
   <li>Click the <code>Files tab</code> and then <code>Browse button</code> to open your game folder</li>
   <li>Open the Stardew Valley &gt; Content folder. You should see a lot of files with names like api-ms-win-core-*</li>
-  <li>Copy the full path from the address bar at the top.</li>
+  <li>Copy the full path from the address bar, located visually at the top of Windows Explorer or by pressing <code>alt + d</code> to move cursor focus there.</li>
+  <li>Download the <a href="https://smapi.io/">latest version of SMAPI</a>.</li>
+  <li>Extract the .zip file anywhere that is <em>not</em> your game installation directory, such as your downloads folder.</li>
+  <li>Open the newly-extracted folder once it has finished unzipping. You may need to open two folders to get to the contents.</li>
+  <li>Double-click <code>install on Windows.bat</code>.</li>
+  <li>When the installer asks where you want to add or remove SMAPI, type “2” to enter a custom game path.</li>
+  <li>enter the custom file path you copied in step 6.CMD allows <code>Ctrl V</code> to paste.</li>
 </ol>
 
-<p><strong>Run the SMAPI installer:</strong></p>
+<p><strong>After installing SMAPI:</strong></p>
 
-<p>Run the SMAPI installer like usual, but:</p>
-
-<ul>
-  <li>Download the installer to somewhere that’s not the game directory (like your downloads folder).</li>
-  <li>When it asks where to install, enter the path you copied from the previous step. (In cmd, you can either <code>right click</code>
-or <code>Ctrl V</code> to paste)</li>
-</ul>
-
-<p><strong>After you install SMAPI:</strong></p>
-
-<p>In your game folder:</p>
+<p>In your game installation directory:</p>
 
 <ol>
-  <li>rename <code>Stardew Valley.exe</code> to another name such as <code>Stardew Valley original.exe</code></li>
-  <li>make a copy of <code>StardewModdingAPI.exe</code> and name the copy <code>Stardew Valley.exe</code></li>
-  <li>That’s it! Now just launch the game through the Xbox app to play with mods.</li>
+  <li>rename <code>Stardew Valley.exe</code> to another name such as <code>Stardew Valley original.exe</code>.</li>
+  <li>make a copy of <code>StardewModdingAPI.exe</code> and name the copy <code>Stardew Valley.exe</code>.</li>
+  <li>Launch the game through the Xbox app to play with mods.</li>
 </ol>
 
-<p><em>Note that when the game updates, you’ll need to redo the last two sections.</em></p>
+<p><strong>Important Note:</strong> You must reinstall SMAPI and rename the .exe files each time there is a SMAPI update.</p>
 
-<h5 id="configuring-the-game-client">Configuring the game client</h5>
+<h4 id="integrating-with-the-game-client">Integrating with The Game Client</h4>
 
-<p>Configuring the game client is not a necessary step, only do this if you want the tracking and awards from the client.
-If you choose not to then you will have to launch the game through <code>StardewModdingAPI.exe</code>.</p>
+<p>While this step is optional, it will allow you to use the normal shortcuts to launch Stardew Valley and enable cheats.
+If you do not complete this step, you must launch Stardew Valley via <code>StardewModdingAPI.exe</code> for all mods to function. Using the shortcut created by the game installation will not load SMAPI or any mods.</p>
 
-<p><em>(Note that this gets automatically taken care of for the xbox version while installing SMAPI)</em></p>
+<h5 id="xbox-app">Xbox App</h5>
 
-<h6 id="for-steam">For Steam</h6>
+<p>This process is done automatically for Xbox users when installing SMAPI.</p>
+
+<h5 id="steam">Steam</h5>
+
+<p><strong>Note:</strong> This process is very difficult to do without vision. Steam has bad accessibility under the best of conditions.</p>
 
 <ol>
   <li>Open the <code>properties</code> for Stardew (you can do this by right clicking the game in the library and then
@@ -118,7 +116,7 @@ is: <code>"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\StardewM
   </li>
 </ol>
 
-<h6 id="for-gog-galaxy">For GOG Galaxy</h6>
+<h5 id="gog-galaxy">GOG Galaxy</h5>
 
 <ol>
   <li>Open Notepad and paste in the following:
@@ -138,7 +136,7 @@ to <code>all files</code> when saving.</li>
   <li>Enable the <code>Default Executable</code> radio button under the File 2 section you just added, and click OK.</li>
 </ol>
 
-<h4 id="for-linux">For Linux</h4>
+<h3 id="linux">Linux</h3>
 
 <ol>
   <li>On many Linux distributions, you may need to download and install an older version of libssl (1.1 or 1.x).
@@ -161,7 +159,9 @@ running <code>sudo apt install libssl1.1</code> on a terminal).</li>
   </li>
 </ol>
 
-<h4 id="for-macos">For MacOS</h4>
+<h3 id="macos">MacOS</h3>
+
+<p>After installing Stardew Valley with Steam:</p>
 
 <ol>
   <li>Download the latest version of SMAPI.</li>
@@ -169,12 +169,26 @@ running <code>sudo apt install libssl1.1</code> on a terminal).</li>
   <li>Double-click <code>install on Mac.command</code>, and follow the on-screen instructions.</li>
 </ol>
 
+<h2 id="installing-stardew-access">Installing Stardew Access</h2>
+
+<p>Once you have installed at least Stardew Valley and SMAPI:</p>
+
+<ol>
+  <li>Download the latest version from <a href="https://github.com/khanshoaib3/stardew-access/releases/latest">Github</a> or
+from <a href="https://www.nexusmods.com/stardewvalley/mods/16205/?tab=files">Nexus</a>.</li>
+  <li>Extract the zip file (extracting it into the download folder should be fine).</li>
+  <li>Copy/Cut the generated <code>stardew-access</code> folder.</li>
+  <li>Paste it into the <code>Mods</code> folder in your game folder.</li>
+</ol>
+
+<p><strong>note:</strong> If you are experiencing bugs, install the debug version of Stardew Access which will generate more logs to help diagnose the problem.</p>
+
 <h3 id="installing-kokoro-and-project-fluent">Installing Kokoro and Project Fluent</h3>
 
 <p>As of v1.5.0, <a href="https://www.nexusmods.com/stardewvalley/mods/15682">Kokoro</a> and <a href="https://www.nexusmods.com/stardewvalley/mods/12638">Project Fluent </a> are now dependencies for
-stardew access and as such, the mod won’t run without
+Stardew access and as such, the mod won’t run without
 them.
-Project Fluent is mainly used for providing a way to have translation mods for stardew access and also the ability to
+Project Fluent is used for providing better translations for Stardew access and also the ability to
 use <a href="https://projectfluent.org/">Mozilla’s project fluent</a> instead of regular json for translation files.
 Kokoro is a core mod for many of <a href="https://www.nexusmods.com/stardewvalley/users/133612513">Shockah’s</a> mods and is required for Project Fluent to work.</p>
 
@@ -195,47 +209,35 @@ updates to Nexus.</li>
   <li>Extract both zip files and move the contents of each into the <code>Mods</code> folder in your game’s folder.</li>
 </ol>
 
-<h2 id="stardew-access-installation">Stardew Access Installation</h2>
-
-<ol>
-  <li>Download the latest version from <a href="https://github.com/khanshoaib3/stardew-access/releases/latest">Github</a> or
-from <a href="https://www.nexusmods.com/stardewvalley/mods/16205/?tab=files">Nexus</a>.</li>
-  <li>Extract the zip file (extracting it into the download folder should be fine).</li>
-  <li>Copy/Cut the generated <code>stardew-access</code> folder.</li>
-  <li>Paste it into the <code>Mods</code> folder in your game folder.</li>
-</ol>
-
-<p><em>In case you are experiencing any kinds of bugs, it is recommended that you install the debug zip.
-It will generate more stuff in the log helpful for debugging.</em></p>
-
 <h2 id="updating-stardew-access">Updating Stardew Access</h2>
 
-<p>To update you just need to delete or move the mod folder from the <code>Mods</code> folder to somewhere else and repeat the
-installation instruction from the previous section.</p>
+<p>To update Stardew Access:</p>
+
+<ol>
+  <li>Delete the Stardew Access mod from the game installation’s mods directory.</li>
+  <li>Reinstall Stardew Access according to the instructions above.</li>
+</ol>
 
 <h2 id="other-mods">Other Mods</h2>
 
-<p>We are working on integrating several mods with stardew access and if you want to track our progress and/or want to
+<p>We are working on integrating some SMAPI mods with stardew access. If you want to track our progress and/or want to
 suggest a mod that you want to be integrated, follow
 this <a href="https://github.com/khanshoaib3/stardew-access/issues/181">issue page</a>.</p>
 
-<h3 id="essentials">Essentials</h3>
-
 <ul>
-  <li><a href="https://a4a-mods.com/mods/details?uid=1">Auto Travel</a> - developed
-by <a href="https://a4a-mods.com/mods/user?user_id=2">GrumpyCrouton</a>, allows you to create custom travel points, which you can
-fast travel to from anywhere.</li>
-  <li><a href="https://a4a-mods.com/mods/details?uid=5">Wasteless Watering</a> - also developed
-by <a href="https://a4a-mods.com/mods/user?user_id=2">GrumpyCrouton</a>, you will no longer waste water on non-soil tiles</li>
-  <li><a href="https://www.nexusmods.com/stardewvalley/mods/2092">Chat Commands</a> - makes it so you can enter commands from chat
-directly</li>
-</ul>
-
-<h3 id="recommended">Recommended</h3>
-
-<ul>
-  <li><a href="https://www.nexusmods.com/stardewvalley/mods/10374">Glue Down Furniture</a> - Prevents you from picking up your
-furniture. We highly recommend installing.</li>
+  <li><a href="https://www.nexusmods.com/stardewvalley/mods/10693">Auto Travel</a>
+    <ul>
+      <li><a href="https://github.com/darkade-games/auto-travel2/">GitHub Repository</a></li>
+      <li>Developed by <a href="https://github.com/GrumpyCrouton">GrumpyCrouton</a></li>
+      <li>Allows you to create custom travel points, which you can fast travel to from anywhere.</li>
+    </ul>
+  </li>
+  <li><a href="https://www.nexusmods.com/stardewvalley/mods/20391">Yet Another Fishing Mod</a>
+    <ul>
+      <li>Developed by <a href="https://next.nexusmods.com/profile/NeverToxic/about-me">NeverToxic</a></li>
+      <li>Makes fishing dramatically easier by automating the fishing minigame. Strongly recommended for Stardew Access users</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="other-pages">Other Pages</h2>
