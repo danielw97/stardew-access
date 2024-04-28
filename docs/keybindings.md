@@ -68,6 +68,38 @@ All keybindings may be modified in the config except for escape (esc).
 | end                    | narrate info about the selected objects tile location |
 | esc| stop walking to a selected tile or object                                   |
 | ~                  | toggle between alphabetical and proximity object sorting                      |
+| alt + 1 | object tracker favorite slot 1 info |
+| alt + 2 | object tracker favorite slot 2 info |
+| alt + 3 | object tracker favorite slot 3 info |
+| alt + 4 | object tracker favorite slot 4 info |
+| alt + 5 | object tracker favorite slot 5 info |
+| alt + 6 | object tracker favorite slot 6 info |
+| alt + 7 | object tracker favorite slot 7 info |
+| alt + 8 | object tracker favorite slot 8 info |
+| alt + 9 | object tracker favorite slot 9 info |
+| alt + 0 | object tracker favorite slot 10 info |
+| alt + double-tap 1 | Set object tracker favorite slot 1 -- travel to slot 1 if already set |
+| alt + double-tap 2 | Set object tracker favorite slot 2 -- travel to slot 2 if already set |
+| alt + double-tap 3 | Set object tracker favorite slot 3 -- travel to slot 3 if already set |
+| alt + double-tap 4 | Set object tracker favorite slot 4 -- travel to slot 4 if already set |
+| alt + double-tap 5 | Set object tracker favorite slot 5 -- travel to slot 5 if already set |
+| alt + double-tap 6 | Set object tracker favorite slot 6 -- travel to slot 6 if already set |
+| alt + double-tap 7 | Set object tracker favorite slot 7 -- travel to slot 7 if already set |
+| alt + double-tap 8 | Set object tracker favorite slot 8 -- travel to slot 8 if already set |
+| alt + double-tap 9 | Set object tracker favorite slot 9 -- travel to slot 9 if already set |
+| alt + double-tap 0 | Set object tracker favorite slot 10 -- travel to slot 10 if already set |
+| alt + triple-tap 1 | clear object tracker favorite slot 1 |
+| alt + triple-tap 2 | clear object tracker favorite slot 2 |
+| alt + triple-tap 3 | clear object tracker favorite slot 3 |
+| alt + triple-tap 4 | clear object tracker favorite slot 4 |
+| alt + triple-tap 5 | clear object tracker favorite slot 5 |
+| alt + triple-tap 6 | clear object tracker favorite slot 6 |
+| alt + triple-tap 7 | clear object tracker favorite slot 7 |
+| alt + triple-tap 8 | clear object tracker favorite slot 8 |
+| alt + triple-tap 9 | clear object tracker favorite slot 9 |
+| alt + triple-tap 0 | clear object tracker favorite slot 10 |
+| alt + - | previous stack of object tracker favorites |
+| alt + = | next stack of object tracker favorites |
 
 ## Chat Menu keys
 
@@ -87,7 +119,7 @@ These keys are used in the context of the character creation/new game menu.
 | Key                  | Description                                |
 |----------------------|--------------------------------------------|
 | right arrow          | move to next element                        |
-| left arrow           | move to previous element.                    |
+| left arrow           | move to previous element                    |
 | left ctrl + space | Toggle displaying character design options |
 | up arrow             | increase control value by 1             |
 | pageUp              | increase control value by 10            |
