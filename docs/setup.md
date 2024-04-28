@@ -30,7 +30,7 @@
 
 ### Windows
 
-**Important Note:** If you are launching the game from the Xbox app, proceed to [Xbox Setup](#xbox-setup), otherwise proceed with the instructions below.
+**Important Note:** If you are launching the game from the Xbox app, proceed to [Xbox App Setup](#xbox-app-setup), otherwise proceed with the instructions below.
 
 1. Run Stardew Valley at least once before attempting to install anything.
 2. Download the [latest version of SMAPI](https://smapi.io/).
@@ -53,7 +53,7 @@
 9. Open the newly-extracted folder once it has finished unzipping. You may need to open two folders to get to the contents.
 10. Double-click `install on Windows.bat`.
 11. When the installer asks where you want to add or remove SMAPI, type "2" to enter a custom game path.
-12. enter the custom file path you copied in step 6.CMD allows `Ctrl V` to paste.
+12. enter the custom file path you copied in step 6. CMD allows `Ctrl V` to paste.
 
 **After installing SMAPI:**
 
