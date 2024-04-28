@@ -198,5 +198,20 @@ namespace stardew_access.Utils
                 return new Vector2(x, y);
             }
         }
+
+        /// <summary>
+        /// The bounding box of the tile the player is facing.
+        /// </summary>
+        public static Rectangle FacingTileBoundingBox
+        {
+            get
+            {
+		Rectangle playerBoundingBox = Game1.player.GetBoundingBox();
+                int x = (int)FacingTile.X * Game1.tileSize;
+                int y = (int)FacingTile.Y * Game1.tileSize;
+
+                return new(x, y, playerBoundingBox.Width, playerBoundingBox.Height);
+            }
+        }
     }
 }

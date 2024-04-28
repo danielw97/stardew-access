@@ -472,12 +472,27 @@ public class TileInfo
     public static bool IsCollidingAtTile(GameLocation currentLocation, int x, int y, bool lessInfo = false)
     {
         // This function highly optimized over readability because `currentLocation.isCollidingPosition` takes ~30ms on the Farm map, more on larger maps I.E. Forest.
-        // Return the result of the logical comparison directly, inlining operations
         // Check if the tile is NOT a warp point and if it collides with an object or terrain feature
         // OR if the tile has stumps in a Woods location
-        return !DoorUtils.IsWarpAtTile((x, y), currentLocation) &&
-               (currentLocation.isCollidingPosition(new Rectangle(x * 64 + 1, y * 64 + 1, 62, 62), Game1.viewport, true, 0, glider: false, Game1.player, pathfinding: true));
+        if (DoorUtils.IsWarpAtTile((x, y), currentLocation)) return false;
+
+        Rectangle playerBoundingBox = Game1.player.GetBoundingBox();
+        Rectangle tileBoundingBox = new Rectangle(x * Game1.tileSize, y * Game1.tileSize, playerBoundingBox.Width, playerBoundingBox.Height);
+
+        if (currentLocation.isCollidingPosition(tileBoundingBox, Game1.viewport, isFarmer: true, -1, glider: false, Game1.player))
+            return true;
+
+        return false;
     }
+
+    /// <summary>
+    /// Determines if there is a collision at the specified tile coordinates in the provided GameLocation.
+    /// </summary>
+    /// <param name="currentLocation">The GameLocation instance to search for collisions.</param>
+    /// <param name="tile">The tile to check.</param>
+    /// <returns>True if a collision is detected at the specified tile coordinates, otherwise False.</returns>
+    public static bool IsCollidingAtTile(GameLocation currentLocation, Vector2 tile, bool lessInfo = false)
+        => IsCollidingAtTile(currentLocation, (int)tile.X, (int)tile.Y, lessInfo);
 
     /// <summary>
     /// Gets the farm animal at the specified tile coordinates in the given location.
