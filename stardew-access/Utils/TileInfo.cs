@@ -12,6 +12,7 @@ using StardewValley.Monsters;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
+using StardewValley.Util;
 
 namespace stardew_access.Utils;
 
@@ -21,6 +22,7 @@ public class TileInfo
     private static readonly Dictionary<int, string> ResourceClumpNameTranslationKeys = [];
     private static readonly Dictionary<string, (string category, string itemName)> QualifiedItemIds = [];
     private static readonly Dictionary<string, Dictionary<(int, int), string>> BundleLocations = [];
+    private static HashSet<Vector2> _visitedCollisionTiles = new HashSet<Vector2>();
 
     private static readonly Dictionary<Color, int> colorToSelectionMap = new()
     {
@@ -471,21 +473,78 @@ public class TileInfo
     /// <returns>True if a collision is detected at the specified tile coordinates, otherwise False.</returns>
     public static bool IsCollidingAtTile(GameLocation currentLocation, int x, int y, bool lessInfo = false)
     {
+        // TODO Recheck optimizability
         // This function highly optimized over readability because `currentLocation.isCollidingPosition` takes ~30ms on the Farm map, more on larger maps I.E. Forest.
         // Check if the tile is NOT a warp point and if it collides with an object or terrain feature
         // OR if the tile has stumps in a Woods location
         if (DoorUtils.IsWarpAtTile((x, y), currentLocation)) return false;
 
         Rectangle playerBoundingBox = Game1.player.GetBoundingBox();
-        Rectangle tileBoundingBox = new Rectangle(x * Game1.tileSize, y * Game1.tileSize, playerBoundingBox.Width, playerBoundingBox.Height);
+        Rectangle tileBoundingBox = new(x * Game1.tileSize, y * Game1.tileSize, playerBoundingBox.Width, playerBoundingBox.Height);
 
-        if (currentLocation.isCollidingPosition(tileBoundingBox, Game1.viewport, isFarmer: true, -1, glider: false, Game1.player))
+        bool isItUnPassable = false;
+
+        // Fu*k readability, I want everything in a single line...
+        // (Taken from GameLocation::isCollidingPosition (the one with all the arguments))
+        //
+        // Inside isCollidingPosition, if the colliding thing is a terrain feature, it will execute doCollideAction for that thing.
+        // And because the game already does that, the mod makes things worse and causes the game to crash with stack overflow i.e., out of memory.
+        bool isCollidingWithTerrainFeature = TestCornersTiles(new(tileBoundingBox.Right / 64, tileBoundingBox.Top / 64), new(tileBoundingBox.Left / 64, tileBoundingBox.Top / 64), new(tileBoundingBox.Right / 64, tileBoundingBox.Bottom / 64), new(tileBoundingBox.Left / 64, tileBoundingBox.Bottom / 64), new(tileBoundingBox.Center.X / 64, tileBoundingBox.Top / 64), new(tileBoundingBox.Center.X / 64, tileBoundingBox.Bottom / 64), new Vector2((playerBoundingBox.Right - 1) / 64, playerBoundingBox.Top / 64), new Vector2(playerBoundingBox.Left / 64, playerBoundingBox.Top / 64), new Vector2((playerBoundingBox.Right - 1) / 64, (playerBoundingBox.Bottom - 1) / 64), new Vector2(playerBoundingBox.Left / 64, (playerBoundingBox.Bottom - 1) / 64), new Vector2(playerBoundingBox.Center.X / 64, playerBoundingBox.Top / 64), new Vector2(playerBoundingBox.Center.X / 64, (playerBoundingBox.Bottom - 1) / 64), tileBoundingBox.Width > 64, delegate (Vector2 corner)
+        {
+            if (Game1.currentLocation.terrainFeatures.TryGetValue(corner, out var tf) && tf != null && tf.getBoundingBox().Intersects(tileBoundingBox))
+            {
+                isItUnPassable = !tf.isPassable(Game1.player);
+                return true;
+            }
+            return false;
+        });
+
+        if (isCollidingWithTerrainFeature)
+        {
+            return isItUnPassable;
+        }
+
+        if (currentLocation.isCollidingPosition(tileBoundingBox, Game1.viewport, isFarmer: true, 0, glider: false, Game1.player))
             return true;
 
         // The magic seal guarding the entrance to bug land.
         if (currentLocation is Sewer && x == 3 && y == 19 && !Game1.player.mailReceived.Contains("krobusUnseal"))
             return true;
 
+        return false;
+    }
+
+    // Taken from the source code, GameLocation.cs
+    private static bool TestCornersTiles(Vector2 top_right, Vector2 top_left, Vector2 bottom_right, Vector2 bottom_left, Vector2 top_mid, Vector2 bottom_mid, Vector2? player_top_right, Vector2? player_top_left, Vector2? player_bottom_right, Vector2? player_bottom_left, Vector2? player_top_mid, Vector2? player_bottom_mid, bool bigger_than_tile, Func<Vector2, bool> action)
+    {
+        _visitedCollisionTiles.Clear();
+        if (player_top_right != top_right && _visitedCollisionTiles.Add(top_right) && action(top_right))
+        {
+            return true;
+        }
+        if (player_top_left != top_left && _visitedCollisionTiles.Add(top_left) && action(top_left))
+        {
+            return true;
+        }
+        if (bottom_left != player_bottom_left && _visitedCollisionTiles.Add(bottom_left) && action(bottom_left))
+        {
+            return true;
+        }
+        if (bottom_right != player_bottom_right && _visitedCollisionTiles.Add(bottom_right) && action(bottom_right))
+        {
+            return true;
+        }
+        if (bigger_than_tile)
+        {
+            if (player_top_mid != top_mid && _visitedCollisionTiles.Add(top_mid) && action(top_mid))
+            {
+                return true;
+            }
+            if (player_bottom_mid != bottom_mid && _visitedCollisionTiles.Add(bottom_mid) && action(bottom_mid))
+            {
+                return true;
+            }
+        }
         return false;
     }
 
