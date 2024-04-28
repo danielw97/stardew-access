@@ -482,6 +482,10 @@ public class TileInfo
         if (currentLocation.isCollidingPosition(tileBoundingBox, Game1.viewport, isFarmer: true, -1, glider: false, Game1.player))
             return true;
 
+        // The magic seal guarding the entrance to bug land.
+        if (currentLocation is Sewer && x == 3 && y == 19 && !Game1.player.mailReceived.Contains("krobusUnseal"))
+            return true;
+
         return false;
     }
 

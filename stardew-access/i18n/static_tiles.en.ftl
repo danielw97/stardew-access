@@ -510,7 +510,6 @@ static_tile-seed_shop-living_area_door = Living Area
 
 static_tile-sewer-exit_ladder = Exit Ladder
 static_tile-sewer-statue_of_uncertainty = Statue Of Uncertainty
-static_tile-sewer-mutant_bug_lair = Mutant Bug Lair
 static_tile-sewer-sewage_pool = sewage pool
 
 # Scull Cavern Entrance

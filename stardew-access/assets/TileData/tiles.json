@@ -2653,12 +2653,6 @@
       "Category": "interactables"
     },
     {
-      "NameOrTranslationKey": "static_tile-sewer-mutant_bug_lair",
-      "X": [3],
-      "Y": [19],
-      "Category": "doors"
-    },
-    {
       "NameOrTranslationKey": "static_tile-sewer-sewage_pool",
       "X": [17],
       "Y": [29],
