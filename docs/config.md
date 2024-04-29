@@ -204,12 +204,14 @@ For a full list of key names,  refer to the [Key Bindings List](https://stardewv
 
 | Name                       | Default Value | Description                                                                  |
 |----------------------------|---------------|------------------------------------------------------------------------------|
+| RepeatLastTextKey | LeftAlt + Space, RightAlt + Space | Repeat the last phrase that was narrated |
 | HealthNStaminaKey          | H             | Narrate health and stamina.                                                  |
 | HealthNStaminaInPercentage | true          | Whether to speak health and stamina in percentage or the actual value        |
 | List PositionKey           | K             | Narrate player position.                                                     |
 | List LocationKey           | LeftAlt + K   | Narrate current location name.                                               |
 | List MoneyKey              | R             | Narrate the money the player has currently.                                  |
 | List TimeNSeasonKey        | Q             | Narrate the time of day, day and date and season                             |
+| Use24HourFormat | false | Switch time narration between 12-hour and 24-hour |
 | VerboseCoordinates         | true          | Whether to speak 'X:' and 'Y:' along with co-ordinates or not                |
 | SnapMouse                  | true          | Toggles the snap mouse feature                                               |
 | Warning                    | true          | Toggles the warnings feature                                                 |
@@ -232,7 +234,7 @@ For a full list of key names,  refer to the [Key Bindings List](https://stardewv
 
 ## Default Config
 
-This config is current as of [Release 1.5.1](https://github.com/khanshoaib3/stardew-access/releases/tag/v1.5.1)
+This config is current as of [Beta Release v1.4.0-beta.4](https://github.com/khanshoaib3/stardew-access/releases/tag/v1.6.0-beta.4)
 
 ~~~json
 {
@@ -320,6 +322,7 @@ This config is current as of [Release 1.5.1](https://github.com/khanshoaib3/star
   "LocationKey": "LeftAlt + K",
   "MoneyKey": "R",
   "TimeNSeasonKey": "Q",
+  "RepeatLastTextKey": "LeftAlt + Space, RightAlt + Space",
   "VerboseCoordinates": true,
   "SnapMouse": true,
   "Warning": true,
@@ -335,9 +338,9 @@ This config is current as of [Release 1.5.1](https://github.com/khanshoaib3/star
   "EnableCheats": false,
   "MacSpeechRate": 220.0,
   "MaximumFishingDifficulty": 999,
-  "FixFishingMotionType": 999
-}
-~~~
+  "FixFishingMotionType": 999,
+  "Use24HourFormat": false
+}~~~
 
 ## Other Pages
 
