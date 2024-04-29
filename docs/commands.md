@@ -34,6 +34,7 @@ For a list of SMAPI commands, visit the [Console commands](https://stardewvalley
 
 | Command    | Description                                                      |
 |------------|------------------------------------------------------------------|
+| rlt ``<index>`` | Repeats the last phrase narrated. ``<index>`` specifies how many phrases before the latest are skipped when repeating |
 | hnspercent | Toggle between speaking in percentage or full health and stamina |
 | warning    | Toggle warnings feature                                          |
 | tts        | Toggles the screen reader/tts                                    |
