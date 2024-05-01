@@ -2,33 +2,48 @@
 
 ## Table of Contents
 
-- [Requirements](#requirements)
-- [SMAPI setup](#smapi-setup)
-    - [Windows](#windows)
-        - [Xbox App Setup](#xbox-app-setup)
-        - [Integrating with The Game Client](#integrating-with-the-game-client)
-            - [Xbox App](#xbox-app)
-            - [Steam](#steam)
-            - [GOG Galaxy](#gog-galaxy)
-    - [Linux](#linux)
-    - [MacOS](#macos)
-- [Installing Stardew Access](#installing-stardew-access)
-    - [Installing Kokoro and Project Fluent](#installing-kokoro-and-project-fluent)
-- [Updating Stardew Access](#updating-stardew-access)
+- [Automatic Installation (Recommended)](#automatic-installation-recommended)
+- [Manual Installation](#manual-installation)
+    - [Requirements](#requirements)
+    - [SMAPI setup](#smapi-setup)
+        - [Windows](#windows)
+            - [Xbox App Setup](#xbox-app-setup)
+            - [Integrating with Your Game Client](#integrating-with-your-game-client)
+                - [Xbox App](#xbox-app)
+                - [Steam](#steam)
+                - [GOG Galaxy](#gog-galaxy)
+        - [Linux](#linux)
+        - [MacOS](#macos)
+    - [Installing Stardew Access](#installing-stardew-access)
+        - [Installing Kokoro and Project Fluent](#installing-kokoro-and-project-fluent)
+    - [Updating Stardew Access](#updating-stardew-access)
 - [Other Mods](#other-mods)
-    - [Essentials](#essentials)
-    - [Recommended](#recommended)
 - [Other Pages](#other-pages)
 
-## Requirements
+## Automatic Installation (Recommended)
+
+1. Install Stardew Valley through your preferred game platform
+2. Download the [automatic installer]()
+3. Follow the instructions that appear in the installer
+4. Once the installer finishes, select finish and enjoy Stardew Access
+
+**Optional:** [integrate with your game client for achievements](#integrating-with-your-game-client)
+
+- [Xbox](#xbox-app)
+- [Steam](#steam)
+- [GOG Galaxy](#gog-galaxy)
+
+## Manual Installation
+
+### Requirements
 
 1. [SMAPI](#smapi-setup)
 2. [Kokoro](#installing-kokoro-and-project-fluent)
 3. [Project Fluent](#installing-kokoro-and-project-fluent)
 
-## SMAPI setup
+### SMAPI setup
 
-### Windows
+#### Windows
 
 **Important Note:** If you are launching the game from the Xbox app, proceed to [Xbox App Setup](#xbox-app-setup), otherwise proceed with the instructions below.
 
@@ -38,7 +53,7 @@
 4. Open the new folder once it has finished unzipping. You may need to open two folders to get to the contents.
 4. Double-click `install on Windows.bat`, and follow the on-screen instructions.
 
-#### Xbox App Setup
+##### Xbox App Setup
 
 **Before installing SMAPI:**
 
@@ -65,16 +80,16 @@ In your game installation directory:
 
 **Important Note:** You must reinstall SMAPI and rename the .exe files each time there is a SMAPI update.
 
-#### Integrating with The Game Client
+##### Integrating with Your Game Client
 
 While this step is optional, it will allow you to use the normal shortcuts to launch Stardew Valley and enable cheats.
 If you do not complete this step, you must launch Stardew Valley via `StardewModdingAPI.exe` for all mods to function. Using the shortcut created by the game installation will not load SMAPI or any mods.
 
-##### Xbox App
+###### Xbox App
 
 This process is done automatically for Xbox users when installing SMAPI.
 
-##### Steam
+###### Steam
 
 **Note:** This process is very difficult to do without vision. Steam has bad accessibility under the best of conditions.
 
@@ -86,7 +101,7 @@ This process is done automatically for Xbox users when installing SMAPI.
     - Default for most users
       is: `"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\StardewModdingAPI.exe" %command%`
 
-##### GOG Galaxy
+###### GOG Galaxy
 
 1. Open Notepad and paste in the following:
     - `start "" "{Stardew Valley Folder path}\StardewModdingAPI.exe"`
@@ -101,7 +116,7 @@ This process is done automatically for Xbox users when installing SMAPI.
 6. Choose `start.bat` in the window that appears and click Open.
 7. Enable the `Default Executable` radio button under the File 2 section you just added, and click OK.
 
-### Linux
+#### Linux
 
 1. On many Linux distributions, you may need to download and install an older version of libssl (1.1 or 1.x).
     - On Ubuntu, Debian, Linux Mint, and other Debian-based installations, install libssl1.1 (by
@@ -116,7 +131,7 @@ This process is done automatically for Xbox users when installing SMAPI.
     - (If the installer asks for your game install path, see how to
        [find your game folder here](https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started#Find_your_game_folder).)
 
-### MacOS
+#### MacOS
 
 After installing Stardew Valley with Steam:
 
@@ -124,7 +139,7 @@ After installing Stardew Valley with Steam:
 2. Extract the .zip file somewhere (Your downloads folder is fine).
 3. Double-click `install on Mac.command`, and follow the on-screen instructions.
 
-## Installing Stardew Access
+### Installing Stardew Access
 
 Once you have installed at least Stardew Valley and SMAPI:
 
@@ -136,7 +151,7 @@ Once you have installed at least Stardew Valley and SMAPI:
 
 **note:** If you are experiencing bugs, install the debug version of Stardew Access which will generate more logs to help diagnose the problem.
 
-### Installing Kokoro and Project Fluent
+#### Installing Kokoro and Project Fluent
 
 As of v1.5.0, [Kokoro](https://www.nexusmods.com/stardewvalley/mods/15682) and [Project Fluent ](https://www.nexusmods.com/stardewvalley/mods/12638) are now dependencies for
 Stardew access and as such, the mod won't run without
@@ -157,7 +172,7 @@ Installation of Project Fluent and Kokoro is essentially the same as installing 
    [this Nexus direct link](https://www.nexusmods.com/stardewvalley/mods/15682?tab=files&file_id=82817)
 3. Extract both zip files and move the contents of each into the `Mods` folder in your game's folder.
 
-## Updating Stardew Access
+### Updating Stardew Access
 
 To update Stardew Access:
 
