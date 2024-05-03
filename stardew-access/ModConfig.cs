@@ -443,6 +443,31 @@ internal class ModConfig
     public Boolean TTS { get; set; } = true;
 
     /// <summary>
+    /// Toggles speaking of character speech bubbles.
+    /// </summary>
+    public Boolean AutoReadCharacterBubbles { get; set; } = true;
+
+    /// <summary>
+    /// Toggles speaking of character dialog.
+    /// </summary>
+    public Boolean AutoReadCharacterDialog { get; set; } = true;
+
+    /// <summary>
+    /// Toggles speaking of question dialog.
+    /// </summary>
+    public Boolean AutoReadQuestionDialog { get; set; } = true;
+
+    /// <summary>
+    /// Toggles speaking of basic dialogs (like no mail in mailbox).
+    /// </summary>
+    public Boolean AutoReadBasicDialog { get; set; } = true;
+
+    /// <summary>
+    /// Key to manually read current dialog.
+    /// </summary>
+    public KeybindList ManualReadDialogKey { get; set; } = KeybindList.Parse("R");
+
+    /// <summary>
     /// Toggles detecting the dropped items.
     /// </summary>
     public Boolean TrackDroppedItems { get; set; } = true;
