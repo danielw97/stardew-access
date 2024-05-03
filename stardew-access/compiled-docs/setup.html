@@ -3,6 +3,7 @@
 <h2 id="table-of-contents">Table of Contents</h2>
 
 <ul>
+  <li><a href="#installation-directory-quick-reference">Installation Directory Quick Reference</a></li>
   <li><a href="#automatic-installation-recommended">Automatic Installation (Recommended)</a></li>
   <li><a href="#manual-installation">Manual Installation</a>
     <ul>
@@ -37,24 +38,51 @@
   <li><a href="#other-pages">Other Pages</a></li>
 </ul>
 
+<h2 id="installation-directory-quick-reference">Installation Directory Quick Reference</h2>
+
+<ul>
+  <li>Windows
+    <ul>
+      <li>Steam: <code>C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley</code></li>
+      <li>Xbox App: <code>C:\Program Files\ModifiableWindowsApps\Stardew Valley</code></li>
+      <li>GOG: <code>C:\Program Files (x86)\GOG Galaxy\Games\Stardew Valley</code></li>
+    </ul>
+  </li>
+  <li>Mac OS
+    <ul>
+      <li>Steam: <code>~/Library/Application Support/Steam/SteamApps/common/Stardew Valley/Contents/MacOS</code></li>
+      <li>GOG: <code>/Applications/Stardew Valley.app/Contents/MacOS</code></li>
+    </ul>
+  </li>
+  <li>Linux
+    <ul>
+      <li>GOG: <code>~/GOGGames/StardewValley/game</code></li>
+      <li>Steam: <code>~/.local/share/Steam/steamapps/common/Stardew Valley</code></li>
+    </ul>
+  </li>
+</ul>
+
 <h2 id="automatic-installation-recommended">Automatic Installation (Recommended)</h2>
+
+<p>The purpose of the Accessible Stardew Setup installer is to quickly and easily install the minimum required mods for blind players to enjoy Stardew Valley. If you wish to install additional mods that are not directly related to low-vision accessibility, you may do so manually. If you wish to install SMAPI, Stardew Access, and its dependencies manually, proceed to <a href="#manual-installation">manual installation</a>, otherwise follow the steps below:</p>
 
 <ol>
   <li>Install Stardew Valley through your preferred game platform</li>
-  <li>Download the <a href="">automatic installer</a></li>
+  <li>Download Accessible Stardew Setup (ASS). <a href="https://github.com/ParadoxiKat/AccessibleStardewSetup/releases/latest">get ASS here</a></li>
   <li>Follow the instructions that appear in the installer</li>
-  <li>Once the installer finishes, select finish and enjoy Stardew Access</li>
+  <li>Once the installer completes installation, select finish and enjoy Stardew Access</li>
 </ol>
 
-<p><strong>Optional:</strong> <a href="#integrating-with-your-game-client">integrate with your game client for achievements</a></p>
+<p><strong>Optional Step For non Steam Users:</strong> <a href="#integrating-with-your-game-client">integrate with your game client for achievements</a></p>
 
 <ul>
   <li><a href="#xbox-app">Xbox</a></li>
-  <li><a href="#steam">Steam</a></li>
   <li><a href="#gog-galaxy">GOG Galaxy</a></li>
 </ul>
 
 <h2 id="manual-installation">Manual Installation</h2>
+
+<p>If you prefer to install SMAPI, Stardew Access, and its dependencies manually, you may follow the instructions below.</p>
 
 <h3 id="requirements">Requirements</h3>
 
@@ -116,23 +144,33 @@ If you do not complete this step, you must launch Stardew Valley via <code>Stard
 
 <h6 id="xbox-app">Xbox App</h6>
 
-<p>This process is done automatically for Xbox users when installing SMAPI.</p>
+<p>This process is done when installing SMAPI on an Xbox App copy.</p>
 
 <h6 id="steam">Steam</h6>
 
-<p><strong>Note:</strong> This process is very difficult to do without vision. Steam has bad accessibility under the best of conditions.</p>
-
 <ol>
-  <li>Open the <code>properties</code> for Stardew (you can do this by right clicking the game in the library and then
-selecting <code>properties</code> from the drop down list)</li>
-  <li>Go to the <code>Launch Options</code> in the <code>General</code> tab and paste the following line:
+  <li>Ensure Steam is running</li>
+  <li>Move to the system tray with <code>windows + b</code>, press “show hidden icons” to show the full system tray, and find “Steam” in the icon grid</li>
+  <li>Press <code>enter</code> on Steam to open the tray menu and move down the menu until you find “Big Picture”</li>
+  <li>Enter Big Picture mode and enable focus mode in NVDA</li>
+  <li>Use the arrow keys to move around the Big Picture interface and find the grid of games</li>
+  <li>Locate “Stardew Valley” and open the context menu with the applications key or with <code>shift + f10</code>
     <ul>
-      <li><code>"{Stardew Valley Folder path}\StardewModdingAPI.exe" %command%</code></li>
-      <li>Replace the <code>{Stardew Valley Folder path}</code> with the correct path.</li>
-      <li>Default for most users
-is: <code>"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\StardewModdingAPI.exe" %command%</code></li>
+      <li>As an alternative, focus on Stardew Valley in the grid, use <code>NVDA + numpad divide</code> to route the mouse cursor to the element, and then use <code>numpad multiply</code> to right-click and open the context menu</li>
     </ul>
   </li>
+  <li>In the context menu, find and select “properties”</li>
+  <li>Ensure you are focused on the “General” tab in the new window and press <code>right arrow</code> to enter the general section
+    <ul>
+      <li>If you are not using focus mode, you may either press <code>e</code> to move to the text box described in step 9 or disable automatic move of the system focus due to browse mode commands” with <code>NVDA + 8</code> and use the down arrow immediately to find the text box described in step 9</li>
+    </ul>
+  </li>
+  <li>Arrow down until you come across a text box located shortly after a button labeled “default” and paste the following text:
+    <ul>
+      <li><code>"C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\StardewModdingAPI.exe" %command%</code></li>
+    </ul>
+  </li>
+  <li>Once you have entered the text, exit Big Picture mode with <code>alt + f4</code>. The text you just entered is saved automatically</li>
 </ol>
 
 <h6 id="gog-galaxy">GOG Galaxy</h6>
