@@ -579,6 +579,13 @@ menu-purchase_animal-animal_name_text_box = Name text box{$value ->
 
 menu-title_text_input-paste_button = Paste button
 
+### Renovate Menu
+
+menu-renovate-info = Left click to renovate. Affected areas,
+  {$areas_info}
+menu-renovate-area_dimension_info = {$index}: At {$tile_x} {$tile_y} with {$width} width and {$height} height,
+
+
 ### Shipping Menu
 
 menu-shipping-total_money_received_info = Received {$money}g in total. Left click to save.

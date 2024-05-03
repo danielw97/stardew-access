@@ -215,6 +215,9 @@ internal class IClickableMenuPatch : IPatch
             case NamingMenu:
                 NamingMenuPatch.Cleanup();
                 break;
+            case RenovateMenu:
+                RenovateMenuPatch.Cleanup();
+                break;
         }
 
         MainClass.ScreenReader.Cleanup();
