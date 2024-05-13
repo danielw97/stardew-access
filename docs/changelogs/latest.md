@@ -18,9 +18,13 @@
 
 - (en.ftl) new: `event_tile-luau-pierre_booth` with English value `Pierre's Booth`
 
+
+### Tile Tracker Changes
+
+
 ### Guides And Docs
 
 
-### Others
+### Misc
 
 

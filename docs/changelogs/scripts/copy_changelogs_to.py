@@ -4,8 +4,8 @@ import argparse
 import os
 
 
-headings = ['### New Features', '### Feature Updates', '### Bug Fixes',
-            '### Translation Changes', '### Guides And Docs', '### Others']
+headings = ['### New Features', '### Feature Updates', '### Bug Fixes', '### Translation Changes',
+            '### Tile Tracker Changes', '### Guides And Docs', '### Misc']
 
 
 def main():

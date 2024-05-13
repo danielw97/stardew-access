@@ -50,12 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # For running the script that copies the changelogs to docs/changelogs/latest.md file
-      - name: Install python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
       # - name: View PR Details
       #   run: echo '${{ steps.get-pr-details.outputs.data }}'
 

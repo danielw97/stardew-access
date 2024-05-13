@@ -5,7 +5,7 @@
 mapfile file < ./pr_msg.txt
 mapfile latest_file < ./latest.md
 
-headings=('### New Features' '### Feature Updates' '### Bug Fixes' '### Translation Changes' '### Guides And Docs' '### Others')
+headings=('### New Features' '### Feature Updates' '### Bug Fixes' '### Translation Changes' '### Tile Tracker Changes' '### Guides And Docs' '### Misc')
 indices=(-1 -1 -1 -1 -1 -1 ${#file[@]}) # 1 extra 
 latest_indices=(-1 -1 -1 -1 -1 -1 ${#latest_file[@]}) # 1 extra 
 
