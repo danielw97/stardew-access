@@ -27,4 +27,6 @@
 
 ### Misc
 
+- Added pull request template
+- ci: As opposed to `/fast-forward`, we can also now use `/fast-forward-force` to merge the PR without checking for `mergeable_state`.
 
