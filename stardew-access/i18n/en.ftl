@@ -1,4 +1,4 @@
-# Features
+# Featuresen.
 
 ## Object Tracker
 
@@ -244,6 +244,7 @@ tile_name-flooring = Flooring
 tile-volcano_dungeon-pressure_pad = Pressure Pad
 tile-volcano_dungeon-gate = Gate
 tile-forest-giant_tree_sump = Giant Tree Stump
+tile-town-bookseller = Bookseller
 
 ## Entrances
 

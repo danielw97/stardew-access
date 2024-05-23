@@ -555,7 +555,6 @@ static_tile-town-museum_bridge = Museum Bridge
 static_tile-town-beach_bridge = Beach Bridge
 static_tile-town-smelter = Smelter
 static_tile-town-fountain = Fountain
-static_tile-town-bookseller = Bookseller
 
 # Trailer (home of Pam and Penny)
 

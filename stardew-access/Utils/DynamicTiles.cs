@@ -906,6 +906,11 @@ public class DynamicTiles
             return ("tile-town_festival_exit-name", CATEGORY.Doors);
         }
 
+        if (Utility.getDaysOfBooksellerThisSeason().Contains(Game1.dayOfMonth) && x is 109 or 110 && y is 26)
+        {
+            return ("tile-town-bookseller", CATEGORY.Interactables);
+        }
+
         return (null, null);
     }
 
