@@ -349,9 +349,15 @@ menu-animal_query-animal_info =
   }, {$heart_count ->
     [1] 1 heart
     *[other] {$heart_count} hearts
-  }, {$age ->
-    [1] 1 month
-    *[other] {$age} months
+  }, {$is_age_in_days ->
+    [1] {$age ->
+      [1] 1 day
+      *[other] {$age} days
+    }
+    *[other] {$age ->
+      [1] 1 month
+      *[other] {$age} months
+    }
   } old{$parent_name ->
     [null] {EMPTYSTRING()}
     *[other] , Parent: {$parent_name}.

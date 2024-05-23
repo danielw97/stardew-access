@@ -575,14 +575,20 @@ public class TileInfo
             return null;
 
         string name = foundAnimal.displayName;
-        int age = (foundAnimal.GetDaysOwned() + 1) / 28 + 1;
         string type = foundAnimal.displayType;
+        bool isHungry = foundAnimal.moodMessage.Value is FarmAnimal.hungry;
+        int age = (foundAnimal.GetDaysOwned() + 1) / 28 + 1;
+        bool isAgeInDays = age <= 1;
+        age = age <= 1 ? foundAnimal.GetDaysOwned() + 1 : age;
 
         object? translationCategory = new
         {
             name,
             type,
-            age
+            is_hungry = isHungry ? 1 : 0,
+            is_baby = foundAnimal.isBaby() ? 1 : 0,
+            is_age_in_days = isAgeInDays ? 1 : 0,
+            age,
         };
         return Translator.Instance.Translate("npc-farm_animal_info", translationCategory);
     }

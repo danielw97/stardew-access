@@ -330,9 +330,21 @@ npc_name-ruby_gem_bird = Ruby Gem Bird
 npc_name-amethyst_gem_bird = Amethyst Gem Bird
 npc_name-topaz_gem_bird = Topaz Gem Bird
 npc_name-gem_bird_common = Gem Bird
-npc-farm_animal_info = {$name}, {$type}, {$age} {$age ->
-    [1] month
-    *[other] months
+npc-farm_animal_info = {$name}, {$is_hungry ->
+    [1] Hungry
+    *[other] {EMPTYSTRING()}
+  } {$is_baby ->
+    [1] Baby
+    *[other] {EMPTYSTRING()}
+  } {$type}, {$is_age_in_days ->
+    [1] {$age ->
+      [1] 1 day
+      *[other] {$age} days
+    }
+    *[other] {$age ->
+      [1] 1 month
+      *[other] {$age} months
+    }
   }
 npc_name-horse_with_no_name = A horse with no name
 monster_name-armored = Armored {$monster_name}
