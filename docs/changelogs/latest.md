@@ -23,7 +23,6 @@
 ### Translation Changes
 
 - (en.ftl) new: `event_tile-luau-pierre_booth` with English value `Pierre's Booth`
-
 - (en.ftl) Modified: `npc-farm_animal_info` added `is_hungry`, `is_baby` and `is_age_in_days` attributes, look [here for updated english translation](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/en.ftl#L333-L348)
 - (en.ftl) Added: `tile-town-bookseller` with english value = `Bookseller`
 - (static_tiles.en.ftl) Removed: `static_tile-town-bookseller`
