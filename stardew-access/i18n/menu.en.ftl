@@ -316,26 +316,6 @@ menu-item_grab-chest_colors =
 menu-shop-buy_price_info = Buy price: {$price}g
 menu-shop-recipe_ingredients_info = Ingredients: {$ingredients_list}
 menu-shop-pet_license-suffix = {$content} license
-menu-shop-special_items = {$item_id ->
-    [F_2627] Jungle Decal (luau) 1
-    [F_2628] Jungle Decal (luau) 2
-    [F_2629] Jungle Decal (luau) 3
-    [F_2630] Jungle Decal (luau) 4
-    [F_1817] Ceiling Leaves (luau) 1
-    [F_1818] Ceiling Leaves (luau) 2
-    [F_1819] Ceiling Leaves (luau) 3
-    [F_1820] Ceiling Leaves (flower dance) 1
-    [F_1821] Ceiling Leaves (flower fance) 2
-    [BC_192] Seasonal Plant (flower dance) 1
-    [BC_204] Seasonal Plant (flower dance) 2
-    [BC_184] Seasonal Plant (egg) 1
-    [BC_188] Seasonal Plant (egg) 2
-    [F_1687] Cloud Decal (moonlight) 1
-    [F_1692] Cloud Decal (moonlight) 2
-    [F_2635] Log Panel (winter star) 1
-    [F_2636] Log Panel (winter star) 2
-    *[other] -9999
-  }
 
 ### Tailoring Menu
 

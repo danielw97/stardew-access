@@ -491,6 +491,28 @@ direction-current_tile = Current tile
 
 inventory_util-empty_slot = Empty Slot
 
+# Primarily used to distinguish items with same name, like Jungle Decals or Ceiling Leaves purchased in Luau
+inventory_util-special_items-name = {$item_id ->
+    [F_2627] Jungle Decal (luau) 1
+    [F_2628] Jungle Decal (luau) 2
+    [F_2629] Jungle Decal (luau) 3
+    [F_2630] Jungle Decal (luau) 4
+    [F_1817] Ceiling Leaves (luau) 1
+    [F_1818] Ceiling Leaves (luau) 2
+    [F_1819] Ceiling Leaves (luau) 3
+    [F_1820] Ceiling Leaves (flower dance) 1
+    [F_1821] Ceiling Leaves (flower fance) 2
+    [BC_192] Seasonal Plant (flower dance) 1
+    [BC_204] Seasonal Plant (flower dance) 2
+    [BC_184] Seasonal Plant (egg) 1
+    [BC_188] Seasonal Plant (egg) 2
+    [F_1687] Cloud Decal (moonlight) 1
+    [F_1692] Cloud Decal (moonlight) 2
+    [F_2635] Log Panel (winter star) 1
+    [F_2636] Log Panel (winter star) 2
+    *[other] -9999
+  }
+
 common-unknown = Unknown
 
 # The $name will be in the respective language i.e., it will be in french for french translation and so on. So use the language specific name in the square brackets except for the one with '*', that can have any value. Variants with '*' are marked as default.

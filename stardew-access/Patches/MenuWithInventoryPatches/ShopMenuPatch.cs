@@ -86,22 +86,7 @@ internal class ShopMenuPatch : IPatch
     {
         if (__instance.hoveredItem == null) return;
 
-        string name = __instance.hoveredItem.DisplayName;
-
-        // Converts the item's id from (F)1818 to F_1818  (As brackets aren't supported in fluent matching)
-        // Ref: https://regex101.com/r/5HOvLL/1
-        string strippedQualifiedItemId = Regex.Replace(__instance.hoveredItem.QualifiedItemId, @"\(([A-Za-z]+)\)([0-9]+)", @"$1_$2");
-        string specialName = Translator.Instance.Translate("menu-shop-special_items",
-                tokens: new {item_id = strippedQualifiedItemId},
-                translationCategory: TranslationCategory.Menu);
-#if DEBUG
-        Log.Debug($"Hovered Item: {name} [id={__instance.hoveredItem.QualifiedItemId}] [stripped_id={strippedQualifiedItemId}] [special_name={specialName}]");
-#endif
-        if (specialName != "-9999")
-        {
-            name = specialName;
-        }
-
+        string name = InventoryUtils.GetNameOfItem(__instance.hoveredItem.DisplayName, __instance.hoveredItem.QualifiedItemId);
         string price = __instance.hoverPrice <= 0 ? ""
             : Translator.Instance.Translate("menu-shop-buy_price_info", new { price = __instance.hoverPrice }, TranslationCategory.Menu);
         string description = __instance.hoveredItem.IsRecipe
