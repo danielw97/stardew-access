@@ -65,7 +65,15 @@ internal static class InventoryUtils
         {
             if (!inventory[i].containsPoint(mouseX, mouseY)) continue;
 
-            if ((i + 1) > actualInventory.Count || actualInventory[i] == null)
+            if ((i + 1) > actualInventory.Count)
+            {
+                // For locked slots
+                CheckAndSpeak(Translator.Instance.Translate("inventory_util-locked_slot"), i);
+                prevSlotIndex = i;
+                return i;
+            }
+
+            if (actualInventory[i] == null)
             {
                 // For empty slot
                 CheckAndSpeak(Translator.Instance.Translate("inventory_util-empty_slot"), i);
@@ -86,7 +94,6 @@ internal static class InventoryUtils
                 highlightedItemSuffix);
 
             CheckAndSpeak(itemDetails, i);
-            prevSlotIndex = i;
             return i;
         }
 

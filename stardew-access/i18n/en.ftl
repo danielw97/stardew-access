@@ -490,6 +490,7 @@ direction-south_east = Southeast
 direction-current_tile = Current tile
 
 inventory_util-empty_slot = Empty Slot
+inventory_util-locked_slot = Locked Slot
 
 # Primarily used to distinguish items with same name, like Jungle Decals or Ceiling Leaves purchased in Luau
 inventory_util-special_items-name = {$item_id ->
