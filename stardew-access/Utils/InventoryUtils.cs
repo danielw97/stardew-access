@@ -185,7 +185,7 @@ internal static class InventoryUtils
         // Ref: https://regex101.com/r/pppCfU/1
         string strippedQualifiedItemId = Regex.Replace(qualifiedItemId, @"\(([A-Za-z0-9]+)\)([A-Za-z0-9]+)", @"$1_$2");
         string specialName = Translator.Instance.Translate("inventory_util-special_items-name",
-                tokens: new {item_id = strippedQualifiedItemId});
+                tokens: new { item_id = strippedQualifiedItemId });
 #if DEBUG
         Log.Verbose($"Item: {displayName} [id={qualifiedItemId}] [stripped_id={strippedQualifiedItemId}] [special_name={specialName}]");
 #endif
@@ -242,6 +242,16 @@ internal static class InventoryUtils
         var enchantList = (item is MeleeWeapon) ? (item as MeleeWeapon)!.enchantments : (item as Tool)!.enchantments;
         foreach (var enchantment in enchantList)
         {
+            if (enchantment is StardewValley.Enchantments.GalaxySoulEnchantment galaxySoulEnchantment)
+            {
+                int percentageCompleted = (galaxySoulEnchantment.GetLevel() * 100) / galaxySoulEnchantment.GetMaximumLevel();
+                enchantNames.Add(Translator.Instance.Translate("inventory_util-enchantments-galaxy_soul", tokens: new
+                {
+                    progress_in_percentage = percentageCompleted
+                }));
+                continue;
+            }
+
             enchantNames.Add(enchantment.GetDisplayName());
         }
 
