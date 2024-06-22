@@ -11,6 +11,7 @@
     - The menu will now speak the "Select Building" prompt along with the animal's colour.
     - It will also speak the animal names as they are shown. Previously, it spoke white cow as opposed to what's shown, dairy cow.
 - Added custom names support for items. This can be used to have separate names for items with same names (like for jungle decals purchasable in Luau). At the moment the scope is only at the inventory level or wherever InventoryUtils is used to get the plural form of a name.
+- Inventory slots that haven't been unlocked yet now appropriately read as "Locked Slot" instead of "Empty Slot"; #361
 
 ### Bug Fixes
 
@@ -19,6 +20,9 @@
 - Fixed glitchiness in Pierre's shop in the Luau festival; #318
 - Fixed other player's mail boxes showing up in buildings category
 - Fix duplicate animal category and out of bounds animals being tracked in farms.
+- Fixed support for medowlands and custom farm types in the custom tile entry menu.
+- Fixed descriptive flooring names not being read. Introduced a new config, `DisableDescriptiveFlooring`; #362
+- Fixed green rain weeds being categorized as other instead of debris; #365
 
 ### Translation Changes
 
@@ -30,6 +34,9 @@
 - New(en.ftl): `dynamic_tile-farm-lumber_pile` with english value `Lumber Pile`.
 - Removed(static_tiles.en.ftl): `static_tile-farm-lumber_pile`.
 - New(en.ftl): `inventory_util-special_items-name` with placeholder values at the moment.
+- New(en.ftl): `inventory_util-locked_slot` = `Locked Slot`
+- New(en.ftl): `inventory_util-enchantments-galaxy_soul` = `Galaxy Soul ({$progress_in_percentage}% transformed)`
+- Modified(menu.en.ftl): `menu-forge-start_forging_button` = [English value](https://github.com/khanshoaib3/stardew-access/blob/499637832b0801a75c4435517e0420c08a06bbeb/stardew-access/i18n/menu.en.ftl#L260-L263)
 
 ### Tile Tracker Changes
 
@@ -45,4 +52,7 @@
 - Added pull request template
 - ci: As opposed to `/fast-forward`, we can also now use `/fast-forward-force` to merge the PR without checking for `mergeable_state`.
 - ci: Fix if condition failure in fast-forward.yml
+- Added progress information for infinity conversion (galaxy soul enchantment); #239
+- "Start Forging" button in the forge menu now also speaks the forge cost.
+- The special orders board menu now correctly indicates when a quest is completed; #228
 
