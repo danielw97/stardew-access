@@ -27,10 +27,10 @@
 ### Translation Changes
 
 - New(en.ftl): `event_tile-luau-pierre_booth` = `Pierre's Booth`
-- Modified(en.ftl): `npc-farm_animal_info` added `is_hungry`, `is_baby` and `is_age_in_days` attributes, look [here for updated english translation](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/en.ftl#L333-L348)
+- Modified(en.ftl): `npc-farm_animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/en.ftl#L333-L348)
 - New(en.ftl): `tile-town-bookseller` = `Bookseller`
 - Removed(static_tiles.en.ftl): `static_tile-town-bookseller`
-- Modified(menu.en.ftl): `menu-animal_query-animal_info` added `is_age_in_days` attribute, look [here for updated english translation](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/menu.en.ftl#L345-L367)
+- Modified(menu.en.ftl): `menu-animal_query-animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/menu.en.ftl#L345-L367)
 - New(en.ftl): `dynamic_tile-farm-lumber_pile` = `Lumber Pile`.
 - Removed(static_tiles.en.ftl): `static_tile-farm-lumber_pile`.
 - New(en.ftl): `inventory_util-special_items-name` with placeholder values at the moment.
