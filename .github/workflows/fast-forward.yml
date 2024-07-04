@@ -10,11 +10,9 @@ jobs:
     name: fast-forward
 
     # Ref: https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
-    # contents: For adding the commit
     # issues: For adding the success/failure comments
     # pull-requests: For some reason, even though I gave write perms to issues, it wasn't able to send the success/failure comment to PR, so maybe having pull-requests to write will?
     permissions:
-      contents: write
       issues: write
       pull-requests: write
 
@@ -109,18 +107,18 @@ jobs:
         if: env.MERGE_STATUS == 'clean' || contains(github.event.comment.body, '/fast-forward-force')
         run: |
           if [[ "$( tail ./response.txt -n 1 )" = 'No changes to write!' ]] || [[ "$( tail ./response.txt -n 1 )" =~ "File \`(.*?)\` not found\!" ]]; then
-            echo "COMMENT=${{ env.COMMENT }}\nNo changelogs found..." >> $GITHUB_ENV
+            echo "COMMENT=${{ env.COMMENT }}\<br\/\>No changelogs found..." >> $GITHUB_ENV
           else
             git add docs/changelogs/latest.md
-            git commit -m ":memo: Add changelogs from #${{ github.event.issue.number }} to latest.md"
-            echo "COMMENT=${{ env.COMMENT }}\nCopied the changelogs from pull request body to docs/changelogs/latest.md..." >> $GITHUB_ENV
+            git commit -m "docs: Add changelogs from #${{ github.event.issue.number }} to latest.md"
+            echo "COMMENT=${{ env.COMMENT }}\<br\/\>Copied the changelogs from pull request body to docs/changelogs/latest.md..." >> $GITHUB_ENV
           fi
 
       - name: Push to origin
         if: env.MERGE_STATUS == 'clean' || contains(github.event.comment.body, '/fast-forward-force')
         run: |
           git push origin
-          echo "COMMENT=${{ env.COMMENT }}\nPushed the changes to origin." >> $GITHUB_ENV
+          echo "COMMENT=${{ env.COMMENT }}\<br\/\>Pushed the changes to origin." >> $GITHUB_ENV
 
       # Post a success/failure comment to the PR.
       - name: Add success/failure comment to PR
@@ -131,7 +129,7 @@ jobs:
           issue_number: ${{ github.event.issue.number }}
           body: ${{ env.COMMENT }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Post a failure message when any of the previous steps fail.
       - name: Add failure comment to PR
@@ -143,4 +141,4 @@ jobs:
           issue_number: ${{ github.event.issue.number }}
           body: \[Fast Forward CI\] PR cannot be merged in. Check the Actions tab for details.
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
