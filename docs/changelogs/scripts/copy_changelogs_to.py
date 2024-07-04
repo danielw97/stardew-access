@@ -10,7 +10,10 @@ headings = ['### New Features', '### Feature Updates', '### Bug Fixes', '### Tra
 
 def main():
     source_path, dest_path = get_file_names_from_cli()
+    copy_changelog(source_path, dest_path)
 
+
+def copy_changelog(source_path: str, dest_path: str):
     src_file = open(source_path, "r").readlines()
     dest_file = open(dest_path, "r").readlines()
 
@@ -59,6 +62,20 @@ def main():
         print("\n\nOverwriting destination file with the content:")
         print(*dest_file)
         dest_file_w.writelines(dest_file)
+
+
+def get_changelogs_dict(file_path: str) -> dict:
+    file = open(file_path, "r").readlines()
+    file = [line.rstrip() for line in file]  # Remove trailing spaces
+    h_changelogs = dict()
+
+    for heading in headings:
+        if (heading not in file):
+            continue
+
+        h_changelogs[heading] = get_changelogs_for_heading_in_file(heading, file)
+
+    return h_changelogs
 
 
 def get_changelogs_for_heading_in_file(heading: str, file_contents: list) -> list:
