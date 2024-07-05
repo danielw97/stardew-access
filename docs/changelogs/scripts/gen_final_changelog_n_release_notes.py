@@ -7,7 +7,7 @@ import copy_changelogs_to
 
 
 def main():
-    version, release_notes_path, detailed_release_notes = get_version_n_output_file_name_from_cli()
+    version, release_notes_path, detailed_release_notes, pre_release = get_version_n_output_file_name_from_cli()
 
     if version == 'auto':
         version = get_version_from_manifest()
@@ -16,11 +16,16 @@ def main():
 
     print(f'Version: {version}')
     print(f'Final changelog file path: {final_changelog_path}')
-    print(f'Release notes path: {final_changelog_path}\n')
-    print('Generating final changelog...')
+    print(f'Release notes path: {final_changelog_path}')
 
-    gen_final_changelog_file(final_changelog_path,
-                             ('beta' in version or 'alpha' in version))
+    if pre_release == 'auto':
+        is_pre_release = ('beta' in version or 'alpha' in version)
+    else:
+        is_pre_release = True if pre_release == 'true' else False
+    print(f'Is pre release: {is_pre_release}\n')
+
+    print('Generating final changelog...')
+    gen_final_changelog_file(final_changelog_path, is_pre_release)
     print('Generating release notes...')
     gen_release_notes(release_notes_path, final_changelog_path,
                       detailed_release_notes, version)
@@ -97,9 +102,10 @@ def get_version_n_output_file_name_from_cli():
     parser.add_argument('-v', '--version', default='auto')
     parser.add_argument('-o', '--output', default='../temp_notes.md')
     parser.add_argument('-d', '--detailed', action='store_true')
+    parser.add_argument('-p', '--pre-release', dest='pre_release', default='auto')
 
     parsed_args = parser.parse_args()
-    return [parsed_args.version, parsed_args.output, parsed_args.detailed]
+    return [parsed_args.version, parsed_args.output, parsed_args.detailed, parsed_args.pre_release]
 
 
 if __name__ == "__main__":
