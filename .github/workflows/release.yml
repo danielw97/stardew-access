@@ -5,7 +5,7 @@ name: Release
 # ACT (for testing workflows locally): https://nektosact.com/
 # Example commands:
 # $ docker run -d --name artifact-server -p 8080:8080 --add-host host.docker.internal:host-gateway -e AUTH_KEY=foo ghcr.io/jefuller/artifact-server:latest
-# $ sudo act --env ACTIONS_RUNTIME_URL=http://host.docker.internal:8080/ --env ACTIONS_RUNTIME_TOKEN=foo --env ACTIONS_CACHE_URL=http://host.docker.internal:8080/ --artifact-server-path act_out -W ./.github/workflows/release.yml
+# $ sudo act --env ACTIONS_RUNTIME_URL=http://host.docker.internal:8080/ --env ACTIONS_RUNTIME_TOKEN=foo --env ACTIONS_CACHE_URL=http://host.docker.internal:8080/ --artifact-server-path act_out -W ./.github/workflows/release.yml --input github-upload=false --input nexus-upload=false --input detailed-release-notes=true
 
 # Can only be called manually from the actions tab on github repo.
 on:
@@ -27,6 +27,11 @@ on:
           - false
       set-latest:
         description: 'Set as latest on github and nexus'
+        required: false
+        default: false
+        type: boolean
+      detailed-release-notes:
+        description: 'Whether to generate detailed release notes or not'
         required: false
         default: false
         type: boolean
@@ -64,6 +69,8 @@ jobs:
     steps:
       - name: Pull source code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       # Ref: https://github.com/actions/download-artifact
       - name: Download artifacts from build workflow run
@@ -105,12 +112,31 @@ jobs:
       #     echo ${{ env.NEXUSMOD_VERSION }}
       #     echo ${{ env.NEXUSMOD_MODID }}
 
+      - name: Generate release notes and final changelog file
+        run: |
+          cd docs/changelogs/scripts
+          python gen_final_changelog_n_release_notes.py ${{ inputs.detailed-release-notes && '-d' || '' }} -v ${{ env.RELEASE_TAG }} -p ${{ env.PRE_RELEASE }}
+          mv ../temp_notes.md ../../../temp_notes.md
+          cd ../../../
+
+      # git --no-pager log --oneline -10
+      - name: Commit and push docs changes
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions [Bot]"
+          git add docs/changelogs/
+          git status
+          git commit -m "docs: Generate final changelog file for ${{ env.RELEASE_TAG }}"
+          git push origin
+
+
       # Ref: https://github.com/softprops/action-gh-release
       - name: Upload on GitHub
         if: inputs.github-upload
         uses: softprops/action-gh-release@v2
         with:
-          body: This is temporary and will be changed soon...
+          body_path: temp_notes.md
+          body: Encountered error in generating automatic release note, this will updated soon...
           prerelease: ${{ env.PRE_RELEASE }}
           files: |
             ${{ env.MAIN_FILE }}
