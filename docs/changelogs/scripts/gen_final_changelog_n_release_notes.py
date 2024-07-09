@@ -5,6 +5,13 @@ import shutil
 import json
 import copy_changelogs_to
 
+CHANGELOG_DIR = 'https://github.com/khanshoaib3/stardew-access/blob/development/docs/changelogs/'
+LATEST_FILE_PATH = '../latest.md'
+DEFAULT_FILE_PATH = '../default.md'
+SEM_VER: str = r"v[0-9]+\.[0-9]+\.[0-9]+.*"
+PRE_SEM_VER: str = r"v[0-9]+\.[0-9]+\.[0-9]+-.+"
+PRE_SEM_VER_WITH_CAPTURE: str = r"v[0-9]+\.[0-9]+\.[0-9]+-(.+)\.([0-9])"
+
 
 def main():
     version, release_notes_path, detailed_release_notes, pre_release = get_version_n_output_file_name_from_cli()
@@ -22,25 +29,43 @@ def main():
         is_pre_release = ('beta' in version or 'alpha' in version)
     else:
         is_pre_release = True if pre_release == 'true' else False
-    print(f'Is pre release: {is_pre_release}\n')
+    print(f'Is pre release: {is_pre_release}')
 
-    print('Generating final changelog...')
-    gen_final_changelog_file(final_changelog_path, is_pre_release)
-    print('Generating release notes...')
+    gen_final_changelog_file(final_changelog_path, version)
     gen_release_notes(release_notes_path, final_changelog_path,
-                      detailed_release_notes, version)
+                      detailed_release_notes, version, is_pre_release)
+
+
+def gen_final_changelog_file(final_changelog_path: str, version: str):
+    print('\nGenerating final changelog...')
+    open(final_changelog_path, 'w').close()  # Creates an empty file
+
+    final_changelog = [f'## Changelog {version}', '']
+
+    changelogs_dict = copy_changelogs_to.get_changelogs_dict(LATEST_FILE_PATH)
+    for heading, changelogs in changelogs_dict.items():
+        if len(changelogs) == 0:
+            continue
+        print(f'Copying changelogs with heading: {heading}')
+        final_changelog += [heading, ''] + changelogs + ['']
+
+    write_list_to_file(final_changelog_path, final_changelog)
+    shutil.copyfile(DEFAULT_FILE_PATH, LATEST_FILE_PATH)
 
 
 def gen_release_notes(release_notes_path: str,
-                      from_path: str,
+                      changelog_file: str,
                       detailed: bool,
-                      version: str):
+                      version: str,
+                      is_pre_release: bool):
     print(f'Detailed release notes generation: {detailed}')
-    release_notes_file = open(release_notes_path, 'w')
-    release_notes = []
-    changelogs_dict = copy_changelogs_to.get_changelogs_dict(from_path)
+    print('\nGenerating release notes...')
+    release_notes = ['## Changelog', '']
+
+    changelogs_dict = copy_changelogs_to.get_changelogs_dict(changelog_file)
     for heading, changelogs in changelogs_dict.items():
-        if not detailed and heading != '### New Features' and heading != '### Feature Updates':
+        if not detailed and heading != '### New Features' \
+           and heading != '### Feature Updates':
             continue
         if heading == '### Translation Changes':
             continue
@@ -50,44 +75,61 @@ def gen_release_notes(release_notes_path: str,
         print(f'Copying changelogs with heading: {heading}')
         release_notes += [heading, ''] + changelogs + ['']
 
-    print(f'Adding in links to full changelogs and translation changes...')
-    changelog_link = f'https://github.com/khanshoaib3/stardew-access/blob/development/docs/changelogs/{version}.md'
-    release_notes = ['## Changelog', ''] + release_notes
-    release_notes += ['', f'Translators please refer to this link for a list of translation changes: {changelog_link}#translation-changes']
+    print('Adding in links to full changelogs and translation changes...')
+
+    changelog_link = f'{CHANGELOG_DIR}{version}.md'
     release_notes += [f'Full changelog at: {changelog_link}']
-    release_notes = [f'{line}\n' for line in release_notes]  # Add trailing line break
-    release_notes_file.writelines(release_notes)
-    release_notes_file.close()
+    pre_release_before = get_pre_releases_list_before_version(version)
+    if not is_pre_release and len(pre_release_before) != 0:
+        release_notes += ['', '*Changelogs of pre releases of this version:*']
+        for ver in pre_release_before:
+            title = get_pre_release_version_title(ver)
+            link = f'[link]({CHANGELOG_DIR}{ver}.md)'
+            release_notes.append(f'- {title}: {link}')
+    release_notes += ['', '*Note: For translators each changelog has a \
+`Translation Changes` sub-heading which specifies all the new and modified i18n entries to be translated*']
+
+    write_list_to_file(release_notes_path, release_notes)
 
 
-def gen_final_changelog_file(final_changelog_path: str, is_pre_release: bool):
-    latest_file = '../latest.md'
-    default_file = '../default.md'
-    open(final_changelog_path, 'w').close()  # Creates an empty file
+def get_pre_release_version_title(version: str) -> str:
+    match = re.search(PRE_SEM_VER_WITH_CAPTURE, version)
+    if match:
+        ver_type = match.group(1)
+        ver_type = ver_type if not ver_type == 'rc' else 'Release Candidate'
+        return f'{ver_type.title()} {match.group(2)}'
+    return ""
 
-    if is_pre_release:
-        print(f'Copying contents of latest.md directly as the version is pre release...')
-        shutil.copyfile(latest_file, final_changelog_path)
-        shutil.copyfile(default_file, latest_file)
-        return
 
-    # Merge changelogs from betas and alphas into the final changelog
-    patt: str = r"v[0-9]+\.[0-9]+\.[0-9]+.*\.md"
-    versions_paths = [f'../{f}' for f in os.listdir('../')
-                      if re.match(patt, f) and ('beta' in f or 'alpha' in f)]
-    shutil.copyfile(default_file, final_changelog_path)
-    print(f'Merging contents of latest.md with following file:', *versions_paths)
+def get_pre_releases_list_before_version(version: str) -> list:
+    changelog_versions = [f for f in os.listdir('../')
+                          if re.match(SEM_VER, f[:-3])]
 
-    for versions_path in versions_paths:
-        print(f'Copying contents of and then removing {versions_path}...')
-        copy_changelogs_to.copy_changelog(versions_path, final_changelog_path)
-        os.remove(versions_path)
+    if version not in changelog_versions:
+        changelog_versions.append(f'{version}.md')
+    changelog_versions.sort()
 
-    print(f'Copying contents of latest.md...')
-    copy_changelogs_to.copy_changelog(latest_file, final_changelog_path)
+    # Removing extension after sorting because the sorting result
+    # is wrong when there is no extension.
+    # More specifically, it results in this:
+    #     v1.5.11 v1.6.0 v1.6.0-alpha.1 v1.6.0-beta.1
+    # When instead it should be like this:
+    #     v1.5.11 v1.6.0-alpha.1 v1.6.0-beta.1 v1.6.0
+    changelog_versions = [f[:-3] for f in changelog_versions]
 
-    print('Resetting latest.md...')
-    shutil.copyfile(default_file, latest_file)
+    to_return = []
+    for i in range(changelog_versions.index(version) - 1, -1, -1):
+        if not re.match(PRE_SEM_VER, changelog_versions[i]):
+            return to_return
+        to_return.append(changelog_versions[i])
+    return to_return
+
+
+def write_list_to_file(file_path: str, lines: list, mode: str = 'w'):
+    lines = [f'{line}\n' for line in lines]  # Add trailing line break
+    file_object = open(file_path, mode)
+    file_object.writelines(lines)
+    file_object.close()
 
 
 def get_version_from_manifest() -> str:
@@ -102,10 +144,12 @@ def get_version_n_output_file_name_from_cli():
     parser.add_argument('-v', '--version', default='auto')
     parser.add_argument('-o', '--output', default='../temp_notes.md')
     parser.add_argument('-d', '--detailed', action='store_true')
-    parser.add_argument('-p', '--pre-release', dest='pre_release', default='auto')
+    parser.add_argument('-p', '--pre-release', dest='pre_release',
+                        default='auto')
 
     parsed_args = parser.parse_args()
-    return [parsed_args.version, parsed_args.output, parsed_args.detailed, parsed_args.pre_release]
+    return [parsed_args.version, parsed_args.output,
+            parsed_args.detailed, parsed_args.pre_release]
 
 
 if __name__ == "__main__":
