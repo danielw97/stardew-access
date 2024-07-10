@@ -4,6 +4,7 @@
 [//]: # (3. Do not change the heading names and/or the heading levels)
 [//]: # (4. Remove the unwanted changelog sections)
 
+
 ## Changelog
 
 ### New Features
@@ -15,9 +16,6 @@
 ### Bug Fixes
 
 
-### Translation Changes
-
-
 ### Tile Tracker Changes
 
 
@@ -25,5 +23,11 @@
 
 
 ### Misc
+
+
+### Translation Changes
+
+
+### Development Chores
 
 

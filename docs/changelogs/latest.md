@@ -2,6 +2,15 @@
 
 ### New Features
 
+- Configure automatic reading of dialogs; new manual read dialog key (by @ParadoxiKat)
+    - New config option `AutoReadCharacterBubbles` (default: true) can be disabled to prevent character speech bubbles from reading.
+    - New config option `AutoReadCharacterDialog` (default: true) can be disabled to prevent character dialogs from reading when first opened.
+    - New config option `AutoReadQuestionDialog` (default: true) can be disabled to prevent question dialogs (such as go to bed? TV etc) from reading when first opened.
+    - New config option `AutoReadBasicDialog` (default: true) can be disabled to prevent basic dialogs (such as unable to use basic axe on large stump) from reading when first opened.
+    - New config option `ManualReadDialogKey` (default: "R") can be pressed in any dialog to reread it as if just opened, regardless of related verbosity setting.
+- Patched home renovations menu
+    - Use the `PrimaryInfoKey` in the menu to snap the mouse to the renovation area and speak the details about the affected area.
+      Then use `LeftClick` to renovate.
 
 ### Feature Updates
 
