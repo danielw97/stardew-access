@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXUSMOD_API_KEY: ${{ secrets.NEXUSMOD_API_KEY }}
-      NEXUSMOD_COOKIE_SID_DEVELOP: ${{ secrets.NEXUSMOD_COOKIE_SID_DEVELOP }}
+      NEXUSMOD_SESSION_COOKIE: ${{ secrets.NEXUSMOD_SESSION_COOKIE }}
       NEXUSMOD_MODID: 16205
     steps:
       - name: Pull source code
