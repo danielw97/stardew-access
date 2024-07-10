@@ -35,9 +35,6 @@
 
 ### Misc
 
-- Added pull request template
-- ci: As opposed to `/fast-forward`, we can also now use `/fast-forward-force` to merge the PR without checking for `mergeable_state`.
-- ci: Fix if condition failure in fast-forward.yml
 - Added progress information for infinity conversion (galaxy soul enchantment); #239
 - "Start Forging" button in the forge menu now also speaks the forge cost.
 - The special orders board menu now correctly indicates when a quest is completed; #228
@@ -55,4 +52,10 @@
 - New(en.ftl): `inventory_util-locked_slot` = `Locked Slot`
 - New(en.ftl): `inventory_util-enchantments-galaxy_soul` = `Galaxy Soul ({$progress_in_percentage}% transformed)`
 - Modified(menu.en.ftl): `menu-forge-start_forging_button` = [English value](https://github.com/khanshoaib3/stardew-access/blob/499637832b0801a75c4435517e0420c08a06bbeb/stardew-access/i18n/menu.en.ftl#L260-L263)
+
+### Development Chores
+
+- Added pull request template
+- ci: As opposed to `/fast-forward`, we can also now use `/fast-forward-force` to merge the PR without checking for `mergeable_state`.
+- ci: Fix if condition failure in fast-forward.yml
 

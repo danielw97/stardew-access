@@ -69,6 +69,8 @@ def gen_release_notes(release_notes_path: str,
             continue
         if heading == '### Translation Changes':
             continue
+        if heading == '### Development Chores':
+            continue
         if len(changelogs) == 0:
             continue
 
