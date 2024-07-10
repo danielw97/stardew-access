@@ -67,4 +67,7 @@
 - Added pull request template
 - ci: As opposed to `/fast-forward`, we can also now use `/fast-forward-force` to merge the PR without checking for `mergeable_state`.
 - ci: Fix if condition failure in fast-forward.yml
+- Updated the `release` workflow to automatically generate release notes. Added a helper python script for it, `gen_final_changelog_n_release_notes.py`.
+- New sub-heading for changelogs, `Development Chores`.
+- Updated the order of `Translation Changes` sub-heading to be at last with `Development Chores`.
 
