@@ -24,20 +24,6 @@
 - Fixed descriptive flooring names not being read. Introduced a new config, `DisableDescriptiveFlooring`; #362
 - Fixed green rain weeds being categorized as other instead of debris; #365
 
-### Translation Changes
-
-- New(en.ftl): `event_tile-luau-pierre_booth` = `Pierre's Booth`
-- Modified(en.ftl): `npc-farm_animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/en.ftl#L333-L348)
-- New(en.ftl): `tile-town-bookseller` = `Bookseller`
-- Removed(static_tiles.en.ftl): `static_tile-town-bookseller`
-- Modified(menu.en.ftl): `menu-animal_query-animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/menu.en.ftl#L345-L367)
-- New(en.ftl): `dynamic_tile-farm-lumber_pile` = `Lumber Pile`.
-- Removed(static_tiles.en.ftl): `static_tile-farm-lumber_pile`.
-- New(en.ftl): `inventory_util-special_items-name` with placeholder values at the moment.
-- New(en.ftl): `inventory_util-locked_slot` = `Locked Slot`
-- New(en.ftl): `inventory_util-enchantments-galaxy_soul` = `Galaxy Soul ({$progress_in_percentage}% transformed)`
-- Modified(menu.en.ftl): `menu-forge-start_forging_button` = [English value](https://github.com/khanshoaib3/stardew-access/blob/499637832b0801a75c4435517e0420c08a06bbeb/stardew-access/i18n/menu.en.ftl#L260-L263)
-
 ### Tile Tracker Changes
 
 - Bookseller's tile is now dynamically tracked.
@@ -55,4 +41,18 @@
 - Added progress information for infinity conversion (galaxy soul enchantment); #239
 - "Start Forging" button in the forge menu now also speaks the forge cost.
 - The special orders board menu now correctly indicates when a quest is completed; #228
+
+### Translation Changes
+
+- New(en.ftl): `event_tile-luau-pierre_booth` = `Pierre's Booth`
+- Modified(en.ftl): `npc-farm_animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/en.ftl#L333-L348)
+- New(en.ftl): `tile-town-bookseller` = `Bookseller`
+- Removed(static_tiles.en.ftl): `static_tile-town-bookseller`
+- Modified(menu.en.ftl): `menu-animal_query-animal_info` = [Updated English value](https://github.com/khanshoaib3/stardew-access/blob/a33d90157baa532e09f45d72bed91ff53a601649/stardew-access/i18n/menu.en.ftl#L345-L367)
+- New(en.ftl): `dynamic_tile-farm-lumber_pile` = `Lumber Pile`.
+- Removed(static_tiles.en.ftl): `static_tile-farm-lumber_pile`.
+- New(en.ftl): `inventory_util-special_items-name` with placeholder values at the moment.
+- New(en.ftl): `inventory_util-locked_slot` = `Locked Slot`
+- New(en.ftl): `inventory_util-enchantments-galaxy_soul` = `Galaxy Soul ({$progress_in_percentage}% transformed)`
+- Modified(menu.en.ftl): `menu-forge-start_forging_button` = [English value](https://github.com/khanshoaib3/stardew-access/blob/499637832b0801a75c4435517e0420c08a06bbeb/stardew-access/i18n/menu.en.ftl#L260-L263)
 

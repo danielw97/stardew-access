@@ -9,9 +9,6 @@
 ### Bug Fixes
 
 
-### Translation Changes
-
-
 ### Tile Tracker Changes
 
 
@@ -19,5 +16,8 @@
 
 
 ### Misc
+
+
+### Translation Changes
 
 
