@@ -5,9 +5,9 @@ using StardewValley.Menus;
 
 namespace stardew_access.Utils;
 
-internal static class OptionsElementUtils
+public static class OptionsElementUtils
 {
-    internal static bool NarrateOptionSlotsInMenuUsingReflection(IClickableMenu menu)
+    public static bool NarrateOptionSlotsInMenuUsingReflection(IClickableMenu menu)
     {
         if (menu is null) return false;
 
@@ -58,7 +58,7 @@ internal static class OptionsElementUtils
         return false;
     }
 
-    internal static bool NarrateHoveredElementFromSlots(List<ClickableComponent> optionSlots, List<OptionsElement> options, int currentItemIndex)
+    public static bool NarrateHoveredElementFromSlots(List<ClickableComponent> optionSlots, List<OptionsElement> options, int currentItemIndex)
     {
         int x = Game1.getMouseX(true), y = Game1.getMouseY(true);
         for (int i = 0; i < optionSlots.Count; i++)
@@ -73,7 +73,7 @@ internal static class OptionsElementUtils
         return false;
     }
 
-    internal static bool NarrateHoveredElementFromList<T>(List<T> options) where T : OptionsElement
+    public static bool NarrateHoveredElementFromList<T>(List<T> options) where T : OptionsElement
     {
         int x = Game1.getMouseX(true), y = Game1.getMouseY(true);
         for (int i = 0; i < options.Count; i++)
@@ -88,14 +88,14 @@ internal static class OptionsElementUtils
         return false;
     }
 
-    internal static void NarrateElement(OptionsElement optionsElement, bool screenReaderInterrupt = true)
+    public static void NarrateElement(OptionsElement optionsElement, bool screenReaderInterrupt = true)
     {
         if (optionsElement.ScreenReaderIgnore) return;
 
         MainClass.ScreenReader.SayWithMenuChecker(GetNameOfElement(optionsElement), interrupt: screenReaderInterrupt);
     }
 
-    internal static string GetNameOfElement(OptionsElement optionsElement)
+    public static string GetNameOfElement(OptionsElement optionsElement)
     {
         string translationKey;
         string label = string.IsNullOrWhiteSpace(optionsElement.ScreenReaderText) ? optionsElement.label : optionsElement.ScreenReaderText;

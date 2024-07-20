@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using HarmonyLib;
 using stardew_access.Translation;
 using stardew_access.Utils;

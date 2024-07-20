@@ -97,7 +97,7 @@ internal class IClickableMenuPatch : IPatch
         );
 
         harmony.Patch(
-            original: AccessTools.Method(typeof(IClickableMenu), "drawHoverText", new Type[] { typeof(SpriteBatch), typeof(StringBuilder), typeof(SpriteFont), typeof(int), typeof(int), typeof(int), typeof(string), typeof(int), typeof(string[]), typeof(Item), typeof(int), typeof(string), typeof(int), typeof(int), typeof(int), typeof(float), typeof(CraftingRecipe), typeof(IList<Item>) ,typeof(Texture2D), typeof(Rectangle?), typeof(Color?), typeof(Color?), typeof(float), typeof(int), typeof(int)}),
+            original: AccessTools.Method(typeof(IClickableMenu), "drawHoverText", new Type[] { typeof(SpriteBatch), typeof(StringBuilder), typeof(SpriteFont), typeof(int), typeof(int), typeof(int), typeof(string), typeof(int), typeof(string[]), typeof(Item), typeof(int), typeof(string), typeof(int), typeof(int), typeof(int), typeof(float), typeof(CraftingRecipe), typeof(IList<Item>), typeof(Texture2D), typeof(Rectangle?), typeof(Color?), typeof(Color?), typeof(float), typeof(int), typeof(int) }),
             postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawHoverTextPatch))
         );
     }
@@ -144,15 +144,17 @@ internal class IClickableMenuPatch : IPatch
                 return;
             }
 
+            if (ClickableComponentUtils.NarrateHoveredComponentUsingReflectionInMenu(activeMenu))
+            {
+                return;
+            }
+
+
             if (ClickableComponentUtils.NarrateHoveredComponentFromList(activeMenu.allClickableComponents))
             {
                 return;
             }
 
-            if (ClickableComponentUtils.NarrateHoveredComponentUsingReflectionInMenu(activeMenu))
-            {
-                return;
-            }
 
             _tryHoverPatch = true;
         }

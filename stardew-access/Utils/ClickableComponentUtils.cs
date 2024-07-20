@@ -5,20 +5,15 @@ using StardewValley.Menus;
 
 namespace stardew_access.Utils;
 
-internal class ClickableComponentUtils
+public partial class ClickableComponentUtils
 {
-    internal static bool NarrateHoveredComponentUsingReflectionInMenu(IClickableMenu menu, bool skipAllClickableComponents = true)
+    public static bool NarrateHoveredComponentUsingReflectionInMenu(IClickableMenu menu, bool skipAllClickableComponents = true)
     {
         if (menu is null) return false;
 
         var fields = menu.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
-        HashSet<string> skipFieldNames = new()
-        {
-            "currentlySnappedComponent"
-        };
-        if (skipAllClickableComponents) skipFieldNames.Add("allClickableComponents");
 
-        var ccFieldInfos = fields.Where(x => IsAcceptableField(x, skipFieldNames));
+        var ccFieldInfos = fields.Where(x => IsAcceptableField(x));
         if (ccFieldInfos.Count() == 0)
         {
             return false;
@@ -31,27 +26,32 @@ internal class ClickableComponentUtils
 
         int x = Game1.getMouseX(true), y = Game1.getMouseY(true);
 
+        // First non generic fields should be checked as we can use the field names to detect common ui buttons
+
         foreach (var fieldInfo in ccFieldInfos)
         {
-            if (fieldInfo.FieldType.IsGenericType)
-            {
-                // Cannot directly convert to List<T> as we don't exactly know what type is (although we do know that it'll either be `ClickableComponent` or one of it's derived class)
-                // Ref: https://stackoverflow.com/a/14129466
-                IList? ccList = (IList?)fieldInfo.GetValue(menu);
-                if (ccList is null) continue;
-                for (int j = 0; j < ccList.Count; j++)
-                {
-                    object? cco = ccList[j];
-                    if (cco is not ClickableComponent cc) continue;
-                    if (!IsHovered(cc, x, y)) continue;
+            if (fieldInfo.FieldType.IsGenericType) continue;
 
-                    NarrateComponent(cc!);
-                    return true;
-                }
-            }
-            else
+            ClickableComponent? cc = (ClickableComponent?)fieldInfo.GetValue(menu);
+            if (!IsHovered(cc, x, y)) continue;
+
+            CommonUIButton? commonButtonType = CommonUIButton.FromFieldInfo(fieldInfo);
+            NarrateComponent(cc!, commonButtonType: commonButtonType);
+            return true;
+        }
+
+        foreach (var fieldInfo in ccFieldInfos)
+        {
+            if (!fieldInfo.FieldType.IsGenericType) continue;
+
+            // Cannot directly convert to List<T> as we don't exactly know what type is (although we do know that it'll either be `ClickableComponent` or one of it's derived class)
+            // Ref: https://stackoverflow.com/a/14129466
+            IList? ccList = (IList?)fieldInfo.GetValue(menu);
+            if (ccList is null) continue;
+            for (int j = 0; j < ccList.Count; j++)
             {
-                ClickableComponent? cc = (ClickableComponent?)fieldInfo.GetValue(menu);
+                object? cco = ccList[j];
+                if (cco is not ClickableComponent cc) continue;
                 if (!IsHovered(cc, x, y)) continue;
 
                 NarrateComponent(cc!);
@@ -62,14 +62,14 @@ internal class ClickableComponentUtils
         return false;
     }
 
-    private static bool IsAcceptableField(FieldInfo x, HashSet<string> skipFieldNames) => !skipFieldNames.Contains(x.Name)
-        && x.FieldType.IsGenericType
+    private static bool IsAcceptableField(FieldInfo x) => !(x.Name.Equals("currentlySnappedComponent") || x.Name.Equals("allClickableComponents"))
+        && (x.FieldType.IsGenericType
                 ? x.FieldType.GetGenericTypeDefinition() == typeof(List<>) && IsInstanceOfCC(x.FieldType.GetGenericArguments()[0])
-                : IsInstanceOfCC(x.FieldType);
+                : IsInstanceOfCC(x.FieldType));
 
     private static bool IsInstanceOfCC(Type fieldType) => fieldType == typeof(ClickableComponent) || fieldType.IsSubclassOf(typeof(ClickableComponent));
 
-    internal static bool NarrateHoveredComponentFromList<T>(List<T> clickableComponents) where T: ClickableComponent
+    public static bool NarrateHoveredComponentFromList<T>(List<T> clickableComponents) where T : ClickableComponent
     {
         if (clickableComponents == null || clickableComponents.Count == 0) return false;
 
@@ -87,11 +87,16 @@ internal class ClickableComponentUtils
 
     private static bool IsHovered(ClickableComponent? cc, int x, int y) => cc is not null && cc.visible && cc.bounds.Contains(x, y);
 
-    internal static void NarrateComponent(ClickableComponent clickableComponent, bool screenReaderInterrupt = true)
+    public static void NarrateComponent(ClickableComponent clickableComponent, CommonUIButton? commonButtonType = null, bool screenReaderInterrupt = true)
     {
         if (clickableComponent.ScreenReaderIgnore) return;
 
-        MainClass.ScreenReader.SayWithMenuChecker(string.IsNullOrWhiteSpace(clickableComponent.ScreenReaderText)
-                ? $"{clickableComponent.name} {clickableComponent.label}".Trim() : clickableComponent.ScreenReaderText, interrupt: screenReaderInterrupt);
+        string toSpeak = commonButtonType is null
+            ? string.IsNullOrWhiteSpace(clickableComponent.ScreenReaderText)
+                ? $"{clickableComponent.name} {clickableComponent.label}".Trim()
+                : clickableComponent.ScreenReaderText
+            : commonButtonType.Value;
+
+        MainClass.ScreenReader.SayWithMenuChecker(toSpeak, interrupt: screenReaderInterrupt);
     }
 }
