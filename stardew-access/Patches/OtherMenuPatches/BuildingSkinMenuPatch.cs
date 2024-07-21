@@ -34,7 +34,7 @@ internal class BuildingSkinMenuPatch : IPatch
                     type = __instance.Building.buildingType.Value.ToLower().Trim().Replace(" ", "_"),
                     index = __instance.Skin.Index,
                     id = string.IsNullOrWhiteSpace(__instance.Skin.Id) ? __instance.Building.buildingType.Value : __instance.Skin.Id // Basically the english display name
-                });
+                }) + ", ";
                 MainClass.ScreenReader.PrevMenuQueryText = "";
             }
 

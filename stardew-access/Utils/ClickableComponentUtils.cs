@@ -93,7 +93,7 @@ public partial class ClickableComponentUtils
 
         string toSpeak = commonButtonType is null
             ? string.IsNullOrWhiteSpace(clickableComponent.ScreenReaderText)
-                ? $"{clickableComponent.name} {clickableComponent.label}".Trim()
+                ? string.IsNullOrWhiteSpace(clickableComponent.name) ? clickableComponent.label : clickableComponent.name
                 : clickableComponent.ScreenReaderText
             : commonButtonType.Value;
 

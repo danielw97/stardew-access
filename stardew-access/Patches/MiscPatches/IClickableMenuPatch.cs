@@ -15,42 +15,17 @@ internal class IClickableMenuPatch : IPatch
 {
     private static readonly HashSet<Type> SkipMenuTypes =
     [
-        typeof(AnimalQueryMenu),
-        typeof(Billboard),
-        typeof(CarpenterMenu),
-        typeof(ChooseFromIconsMenu),
-        typeof(ConfirmationDialog),
-        typeof(DialogueBox),
-        typeof(FieldOfficeMenu),
-        typeof(ForgeMenu),
-        typeof(GeodeMenu),
-        typeof(ItemGrabMenu),
-        typeof(ItemListMenu),
+        /*********
+        ** Bundle Menus
+        *********/
         typeof(JojaCDMenu),
         typeof(JunimoNoteMenu),
-        typeof(LetterViewerMenu),
-        typeof(MuseumMenu),
-        typeof(NumberSelectionMenu),
-        typeof(PondQueryMenu),
-        typeof(PrizeTicketMenu),
-        typeof(PurchaseAnimalsMenu),
-        typeof(QuestContainerMenu),
-        typeof(QuestLog),
-        typeof(ReadyCheckDialog),
-        typeof(ShopMenu),
-        typeof(SpecialOrdersBoard),
-        typeof(StorageContainer),
-        typeof(TailoringMenu),
 
         /*********
-        ** Title Menus
+        ** Donation Menus
         *********/
-        typeof(TitleMenu),
-        // typeof(AdvancedGameOptions),
-        typeof(CharacterCustomization),
-        typeof(CoopMenu),
-        typeof(FarmhandMenu),
-        typeof(LoadGameMenu),
+        typeof(FieldOfficeMenu),
+        typeof(MuseumMenu),
 
         /*********
         ** Game Menu Pages
@@ -64,6 +39,56 @@ internal class IClickableMenuPatch : IPatch
         typeof(SkillsPage),
         typeof(SocialPage),
 
+        /*********
+        ** Menus with Inventory
+        *********/
+        typeof(ForgeMenu),
+        typeof(GeodeMenu),
+        typeof(ItemGrabMenu),
+        typeof(QuestContainerMenu),
+        typeof(ShopMenu),
+        typeof(StorageContainer),
+        typeof(TailoringMenu),
+
+        /*********
+        ** Quest Menus
+        *********/
+        typeof(Billboard),
+        typeof(QuestLog),
+        typeof(SpecialOrdersBoard),
+
+        /*********
+        ** Title Menus
+        *********/
+        typeof(TitleMenu),
+        // typeof(AdvancedGameOptions),
+        typeof(CharacterCustomization),
+        typeof(CoopMenu),
+        typeof(FarmhandMenu),
+        typeof(LoadGameMenu),
+
+        /*********
+        ** Other Menus
+        *********/
+        typeof(AnimalQueryMenu),
+        typeof(BuildingSkinMenu),
+        typeof(CarpenterMenu),
+        typeof(ChooseFromIconsMenu),
+        typeof(ConfirmationDialog),
+        typeof(DialogueBox),
+        typeof(ItemListMenu),
+        typeof(LetterViewerMenu),
+        typeof(LevelUpMenu),
+        typeof(MasteryTrackerMenu),
+        typeof(NamingMenu),
+        typeof(NumberSelectionMenu),
+        typeof(PondQueryMenu),
+        typeof(PrizeTicketMenu),
+        typeof(PurchaseAnimalsMenu),
+        typeof(RenovateMenu),
+        typeof(ShippingMenu),
+        typeof(TitleTextInputMenu),
+        typeof(ReadyCheckDialog),
 
         /*********
         ** Custom Menus

@@ -1,9 +1,6 @@
 using HarmonyLib;
 using stardew_access.Utils;
-using StardewValley;
 using System.Reflection;
-using xTile;
-using xTile.Layers;
 using xTile.Tiles;
 
 namespace stardew_access.Patches
