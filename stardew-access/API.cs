@@ -149,8 +149,8 @@ namespace stardew_access
         public bool SpeakHoveredClickableComponentsFromList<T>(List<T> ccList) where T : ClickableComponent
             => ClickableComponentUtils.NarrateHoveredComponentFromList(ccList);
 
-        public void SpeakClickableComponent(ClickableComponent component)
-            => ClickableComponentUtils.NarrateComponent(component);
+        public void SpeakClickableComponent(ClickableComponent component, string? commonUIButtonType = null)
+            => ClickableComponentUtils.NarrateComponent(component, CommonUIButton.FromFieldName(commonUIButtonType));
 
         public bool SpeakHoveredOptionsElementSlot(List<ClickableComponent> optionSlots, List<OptionsElement> options, int currentItemIndex)
             => OptionsElementUtils.NarrateHoveredElementFromSlots(optionSlots, options, currentItemIndex);

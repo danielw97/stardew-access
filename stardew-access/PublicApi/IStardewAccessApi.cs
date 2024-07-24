@@ -220,7 +220,8 @@ public interface IStardewAccessApi
     /// Ignores speaking if <see cref="ClickableComponent.ScreenReaderIgnore"/> was set to true.
     /// </summary>
     /// <param name="component">The component to speak.</param>
-    public void SpeakClickableComponent(ClickableComponent component);
+    /// <param name="commonUIButtonType">If set, the mod speaks the localized text for the given common ui button instead of the contents of the component</param>
+    public void SpeakClickableComponent(ClickableComponent component, string? commonUIButtonType = null);
 
     /// <summary>
     /// Speaks the hovered element from list which are being drawn/rendered in slots.
