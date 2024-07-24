@@ -252,7 +252,7 @@ public interface IStardewAccessApi
     /// Ignores speaking if <see cref="OptionsElement.ScreenReaderIgnore"/> was set to true.
     /// </summary>
     /// <param name="element">The element to speak.</param>
-    public void SPeakOptionsElement(OptionsElement element);
+    public void SpeakOptionsElement(OptionsElement element);
 
     /// <summary>
     /// Necessary to be called once if you have manually made a custom menu of your mod accessible.

@@ -158,7 +158,7 @@ namespace stardew_access
         public bool SpeakHoveredOptionsElementFromList<T>(List<T> options) where T : OptionsElement
             => OptionsElementUtils.NarrateHoveredElementFromList(options);
 
-        public void SPeakOptionsElement(OptionsElement element)
+        public void SpeakOptionsElement(OptionsElement element)
             => OptionsElementUtils.NarrateElement(element);
 
         public void RegisterCustomMenuAsAccessible(string? fullNameOfClass)
