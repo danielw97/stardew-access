@@ -59,7 +59,10 @@ internal class AdvancedGameOptionsPatch : IPatch
     {
         try
         {
+            /* v1.6.9
             __instance.okButton.ScreenReaderText = Translator.Instance.Translate("common-ui-ok_button", TranslationCategory.Menu);
+            */
+            __instance.okButton.label = Translator.Instance.Translate("common-ui-ok_button", TranslationCategory.Menu);
         }
         catch (Exception e)
         {

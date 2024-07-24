@@ -90,7 +90,9 @@ public static class OptionsElementUtils
 
     public static void NarrateElement(OptionsElement optionsElement, bool screenReaderInterrupt = true)
     {
+        /* v1.6.9
         if (optionsElement.ScreenReaderIgnore) return;
+        */
 
         MainClass.ScreenReader.SayWithMenuChecker(GetNameOfElement(optionsElement), interrupt: screenReaderInterrupt);
     }
@@ -98,7 +100,10 @@ public static class OptionsElementUtils
     public static string GetNameOfElement(OptionsElement optionsElement)
     {
         string translationKey;
+        /* v1.6.9
         string label = string.IsNullOrWhiteSpace(optionsElement.ScreenReaderText) ? optionsElement.label : optionsElement.ScreenReaderText;
+        */
+        string label = optionsElement.label;
         object? tokens = new { label };
 
         switch (optionsElement)

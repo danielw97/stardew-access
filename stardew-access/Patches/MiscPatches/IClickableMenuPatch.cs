@@ -158,7 +158,10 @@ internal class IClickableMenuPatch : IPatch
             }
 #endif
 
+            /* v1.6.9
             if (activeMenu.currentlySnappedComponent == null || string.IsNullOrWhiteSpace(activeMenu!.currentlySnappedComponent.ScreenReaderText))
+            */
+            if (activeMenu.currentlySnappedComponent == null)
             {
                 if (OptionsElementUtils.NarrateOptionSlotsInMenuUsingReflection(activeMenu))
                     return;
