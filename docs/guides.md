@@ -35,6 +35,7 @@ To get the most current documentation, check the following links:
 - [Farm Animals](#farm-animals)
     - [Purchasing Farm Animals](#purchasing-farm-animals)
     - [Moving Farm Animals](#moving-farm-animals)
+- [Fishing](#fishing)
 - [Other Pages](#other-pages)
 
 ## Key Terms and Controls
@@ -275,6 +276,25 @@ If you cannot move an animal to a new building, ensure that the following are tr
 3. You are selecting the correct building
 
 <!--todo: more animal guides probably-->
+
+## Fishing
+
+The fishing game features many sounds which aren't heard anywhere else in the valley. It is recommended that you use a gamepad when fishing to take advantage of the haptic feedback. Many Stardew Access players forego the minigame and install an automatic fishing mod due to the difficulty in catching fish. Sighted players struggle with the minigame as well. Below are useful resources:
+
+- [Yet Another Fishing Mod](https://www.nexusmods.com/stardewvalley/mods/20391)
+- [Stardew Valley Fish Bite Sound](https://www.youtube.com/watch?v=sKd1mwB1I3g)
+- [Sine Wave](https://www.youtube.com/watch?v=yyvyt0HyvFk)
+- [Square Wave](https://www.youtube.com/watch?v=HHh-VdsVzmA)
+
+In order to fish, you first need a fishing rod. You can get your first fishing rod by visiting Willy at the beach after he sends you a letter in the mail, usually on day 2 of spring. Once you visit Willy, he will introduce himself and present you with the bamboo pole. You can fish in almost every body of water in the valley, including some elevator levels in [the mines](https://stardewvalleywiki.com/The_Mines). The [object tracker](#object-tracker) will present fishing spots in the fishing category when they are available. These are not necessary to use and you can fish in front of water where you like. These spots make it easy to get to water.
+
+Once you have your fishing rod, stand in front of and face the body of water you want to fish in. Hold your tool key to begin casting. You will hear a sine wave rising in pitch. The pitch of this sine wave represents your casting power: the higher the pitch, the further you will cast your line. Release your tool key when you reach the desired power level. You will hear the line splash into the water if your cast was successful, otherwise you must cast again. If you have trouble casting your line, make sure that you're positioned correctly in front of the water and try adjusting your casting power on your next cast. Finding the correct spot can be tricky when fishing in the ocean.
+
+Next, you must wait until  a fish bites. Stardew Valley will play a distinctive sound, linked above, when there is something on your line. It might be a fish, a treasure chest, an edible item such as seaweed or algae, or garbage. Regardless of what the item is, you must quickly press your tool key once again to reel it in. If it is a fish, you will hear a metallic shing and the fishing minigame will begin.
+
+Once the fishing minigame starts, you will once again hear a sine wave that raises and lowers in pitch. This pitch represents where the fish is. The goal of the minigame is to move the fish within a narrow range. You will know that the fish is within this narrow range or "sweet spot" when the sine wave changes into the sound of your line reeling in. If the pitch of the sine wave is very low, press your tool key repeatedly to raise it and move into the sweet spot. If the pitch of the sine wave is very high, hold your tool key to lower the pitch and move into the sweet spot. Once the fish is in the sweet spot, you will hear square wave blips. When these blips play in the sweet spot, they signify that you are 20% closer to catching the fish. If you hear blips when the sine wave is playing, they signify that you have lost 20% of your progress toward catching the fish. If the sine wave pitch raises or lowers too far, the fish will escape and you must cast your line and play the minigame again. With practice and some luck, you will be catching fish!
+
+Currently, identifying treasure before catching is not accessible with Stardew Access. Don't be discouraged if you struggle with the fishing minigame. It is intentionally very difficult, especially with no powerups and a low level fishing rod. Once you upgrade from the bamboo pole, you can attach items like [bait](https://stardewvalleywiki.com/Bait) to the [fiberglass rod](https://stardewvalleywiki.com/Fiberglass_Rod) and [tackle](https://stardewvalleywiki.com/Tackle) to an [iridium rod](https://stardewvalleywiki.com/Iridium_Rod). You can also use certain food items to boost your chances of catching fish. Alternatively, you can attempt to use the [training rod](https://stardewvalleywiki.com/Training_Rod).
 
 <!--todo: mining guide-->
 
