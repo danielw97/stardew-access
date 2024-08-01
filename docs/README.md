@@ -7,6 +7,30 @@ To interact with the active screen reader, Stardew Access uses the [Tolk](https:
 
 <!--todo: add this link to the wiki once there's info for developers. https://github.com/khanshoaib3/stardew-access/wiki-->
 
+## Features
+
+Below is an overview of what Stardew Access can do. Check out [the features page](features.md) for a full list.
+
+### Game Narration
+
+Tap into your screen reader to narrate menus, tiles, character dialogue, chests, health, money, time of day, and much more to play Stardew Valley without sight!
+
+### Tile Viewer
+
+Know what's in front of and around you. Stardew Access will automatically read the tile you face. Want to see the rest of the map? Move the tile viewer anywhere you like and explore! Stardew Access will read doors, crops, buildings, animals, farmers, and more with configurable options. Stardew Access also supports reading user-defined objects, great for mods.
+
+### Object Tracker
+
+Browse through all objects on a map, organized by category and proximity, and get location information or automatically travel to the object of your choosing. Store favorite locations on each map for easy access with less searching!
+
+### Grid Movement
+
+Automatically snap your farmer to the tile grid when walking around. Great for planting crops and cleaning up your farm!
+
+## Installation
+
+In order to use Stardew Access, you must first own a copy of Stardew Valley on Windows, Mac or Linux. Stardew Access does not support other platforms at this time. Check [the setup page](setup.md) for required dependencies and installation instructions. Check out [Accessible Stardew Setup](https://github.com/ParadoxiKat/AccessibleStardewSetup/releases/latest) for a streamlined, automated installation process.
+
 ## Useful Links
 
 - [Stardew Valley Wiki](https://stardewvalleywiki.com/Stardew_Valley_Wiki)
@@ -15,10 +39,10 @@ To interact with the active screen reader, Stardew Access uses the [Tolk](https:
     - post any bug or feature request here.
 - [Source Code](https://github.com/khanshoaib3/stardew-access)
     - contributions are always welcome!
-- [Mod's Nexus Page](https://www.nexusmods.com/stardewvalley/mods/16205)
+- [Stardew Access on Nexus Mods](https://www.nexusmods.com/stardewvalley/mods/16205)
 - [Latest Release](https://github.com/khanshoaib3/stardew-access/releases/latest)
 - [Our Discord Server](https://discord.gg/yQjjsDqWQX)
-- [Shoaib's Twitter](https://twitter.com/shoaib_mk0) - follow me on twitter to get updates regarding stardew access and [minecraft access](https://github.com/khanshoaib3/minecraft-access)
+- [Shoaib's Twitter](https://twitter.com/shoaib_mk0) - follow me on twitter to get updates regarding Stardew Access and [minecraft access](https://github.com/khanshoaib3/minecraft-access)
 
 ## Support Us
 
@@ -27,7 +51,7 @@ If you find this project helpful and would like to support its development, you 
 - [My Patreon page](https://www.patreon.com/shoaibkhan)
 - [Kat's Patreon page](https://www.patreon.com/BlindSighted)
 
-Your support will help us dedicate more time to this project as well as other future gaming a11y projects. 
+Your support will help us dedicate more time to this project as well as other future gaming accessibility projects. 
 
 ## Contributors
 
@@ -40,7 +64,7 @@ Made with [contrib.rocks](https://contrib.rocks).
 ## Translations
 
 As of v1.5.0, the mod has been fully internationalised.
-Follow [this issue page](https://github.com/khanshoaib3/stardew-access/issues/182) to track the progress of
+Follow [the language translations issue page](https://github.com/khanshoaib3/stardew-access/issues/182) to track the progress of
 translations currently in the works and/or if you want to provide translation for your language.
 
 ## Contact Us
