@@ -15,6 +15,7 @@
 ### Guides And Docs
 
 - Added a fishing guide to the docs. This explains how to fish as a blind Stardew Access player and offers recommendations and resources to make the fishing minigame less painful.
+- added a features showcase and installation section with links to setup instructions and Accessible Stardew Setup to readme.md
 
 ### Misc
 
