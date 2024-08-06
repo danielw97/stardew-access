@@ -31,6 +31,10 @@ Automatically snap your farmer to the tile grid when walking around. Great for p
 
 In order to use Stardew Access, you must first own a copy of Stardew Valley on Windows, Mac or Linux. Stardew Access does not support other platforms at this time. Check [the setup page](setup.md) for required dependencies and installation instructions. Check out [Accessible Stardew Setup](https://github.com/ParadoxiKat/AccessibleStardewSetup/releases/latest) for a streamlined, automated installation process.
 
+## Official Guide
+
+Check out the [official guide](guides/guides-home.md) for tutorials on creating a game, farming, constructing farm buildings, raising animals, buying and selling, mining, and more with Stardew Access!
+
 ## Useful Links
 
 - [Stardew Valley Wiki](https://stardewvalleywiki.com/Stardew_Valley_Wiki)
