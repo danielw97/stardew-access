@@ -1,14 +1,22 @@
 # Guides
 
-Some inspirational shit here
+These pages provide guides for playing Stardew Valley with Stardew Access enabled. While Stardew Access attempts to provide its players feature parity with the base game, some activities must be performed differently and/or may not be obvious to new players. all pages in this guide assume that you have already installed both Stardew Valley and Stardew Access as well as all required dependencies. Information on how to install both can be found in the [setup page](setup.md).
+Information about the controls for Stardew Access and Stardew Valley can be found in [Keybindings](keybindings.md).
 
-All guides assume that you have installed Stardew Valley, Stardew Access, and all necessary dependencies. For instructions on how to install these, check [the setup page](../setup.md).
+## Guide Version
 
-## Guides
+**This guide file is up to date with Stardew Access [Beta Release v1.6.0-beta.5](https://github.com/khanshoaib3/stardew-access/releases/tag/v1.6.0-beta.5).**
 
-- [Stardew Access Guides](stardew-access-guides.md)
-- [General Guides](general-guides.md)
-- [Farming Guides](farming-guides.md)
-- [Mining Guides](mining-guides.md)
+To get the most current documentation, check the following links:
 
-- [Back to main docs...](../README.md)
+- [Stable Release Documentation](https://github.com/khanshoaib3/stardew-access/tree/master/docs)
+- [Beta Release Documentation](https://github.com/khanshoaib3/stardew-access/tree/development/docs#introduction)
+
+## Guide Pages
+
+- [Stardew Access Guides](stardew-access-guides.md) contains guides on using the core features of Stardew Access itself.
+- [General Guides](general-guides.md) contains guides on creating a new game, buying and selling, talking to NPCs, etc.
+- [Farming Guides](farming-guides.md) contains detailed guides on all things related to farming.
+- [Mining Guides](mining-guides.md) contains detailed guides on how to mine for resources.
+
+**[Back to readme...](../README.md)**

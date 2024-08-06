@@ -169,4 +169,4 @@ This includes menus such as shop menus and chest menus.
 - [Features](features.md)
 - [Commands](commands.md)
 - [Configs](config.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)

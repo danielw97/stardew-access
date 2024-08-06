@@ -1,25 +1,16 @@
 # General Guides
 
 This page provides general guides for playing Stardew Valley with Stardew Access enabled.  The guides assume that you have already installed both Stardew Valley and Stardew Access as well as all required dependencies. Information on how to install both can be found in the [setup page](setup.md).
+
 Information about the controls for Stardew Access and Stardew Valley can be found in [Keybindings](keybindings.md).
 
-
-## Guide Version
-
-**This guide file is up to date with Stardew Access [Release v1.5.1](https://github.com/khanshoaib3/stardew-access/releases/tag/v1.5.1).**
-
-To get the most current documentation, check the following links:
-
-- [Stable Release Documentation](https://github.com/khanshoaib3/stardew-access/tree/master/docs)
-- [Beta Release Documentation](https://github.com/khanshoaib3/stardew-access/tree/development/docs#introduction)
-
-## On this page:
+## Table of Contents
 
 - [Key Terms and Controls](#key-terms-and-controls)
 - [Creating a New Game](#creating-a-new-game)
 - [Saving Your Progress](#saving-your-progress)
 - [Buying and Selling](#buying-and-selling)
-- [Other Pages](#other-pages)
+- [Other Guides](#other-guides)
 
 ## Key Terms and Controls
 
@@ -48,7 +39,7 @@ To get the most current documentation, check the following links:
 Once you are on the  main menu, use the WASD keys to focus on different options. Select the "new game" button to the left of "load game" to open the new game menu (also known as the character customization menu).
 In the new game menu, use the right and left arrow keys to move to the next and previous elements, respectively.
 To use a text box, interact with it using left mouse click, type the desired text, and finally press `Escape` to stop interacting with it while focused on the desired text box.
-To modify the value of a slider, use `up arrow` and `down arrow` or `pageUp` and `pageDown` while focused on the desired slider.
+To modify the value of a slider, use `up arrow` and `down arrow` to adjust by 1 unit or `pageUp` and `pageDown` to adjust by 10 units while focused on the desired slider.
 Some controls allow you to cycle back and forth through a set of options. These controls appear in pairs, one immediately after the other and will include "previous" and "next" in their respective names. Focusing on them will announce the currently selected option. Pressing either will announce the newly-selected option. To hear the currently-selected option again, move focus off of the controls and then move focus onto them again.
 
 Character creation controls are shown by default. To toggle their visibility, Press `Left Control + Space`. This is where you will find sliders for options such as hair color and eye color. Color sliders appear in sets of 3 and adjust hue, saturation, and value (brightness). They announce their current value in the same fashion as the "next" and "previous" pairs. Their individual values range from 0% to 99%. Below is an explanation of what each slider does. Note that the game may report different names for each unique color that results from a particular slider configuration.
@@ -93,11 +84,12 @@ To sell items:
 3. Find the item you want to sell in your inventory. Only certain items may be sold at certain shops.
 4. Use `left mouse click` on the item to sell the entire stack. Use ` shift + left mouse click` to sell half the stack.
 
-## Other Pages
+## Other guides
 
-- [Readme](../README.md)
-- [Setup](../setup.md)
-- [Features](../features.md)
-- [Keybindings](../keybindings.md)
-- [Commands](../commands.md)
-- [Configs](../config.md)
+- [Stardew Access Guides](stardew-access-guides.md)
+- [Farming Guides](farming-guides.md)
+- [Mining Guides](mining-guides.md)
+
+**[Back to guides home](guides-home.md)
+
+**[Back to readme...](../README.md)**

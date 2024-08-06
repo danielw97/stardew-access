@@ -75,4 +75,4 @@ For a list of SMAPI commands, visit the [Console commands](https://stardewvalley
 - [Features](features.md)
 - [Keybindings](keybindings.md)
 - [Configs](config.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)

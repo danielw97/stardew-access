@@ -112,4 +112,4 @@ For more information, see the following pages:
 - [Keybindings](keybindings.md)
 - [Commands](commands.md)
 - [Configs](config.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)

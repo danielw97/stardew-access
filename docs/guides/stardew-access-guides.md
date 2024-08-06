@@ -2,13 +2,14 @@
 
 This guide covers all core user features added by Stardew Access, how they work, and how to use them.
 
-## On this page:
+## Table of Contents
 
 - [Using The Tile Viewer](#using-the-tile-viewer)
 - [Using The Object Tracker](#using-the-object-tracker)
     - [Object Tracker](#object-tracker)
     - [Object Tracker Favorites](#object-tracker-favorites)
         - [Tracking Coordinates With Favorites](#tracking-coordinates-with-favorites)
+- [Other Guides](#other-guides)
 
 ## Using The Tile Viewer
 
@@ -61,3 +62,12 @@ To access more than 10 favorite objects, hold `alt` and press `+ (plus)` or `- (
 
 To track a specific tile coordinate, press `tab + ~` to toggle saving coordinates. When the feature is enabled, hold `alt` and double-tap the desired number on an empty favorite to save the coordinate. Don't worry about what object the object tracker is focused on. To stop saving coordinates and return to normal functionality, disable saving coordinates with the same keystroke.
 
+## Other guides
+
+- [General Guides](general-guides.md)
+- [Farming Guides](farming-guides.md)
+- [Mining Guides](mining-guides.md)
+
+**[Back to guides home](guides-home.md)
+
+**[Back to readme...](../README.md)**

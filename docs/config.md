@@ -357,4 +357,4 @@ This config is current as of [Beta Release v1.6.0-beta.4](https://github.com/kha
 - [Features](features.md)
 - [Keybindings](keybindings.md)
 - [Commands](commands.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)

@@ -4,7 +4,7 @@ Farming, including planting and harvesting crops, is the primary way to make mon
 
 ## Table of Contents
 
-- [Farming](#farming)
+- [Crops](#crops)
     - [Planting Crops](#planting-crops)
     - [Growing Crops](#growing-crops)
     - [Harvesting Crops](#harvesting-crops)
@@ -16,13 +16,18 @@ Farming, including planting and harvesting crops, is the primary way to make mon
 - [Farm Animals](#farm-animals)
     - [Purchasing Farm Animals](#purchasing-farm-animals)
     - [Moving Farm Animals](#moving-farm-animals)
+    - [Other Guides](#other-guides)
 
+## Crops
+
+The following guides all cover planting and growing crops.
 
 - [Planting Crops](#planting-crops)
 - [Growing Crops](#growing-crops)
 - [Harvesting Crops](#harvesting-crops)
+- [back to top]( #farming)
 
-## Planting Crops
+### Planting Crops
 
 Once you have purchased seeds from Pierre's general store in the town (a.k.a) SeedShop) or otherwise obtained seeds, go to your farm and use your tools to clear a plot of land to plant them. Make sure to clear grass as well.
 Your scythe does not consume any of your energy. Once you have cleared sufficient land to plant your crops, use your hoe to till the soil.
@@ -52,6 +57,7 @@ The following guides are all related to constructing and managing buildings on y
 - [Upgrading Farm Buildings](#upgrading-farm-buildings)
 - [Moving Farm Buildings](#moving-farm-buildings)
 - [Demolishing Farm Buildings](#demolishing-farm-buildings)
+- [back to top](#farming)
 
 ### Constructing Farm Buildings
 
@@ -101,6 +107,7 @@ The following guides provide instructions on how to purchase and move farm anima
 
 - [Purchasing Farm Animals](#purchasing-farm-animals)
 - [Moving Farm Animals](#moving-farm-animals)
+- [back to top](
 
 ### Purchasing Farm Animals
 
@@ -129,3 +136,13 @@ If you cannot move an animal to a new building, ensure that the following are tr
 3. You are selecting the correct building
 
 <!--todo: more animal guides probably-->
+
+## Other guides
+
+- [Stardew Access Guides](stardew-access-guides.md)
+- [General Guides](general-guides.md)
+- [Mining Guides](mining-guides.md)
+
+**[Back to guides home](guides-home.md)
+
+**[Back to readme...](../README.md)**

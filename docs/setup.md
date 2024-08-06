@@ -221,4 +221,4 @@ this [issue page](https://github.com/khanshoaib3/stardew-access/issues/181).
 - [Keybindings](keybindings.md)
 - [Commands](commands.md)
 - [Configs](config.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)

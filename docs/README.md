@@ -81,4 +81,4 @@ Additionally, my email is `shoaib.khan20@outlook.com`.
 - [Keybindings](keybindings.md)
 - [Commands](commands.md)
 - [Configs](config.md)
-- [Guides](guides.md)
+- [Guides](guides/guides-home.md)
