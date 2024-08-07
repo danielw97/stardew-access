@@ -44,7 +44,6 @@ jobs:
       # Converts the .md files in docs/ to .html
       - name: Compile local docs
         run: |
-          mkdir ./stardew-access/compiled-docs
           cd ./docs/
           ruby ./compiler_script.rb
           cd ../

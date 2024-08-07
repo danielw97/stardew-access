@@ -59,11 +59,14 @@ Your support will help us dedicate more time to this project as well as other fu
 
 ## Contributors
 
-<a href="https://github.com/khanshoaib3/stardew-access/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=khanshoaib3/stardew-access" />
-</a>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 
-Made with [contrib.rocks](https://contrib.rocks).
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Translations
 
