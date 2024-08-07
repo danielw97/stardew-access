@@ -7,15 +7,26 @@
 # Note that you have to cd into the docs directory before running the above command
 
 require 'kramdown'
+require 'fileutils'
+
+compiled_docs_dir = File.join("..", "stardew-access", "compiled-docs")
+FileUtils.mkdir_p(compiled_docs_dir) unless File.directory?(compiled_docs_dir)
 
 puts "Searching for files to convert/compile to html...";
 
-markdown_files = Dir.glob("*.md")
+# https://lofic.github.io/tips/ruby-recursive_globbing.html
+markdown_files = Dir['**/*.md']
 markdown_files.each do|file_name|
+  # Skips the changelogs directory
+  next if File.dirname(file_name) == File.join("changelogs")
+
   puts "Found: " + file_name + ", compiling..."
 
   source_file_object = File.open(file_name, "r")
-  compiled_file_name = File.join("..", "stardew-access", "compiled-docs", file_name.sub(".md", ".html"))
+  compiled_file_name = File.join(compiled_docs_dir, file_name.sub(".md", ".html"))
+  # Create parent dirs if not exit (ref: https://stackoverflow.com/a/12617369/12026423)
+  dirname = File.dirname(compiled_file_name)
+  FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
   compiled_file_object = File.open(compiled_file_name, "w")
 
   file_contents = source_file_object.read()
