@@ -1,5 +1,141 @@
 {
   "projectName": "stardew-access",
   "projectOwner": "khanshoaib3",
-  "files": ["docs/README.md"]
+  "files": [
+    "docs/README.md"
+  ],
+  "repoType": "github",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "ParadoxiKat",
+      "name": "Katie Tudela",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1766632?v=4",
+      "profile": "https://github.com/ParadoxiKat",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "PepperTheVixen",
+      "name": "Jenna Castellanos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76539954?v=4",
+      "profile": "https://github.com/PepperTheVixen",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "LucieG0",
+      "name": "LucieG0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/164240419?v=4",
+      "profile": "https://github.com/LucieG0",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "BrailleBennett",
+      "name": "BrailleBennett",
+      "avatar_url": "https://avatars.githubusercontent.com/u/103331457?v=4",
+      "profile": "https://github.com/BrailleBennett",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "bradjrenshaw",
+      "name": "Bradley Renshaw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13157639?v=4",
+      "profile": "https://github.com/bradjrenshaw",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "fz0308",
+      "name": "fz0308",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117057446?v=4",
+      "profile": "https://github.com/fz0308",
+      "contributions": [
+        "bug",
+        "translation"
+      ]
+    },
+    {
+      "login": "ZenqFR",
+      "name": "Games-Access",
+      "avatar_url": "https://avatars.githubusercontent.com/u/161378529?v=4",
+      "profile": "https://github.com/ZenqFR",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Rizumu85",
+      "name": "Rizumu85",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25150828?v=4",
+      "profile": "https://github.com/Rizumu85",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "wu2002jian",
+      "name": "fresh fish",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105405958?v=4",
+      "profile": "https://github.com/wu2002jian",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Flameborn",
+      "name": "Erion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/963056?v=4",
+      "profile": "https://erion.cf/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "TrueBlindGaming",
+      "name": "TrueBlindGaming",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98557962?v=4",
+      "profile": "https://github.com/TrueBlindGaming",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "boholder",
+      "name": "boholder",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47084052?v=4",
+      "profile": "https://boholder.github.io/en-us/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "christopherpross",
+      "name": "Christopher Proß",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26790901?v=4",
+      "profile": "https://github.com/christopherpross",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "xyzz2001",
+      "name": "xywlkj2001_星云",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67883774?v=4",
+      "profile": "https://github.com/xyzz2001",
+      "contributions": [
+        "translation"
+      ]
+    }
+  ]
 }

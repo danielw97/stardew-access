@@ -62,6 +62,28 @@ Your support will help us dedicate more time to this project as well as other fu
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ParadoxiKat"><img src="https://avatars.githubusercontent.com/u/1766632?v=4?s=100" width="100px;" alt="Katie Tudela"/><br /><sub><b>Katie Tudela</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=ParadoxiKat" title="Code">💻</a> <a href="#maintenance-ParadoxiKat" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/PepperTheVixen"><img src="https://avatars.githubusercontent.com/u/76539954?v=4?s=100" width="100px;" alt="Jenna Castellanos"/><br /><sub><b>Jenna Castellanos</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=PepperTheVixen" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/LucieG0"><img src="https://avatars.githubusercontent.com/u/164240419?v=4?s=100" width="100px;" alt="LucieG0"/><br /><sub><b>LucieG0</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/issues?q=author%3ALucieG0" title="Bug reports">🐛</a> <a href="#userTesting-LucieG0" title="User Testing">📓</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/BrailleBennett"><img src="https://avatars.githubusercontent.com/u/103331457?v=4?s=100" width="100px;" alt="BrailleBennett"/><br /><sub><b>BrailleBennett</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/issues?q=author%3ABrailleBennett" title="Bug reports">🐛</a> <a href="#userTesting-BrailleBennett" title="User Testing">📓</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/bradjrenshaw"><img src="https://avatars.githubusercontent.com/u/13157639?v=4?s=100" width="100px;" alt="Bradley Renshaw"/><br /><sub><b>Bradley Renshaw</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=bradjrenshaw" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/fz0308"><img src="https://avatars.githubusercontent.com/u/117057446?v=4?s=100" width="100px;" alt="fz0308"/><br /><sub><b>fz0308</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/issues?q=author%3Afz0308" title="Bug reports">🐛</a> <a href="https://www.nexusmods.com/stardewvalley/mods/24788" title="Translation (Indonesia)">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ZenqFR"><img src="https://avatars.githubusercontent.com/u/161378529?v=4?s=100" width="100px;" alt="Games-Access"/><br /><sub><b>Games-Access</b></sub></a><br /><a href="https://www.nexusmods.com/stardewvalley/mods/20621/" title="Translation (French)">🌍</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Rizumu85"><img src="https://avatars.githubusercontent.com/u/25150828?v=4?s=100" width="100px;" alt="Rizumu85"/><br /><sub><b>Rizumu85</b></sub></a><br /><a href="https://www.nexusmods.com/stardewvalley/mods/21784" title="Translation (Chinese)">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/wu2002jian"><img src="https://avatars.githubusercontent.com/u/105405958?v=4?s=100" width="100px;" alt="fresh fish"/><br /><sub><b>fresh fish</b></sub></a><br /><a href="https://www.nexusmods.com/stardewvalley/mods/21784" title="Translation (Chinese)">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://erion.cf/"><img src="https://avatars.githubusercontent.com/u/963056?v=4?s=100" width="100px;" alt="Erion"/><br /><sub><b>Erion</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=Flameborn" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TrueBlindGaming"><img src="https://avatars.githubusercontent.com/u/98557962?v=4?s=100" width="100px;" alt="TrueBlindGaming"/><br /><sub><b>TrueBlindGaming</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=TrueBlindGaming" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://boholder.github.io/en-us/"><img src="https://avatars.githubusercontent.com/u/47084052?v=4?s=100" width="100px;" alt="boholder"/><br /><sub><b>boholder</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=boholder" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/christopherpross"><img src="https://avatars.githubusercontent.com/u/26790901?v=4?s=100" width="100px;" alt="Christopher Proß"/><br /><sub><b>Christopher Proß</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=christopherpross" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/xyzz2001"><img src="https://avatars.githubusercontent.com/u/67883774?v=4?s=100" width="100px;" alt="xywlkj2001_星云"/><br /><sub><b>xywlkj2001_星云</b></sub></a><br /><a href="https://github.com/khanshoaib3/stardew-access/commits?author=xyzz2001" title="Translation">🌍</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->

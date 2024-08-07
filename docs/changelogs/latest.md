@@ -19,7 +19,7 @@
 - broke out docs/guides.md into docs/guides with several files containing guides on various aspects of playing Stardew Valley
 - modified relevant page links in all docs files to point to the new guides subdirectory
 - added official guide heading to the readme to give users easy access to the new guides
-- - created docs/guides/guides-home.md to serve as the main page for all guides
+    - created docs/guides/guides-home.md to serve as the main page for all guides
 - created docs/guides/mining-guide.md for a future mining guide in progress
 
 ### Misc
