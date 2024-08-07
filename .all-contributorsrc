@@ -1,4 +1,5 @@
 {
   "projectName": "stardew-access",
-  "projectOwner": "khanshoaib3"
+  "projectOwner": "khanshoaib3",
+  "files": ["docs/README.md"]
 }
