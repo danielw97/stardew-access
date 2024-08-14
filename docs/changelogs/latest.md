@@ -22,6 +22,7 @@
 - - created docs/guides/guides-home.md to serve as the main page for all guides
 - created docs/guides/mining-guide.md for a future mining guide in progress
 - added the fishing guide back into docs/guides/general-guides.md
+- added guides for the mines, quarry mine, skull cavvern, and relevant ancillary info to docs/guides/mining-guides.md
 
 ### Misc
 
