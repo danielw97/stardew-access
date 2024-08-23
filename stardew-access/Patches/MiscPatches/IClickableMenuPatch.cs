@@ -96,13 +96,16 @@ internal class IClickableMenuPatch : IPatch
         typeof(TileDataEntryMenu),
     ];
 
-    private static bool _justOpened = true;
     private static bool _tryHoverPatch = false;
 
     internal static HashSet<string> ManuallyPatchedCustomMenus = [];
 
     internal static string? CurrentMenu;
     internal static bool ManuallyCallingDrawPatch = false;
+
+#if DEBUG
+    private static bool _justOpened = true;
+#endif
 
     public void Apply(Harmony harmony)
     {
@@ -160,8 +163,6 @@ internal class IClickableMenuPatch : IPatch
 
             /* v1.6.9
             if (activeMenu.currentlySnappedComponent == null || string.IsNullOrWhiteSpace(activeMenu!.currentlySnappedComponent.ScreenReaderText))
-            */
-            if (activeMenu.currentlySnappedComponent == null)
             {
                 if (OptionsElementUtils.NarrateOptionSlotsInMenuUsingReflection(activeMenu))
                     return;
@@ -177,12 +178,30 @@ internal class IClickableMenuPatch : IPatch
                 return;
             }
 
+            if (ClickableComponentUtils.NarrateHoveredComponentFromList(activeMenu.allClickableComponents))
+            {
+                return;
+            }
+            */
+
+            if (OptionsElementUtils.NarrateOptionSlotsInMenuUsingReflection(activeMenu))
+                return;
+
+            if (ClickableComponentUtils.NarrateHoveredComponentUsingReflectionInMenu(activeMenu))
+            {
+                return;
+            }
 
             if (ClickableComponentUtils.NarrateHoveredComponentFromList(activeMenu.allClickableComponents))
             {
                 return;
             }
 
+            if (activeMenu.currentlySnappedComponent != null)
+            {
+                ClickableComponentUtils.NarrateComponent(activeMenu.currentlySnappedComponent);
+                return;
+            }
 
             _tryHoverPatch = true;
         }
@@ -332,7 +351,10 @@ internal class IClickableMenuPatch : IPatch
         TextBoxPatch.activeTextBoxes = "";
         CurrentMenu = null;
         ManuallyCallingDrawPatch = false;
-        _justOpened = true;
         _tryHoverPatch = false;
+
+#if DEBUG
+        _justOpened = true;
+#endif
     }
 }
