@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using stardew_access.Translation;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Menus;
 
@@ -43,6 +44,12 @@ public interface IStardewAccessApi
     /// <br />Resets everytime after use.
     /// </summary>
     public string MenuSuffixNoQueryText { get; set; }
+
+    /// <summary>
+    /// (Default to `C`) Mainly used to speak some visual information in a menu like some label(s) which isn't
+    /// reachable by gamepad naviagtion.
+    /// </summary>
+    public KeybindList PrimaryInfoKey { get; }
 
     /// <summary>Speaks the text via the loaded screen reader (if any).</summary>
     /// <param name="text">The text to be narrated.</param>

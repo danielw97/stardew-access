@@ -3,6 +3,7 @@ using stardew_access.Features;
 using stardew_access.Patches;
 using stardew_access.Translation;
 using stardew_access.Utils;
+using StardewModdingAPI.Utilities;
 using StardewValley;
 using StardewValley.Menus;
 // ReSharper disable UnusedMember.Global
@@ -49,6 +50,8 @@ namespace stardew_access
             get => MainClass.ScreenReader.MenuSuffixNoQueryText;
             set => MainClass.ScreenReader.MenuSuffixNoQueryText = value;
         }
+
+        public KeybindList PrimaryInfoKey => MainClass.Config.PrimaryInfoKey;
 
         public bool Say(String text, Boolean interrupt)
             => MainClass.ScreenReader.Say(text, interrupt);
