@@ -8,9 +8,12 @@
 
 ### Bug Fixes
 
+- Updated priorities of widget/components fixing #398 (Should be removed from final changelog as it was caused from previous pr)
+- fixed new categories not being loaded because of a bug in  `CATEGORY::AddNewCategory`.
 
 ### Tile Tracker Changes
 
+- Retrieve tile information on maps via `TileDesc` tile property. This property can be used in custom maps to describe undetected tiles.
 
 ### Guides And Docs
 
@@ -33,6 +36,7 @@
     - SpeakHoveredOptionsElementFromList()
     - SpeakOptionsElement()
 - The methods used for making custom menus accessible automatically have been improved, given that the menus follow certain guidelines.
+- Exposed `PrimaryInfoKey` to the public api. This can be used in custom menus to speak extra info on key press for 3rd party mods.
 
 ### Translation Changes
 
