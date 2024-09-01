@@ -57,6 +57,7 @@ internal class PatchManager
             new LetterViewerMenuPatch(),
             new LevelUpMenuPatch(),
             new MasteryTrackerMenuPatch(),
+            new MouseOverrideForTileViewer(),
             new NamingMenuPatch(),
             new NumberSelectionMenuPatch(),
             new PondQueryMenuPatch(),
