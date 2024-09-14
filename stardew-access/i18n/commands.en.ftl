@@ -59,3 +59,4 @@ commands-other-hns_percentage_toggle = Speaking health and stamina in {$is_enabl
   } format
 commands-other-refresh_mod_config = Mod configs refreshed!
 commands-other-refresh_screen_reader = Screen reader refreshed!
+commands-other-refresh_user_tiles = User tiles refreshed!

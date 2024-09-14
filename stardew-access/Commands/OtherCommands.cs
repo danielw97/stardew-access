@@ -1,3 +1,4 @@
+using stardew_access.Tiles;
 using stardew_access.Translation;
 using StardewValley;
 
@@ -30,6 +31,17 @@ public class OtherCommands
         MainClass.Config = MainClass.ModHelper!.ReadConfig<ModConfig>();
 
         string text = Translator.Instance.Translate("commands-other-refresh_mod_config",
+            translationCategory: TranslationCategory.CustomCommands);
+
+        if (fromChatBox) Game1.chatBox.addInfoMessage(text);
+        else Log.Info(text);
+    }
+
+    public static void RefreshUserTiles_refut(string[] args, bool fromChatBox = false)
+    {
+        AccessibleTileManager.Instance.LoadTileData();
+
+        string text = Translator.Instance.Translate("commands-other-refresh_user_tiles",
             translationCategory: TranslationCategory.CustomCommands);
 
         if (fromChatBox) Game1.chatBox.addInfoMessage(text);
