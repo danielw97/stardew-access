@@ -679,12 +679,14 @@ public class DynamicTiles
         // Buildings[546]: Left pillar of gate
         // Buildings[548]: Right pillar of gate
 
-        if (dungeon.getTileIndexAt(new Point(x, y), "Back") is 496 or 497)
+        int back = dungeon.getTileIndexAt(new Point(x, y), "Back");
+
+        if (back is 496 or 497)
         {
-            return ("tile-volcano_dungeon-pressure_pad", CATEGORY.Interactables);
+            return (Translator.Instance.Translate("tile-volcano_dungeon-pressure_pad", new { active = back is 497 ? 1 : 0}), CATEGORY.Interactables);
         }
 
-        if (dungeon.getTileIndexAt(new Point(x, y), "Back") is 547 && dungeon.getTileIndexAt(new Point(x, y), "Buildings") is 0)
+        if (back is 547 && dungeon.getTileIndexAt(new Point(x, y), "Buildings") is 0)
         {
             return ("tile-volcano_dungeon-gate", CATEGORY.Doors);
         }

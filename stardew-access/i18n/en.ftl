@@ -243,7 +243,10 @@ tile-busy-prefix = Busy {$content}
 tile_name-stepping_stone = Stepping stone
 tile_name-pathway = Pathway
 tile_name-flooring = Flooring
-tile-volcano_dungeon-pressure_pad = Pressure Pad
+tile-volcano_dungeon-pressure_pad = Pressure Pad {$active ->
+    [0] {EMPTYSTRING()}
+    *[1] Active
+  }
 tile-volcano_dungeon-gate = Gate
 tile-forest-giant_tree_sump = Giant Tree Stump
 tile-town-bookseller = Bookseller
