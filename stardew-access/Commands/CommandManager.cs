@@ -22,6 +22,7 @@ public class CommandManager
         // Other Commands
         {"refsr", "Refresh screen reader"},
         {"refmc", "Refresh mod config"},
+        {"refut", "Refresh user tiles"},
         {"hnspercent", "Toggle between speaking in percentage or full health and stamina."},
         {"snapmouse", "Toggle snap mouse feature."},
         {"warning", "Toggle warnings feature."},

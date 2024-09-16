@@ -718,7 +718,15 @@ public class TileInfo
         }
         else if (obj is Furniture furniture)
         {
-            toReturn.category = CATEGORY.Furniture;
+            toReturn.category = furniture is StorageFurniture ? CATEGORY.Containers: CATEGORY.Furniture;
+        }
+        else if (obj is Workbench)
+        {
+            toReturn.category = CATEGORY.Interactables;
+        }
+        else if (obj.QualifiedItemId == "(BC)99") // Default Feed Hopprt
+        {
+            toReturn.category = CATEGORY.Interactables;
         }
         else if (obj is Torch torch)
         {

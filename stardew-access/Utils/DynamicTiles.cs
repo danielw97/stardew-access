@@ -989,10 +989,9 @@ public class DynamicTiles
         if (FeedingBenchBounds.TryGetValue(locationName, out var bounds) && x >= bounds.minX && x <= bounds.maxX && y == bounds.y)
         {
             (string? name, CATEGORY category) = TileInfo.GetObjectAtTile(currentLocation, x, y, true);
-            bool isEmpty = name != null && name.Contains("hay", StringComparison.OrdinalIgnoreCase);
-            if (isEmpty)
-                category = CATEGORY.Pending;
-            return (Translator.Instance.Translate("tile_name-feeding_bench", new { is_empty = (isEmpty ? 0 : 1) }), category);
+            bool hasHay = name != null && name.Contains("hay", StringComparison.OrdinalIgnoreCase);
+            category = hasHay ? CATEGORY.Other : CATEGORY.Pending;
+            return (Translator.Instance.Translate("tile_name-feeding_bench", new { is_empty = (hasHay ? 0 : 1) }), category);
         }
 
         return null;
