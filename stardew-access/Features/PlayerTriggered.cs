@@ -53,6 +53,15 @@ public class PlayerTriggered : FeatureBase
             return true;
         }
 
+        if (MainClass.Config.ReadFlooringKey.JustPressed())
+        {
+#if DEBUG
+            Log.Verbose($"PlayerTriggered->OnButtonPressed->ReadFlooringKey: Toggling read flooring config.");
+#endif
+            MainClass.Config.ReadFlooring = !MainClass.Config.ReadFlooring;
+            MainClass.ModHelper!.WriteConfig(MainClass.Config);
+        }
+
         // Exit if in a menu
         if (Game1.activeClickableMenu != null)
         {

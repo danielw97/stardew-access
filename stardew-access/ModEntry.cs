@@ -161,7 +161,7 @@ public class MainClass : Mod
 
         static void RefreshBuildListIfRequired()
         {
-            if (Game1.player != null)
+            if (Game1.player != null && Context.IsPlayerFree)
             {
                 if (Game1.timeOfDay >= 600 && prevDate != CurrentPlayer.Date)
                 {

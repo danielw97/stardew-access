@@ -78,6 +78,7 @@ For a full list of key names, refer to the [Key Bindings List](https://stardewva
 | ReadTileDebug              | false         | Sets whether extra debug info is included when reading tile info                                  |
 | ReadStandingTileKey        | LeftAlt + J   | Speak the contents of the tile player is standing on                                              |
 | ReadFlooring               | false         | Toggle reading floorings                                                                          |
+| ReadFlooringKey            | \<unset\>     | Toggles reading floorings, an alternate/companion to `flooring` command.                          |
 | DisableDescriptiveFlooring | false         | Toggle reading descriptive names for flooring or generice ones (pathway/flooring/stepping stone). |
 | WateredToggle              | true          | Toggle speaking watered or unwatered for crops                                                    |
 | ReadTileIndexes            | false         | Toggle speaking tile indexes with other info                                                      |

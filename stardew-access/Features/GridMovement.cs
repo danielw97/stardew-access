@@ -69,7 +69,7 @@ internal class GridMovement : FeatureBase
         Farmer player = Game1.player;
         if (MainClass.ModHelper == null) return;
         if (!LastGridMovementButtonPressed.HasValue) return;
-        
+
         SButton button = LastGridMovementButtonPressed.Value.ToSButton();
         bool isButtonDown = MainClass.ModHelper.Input.IsDown(button) ||
                             MainClass.ModHelper.Input.IsSuppressed(button);
@@ -156,7 +156,7 @@ internal class GridMovement : FeatureBase
         if (MainClass.Config.ToggleGridMovementKey.JustPressed())
         {
             MainClass.Config.GridMovementActive = !MainClass.Config.GridMovementActive;
-            MainClass.ScreenReader.TranslateAndSay("feature-grid_movement_status", true, new {is_active = MainClass.Config.GridMovementActive ? 1 : 0});
+            MainClass.ScreenReader.TranslateAndSay("feature-grid_movement_status", true, new { is_active = MainClass.Config.GridMovementActive ? 1 : 0 });
             return;
         }
 
@@ -173,7 +173,8 @@ internal class GridMovement : FeatureBase
     {
         is_moving = false;
         //this is called if it hasn't already naturally been called by the game so the player doesn't freeze if the warp is unsuccessful
-        if(is_warping) {
+        if (is_warping)
+        {
             HandleFinishedWarping(true);
         }
         timer.Stop();
@@ -187,7 +188,7 @@ internal class GridMovement : FeatureBase
         LastGridMovementButtonPressed = pressedButton;
         LastGridMovementDirection = direction;
 
-        if (is_warping == true || is_moving || Game1.IsChatting || !Game1.player.CanMove || (Game1.CurrentEvent!=null && !Game1.CurrentEvent.canMoveAfterDialogue()))
+        if (is_warping == true || is_moving || Game1.IsChatting || !Game1.player.CanMove || (Game1.CurrentEvent != null && !Game1.CurrentEvent.canMoveAfterDialogue()))
             return;
 
         if (HandlePlayerDirection(direction)) return;
@@ -211,17 +212,17 @@ internal class GridMovement : FeatureBase
             return;
         }
 
-        #if DEBUG
+#if DEBUG
         Log.Verbose($"Move To: {tileLocation}");
-        #endif
+#endif
 
         Rectangle position = new((int)tileLocation.X * Game1.tileSize, (int)tileLocation.Y * Game1.tileSize, Game1.tileSize, Game1.tileSize);
         Warp warp = location.isCollidingWithWarpOrDoor(position, Game1.player);
-        if(warp != null)
+        if (warp != null)
         {
             HandleWarpInteraction(warp, location, tileLocation);
         }
-        else 
+        else
         {
             HandlePlayerMovement(tileLocation, direction);
         }
@@ -231,11 +232,11 @@ internal class GridMovement : FeatureBase
     private bool HandlePlayerDirection(int direction)
     {
         if (Game1.player.FacingDirection == direction) return false;
-            
+
         Game1.player.faceDirection(direction);
         Game1.playSound("dwop");
         is_moving = true;
-            
+
         timer.Start();
         return true;
     }
@@ -246,7 +247,8 @@ internal class GridMovement : FeatureBase
         GameLocation location = Game1.currentLocation;
 
         PathFindController pathfinder = new(player, location, tileLocation.ToPoint(), direction);
-        if (pathfinder.pathToEndPoint != null) {
+        if (pathfinder.pathToEndPoint != null)
+        {
             //valid point
             player.Position = tileLocation * Game1.tileSize;
             if (++StepCounter % tilesPerStep == 0)
@@ -257,23 +259,23 @@ internal class GridMovement : FeatureBase
 
     private void HandleWarpInteraction(Warp warp, GameLocation location, Vector2 tileLocation)
     {
-        #if DEBUG
+#if DEBUG
         Log.Verbose($"GridMovement.HandleWarpInteraction: Handling Warp {warp} from location {location} at {tileLocation}");
-        #endif
+#endif
         if (TileInfo.GetDoorAtTile(location, (int)tileLocation.X, (int)tileLocation.Y, true, true) is not null
             || DynamicTiles.GetDynamicTileAt(location, (int)tileLocation.X, (int)tileLocation.Y, lessInfo: true).category == CATEGORY.Doors)
         {
             // Manually check for door and pressActionButton() method instead of warping (warping also works when the door is locked, for example it warps to the Pierre's shop before it's opening time)
-            #if DEBUG
+#if DEBUG
             Log.Verbose("Collides with Door");
-            #endif
+#endif
             Game1.pressActionButton(Game1.GetKeyboardState(), Game1.input.GetMouseState(), Game1.input.GetGamePadState());
         }
         else
         {
-            #if DEBUG
+#if DEBUG
             Log.Verbose("Collides with Warp");
-            #endif
+#endif
 
             if (location.checkAction(new Location((int)tileLocation.X * Game1.tileSize, (int)tileLocation.Y * Game1.tileSize), Game1.viewport, Game1.player))
             {
@@ -299,12 +301,16 @@ internal class GridMovement : FeatureBase
     {
         Game1.player.canMove = true;
         is_moving = false;
-        if (is_warping) {
+        if (is_warping)
+        {
             is_warping = false;
 
-            if(failWarp) {
+            if (failWarp)
+            {
                 Log.Debug("Failed to walk through entrance.");
-            } else {
+            }
+            else
+            {
                 Game1.playSound("doorClose");
             }
         }

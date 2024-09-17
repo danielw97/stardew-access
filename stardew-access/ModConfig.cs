@@ -69,6 +69,11 @@ internal class ModConfig
     public Boolean ReadFlooring { get; set; } = false;
 
     /// <summary>
+    /// Toggles reading floorings, an alternate/companion to `flooring` command;
+    /// </summary>
+    public KeybindList ReadFlooringKey { get; set; } = KeybindList.Parse("");
+
+    /// <summary>
     /// Toggle reading descriptive names for flooring or generice ones (pathway/flooring/stepping stone).
     /// </summary>
     public Boolean DisableDescriptiveFlooring { get; set; } = false;
