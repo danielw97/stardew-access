@@ -377,6 +377,8 @@ internal class TileViewer : FeatureBase
     /// </summary>
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        if (!Context.IsPlayerFree) return;
+
         //Reset the viewing cursor to the player when they turn or move. This will not reset the locked offset relative cursor position.
         if (_prevFacing != PlayerFacingVector || _prevPlayerPosition != PlayerPosition)
         {

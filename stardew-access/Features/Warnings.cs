@@ -3,6 +3,7 @@ namespace stardew_access.Features;
 using Utils;
 using Translation;
 using StardewModdingAPI.Events;
+using StardewModdingAPI;
 
 /// <summary>
 /// Warns the player when their health or stamina/energy is low. Also warns when its past midnight.
@@ -33,6 +34,8 @@ public class Warnings : FeatureBase
 
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        if (!Context.IsPlayerFree) return;
+
         if (!MainClass.Config.Warning) return;
             
         this.CheckForHealth();

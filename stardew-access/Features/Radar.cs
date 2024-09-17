@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Utils;
 using StardewValley;
 using StardewValley.Objects;
+using StardewModdingAPI;
 
 internal class Radar : FeatureBase
 {
@@ -83,6 +84,8 @@ internal class Radar : FeatureBase
 
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        if (!Context.IsPlayerFree) return;
+
         RunRadarFeatureIfEnabled();
 
         async void RunRadarFeatureIfEnabled()

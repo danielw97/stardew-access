@@ -35,6 +35,8 @@ internal class ReadTile : FeatureBase
 
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        if (!Context.IsPlayerFree) return;
+
         if (!MainClass.Config.ReadTile)
             return;
             

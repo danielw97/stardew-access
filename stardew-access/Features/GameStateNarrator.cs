@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Translation;
 using StardewValley;
 using stardew_access.Utils;
+using StardewModdingAPI;
 
 internal class GameStateNarrator : FeatureBase
 {
@@ -35,9 +36,12 @@ internal class GameStateNarrator : FeatureBase
 
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        RunHudMessageNarration();
+
+        if (!Context.IsPlayerFree) return;
+
         NarrateCurrentSlot();
         NarrateCurrentLocation();
-        RunHudMessageNarration();
 
         static async void RunHudMessageNarration()
         {

@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq; // Add this to use SequenceEqual
-
 namespace stardew_access.Features;
 
 using Translation;
@@ -23,7 +20,7 @@ internal class KonamiCode : FeatureBase
     }
 
     public override void Update(object? sender, UpdateTickedEventArgs e)
-    {}
+    { }
 
     public override bool OnButtonPressed(object? sender, ButtonPressedEventArgs e)
     {
@@ -83,7 +80,7 @@ internal class KonamiCode : FeatureBase
         Game1.player.stamina = Game1.player.maxStamina.Value;
         Game1.player.temporarilyInvincible = true;
         Game1.player.temporaryInvincibilityTimer = -1000000000;
-        
+
         Game1.player.clearBackpack();
         Game1.player.increaseBackpackSize(36);
         Game1.player.hasRustyKey = false;
