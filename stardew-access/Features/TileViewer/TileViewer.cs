@@ -23,6 +23,10 @@ internal class TileViewer : FeatureBase
     private Vector2 _prevPlayerPosition = Vector2.Zero, _prevFacing = Vector2.Zero;
     private Vector2 _finalTile = Vector2.Zero;
     private Vector2 _prevTile = Vector2.Zero;
+    private bool _upKeyFlag = true;
+    private bool _rightKeyFlag = true;
+    private bool _downKeyFlag = true;
+    private bool _leftKeyFlag = true;
 
     public Boolean IsAutoWalking = false;
 
@@ -145,22 +149,6 @@ internal class TileViewer : FeatureBase
         else if (MainClass.Config.TileCursorPreciseLeftKey.JustPressed())
         {
             CursorMoveInput(new Vector2(-MainClass.Config.TileCursorPreciseMovementDistance, 0), true);
-        }
-        else if (MainClass.Config.TileCursorUpKey.JustPressed())
-        {
-            CursorMoveInput(new Vector2(0, -Game1.tileSize));
-        }
-        else if (MainClass.Config.TileCursorRightKey.JustPressed())
-        {
-            CursorMoveInput(new Vector2(Game1.tileSize, 0));
-        }
-        else if (MainClass.Config.TileCursorDownKey.JustPressed())
-        {
-            CursorMoveInput(new Vector2(0, Game1.tileSize));
-        }
-        else if (MainClass.Config.TileCursorLeftKey.JustPressed())
-        {
-            CursorMoveInput(new Vector2(-Game1.tileSize, 0));
         }
         else if (MainClass.Config.AutoWalkToTileKey.JustPressed() && Context.IsPlayerFree)
         {
@@ -377,6 +365,34 @@ internal class TileViewer : FeatureBase
     /// </summary>
     public override void Update(object? sender, UpdateTickedEventArgs e)
     {
+        if ((Game1.activeClickableMenu == null && Context.IsPlayerFree) || IsInMenuBuilderViewport())
+        {
+            if (MainClass.Config.TileCursorUpKey.IsDown() && _upKeyFlag)
+            {
+                CursorMoveInput(new Vector2(0, -Game1.tileSize));
+                _upKeyFlag = false;
+                Task.Delay(200).ContinueWith(_ => { _upKeyFlag = true; });
+            }
+            else if (MainClass.Config.TileCursorRightKey.IsDown() && _rightKeyFlag)
+            {
+                CursorMoveInput(new Vector2(Game1.tileSize, 0));
+                _rightKeyFlag = false;
+                Task.Delay(200).ContinueWith(_ => { _rightKeyFlag = true; });
+            }
+            else if (MainClass.Config.TileCursorDownKey.IsDown() && _downKeyFlag)
+            {
+                CursorMoveInput(new Vector2(0, Game1.tileSize));
+                _downKeyFlag = false;
+                Task.Delay(200).ContinueWith(_ => { _downKeyFlag = true; });
+            }
+            else if (MainClass.Config.TileCursorLeftKey.IsDown() && _leftKeyFlag)
+            {
+                CursorMoveInput(new Vector2(-Game1.tileSize, 0));
+                _leftKeyFlag = false;
+                Task.Delay(200).ContinueWith(_ => { _leftKeyFlag = true; });
+            }
+        }
+
         if (!Context.IsPlayerFree) return;
 
         //Reset the viewing cursor to the player when they turn or move. This will not reset the locked offset relative cursor position.
