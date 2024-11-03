@@ -161,7 +161,6 @@ internal class IClickableMenuPatch : IPatch
             }
 #endif
 
-            /* v1.6.9
             if (activeMenu.currentlySnappedComponent == null || string.IsNullOrWhiteSpace(activeMenu!.currentlySnappedComponent.ScreenReaderText))
             {
                 if (OptionsElementUtils.NarrateOptionSlotsInMenuUsingReflection(activeMenu))
@@ -180,26 +179,6 @@ internal class IClickableMenuPatch : IPatch
 
             if (ClickableComponentUtils.NarrateHoveredComponentFromList(activeMenu.allClickableComponents))
             {
-                return;
-            }
-            */
-
-            if (OptionsElementUtils.NarrateOptionSlotsInMenuUsingReflection(activeMenu))
-                return;
-
-            if (ClickableComponentUtils.NarrateHoveredComponentUsingReflectionInMenu(activeMenu))
-            {
-                return;
-            }
-
-            if (ClickableComponentUtils.NarrateHoveredComponentFromList(activeMenu.allClickableComponents))
-            {
-                return;
-            }
-
-            if (activeMenu.currentlySnappedComponent != null)
-            {
-                ClickableComponentUtils.NarrateComponent(activeMenu.currentlySnappedComponent);
                 return;
             }
 

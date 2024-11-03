@@ -124,7 +124,7 @@ internal class MouseOverrideForTileViewer : IPatch
                 // var location = carpenterMenu.GetInitialBuildingPlacementViewport(carpenterMenu.TargetLocation);
                 MousePosition = new((Game1.viewport.Width / 2f) - (Game1.tileSize / 2), (Game1.viewport.Height / 2f) - (Game1.tileSize / 2));
             }
-            if (MousePosition != null && MousePosition.HasValue) Game1.setMousePosition((int)MousePosition.Value.X, (int)MousePosition.Value.Y);
+            if (MousePosition != null && MousePosition.HasValue) Game1.setMousePosition((int)MousePosition.Value.X, (int)MousePosition.Value.Y, false);
         }
         catch (Exception e)
         {

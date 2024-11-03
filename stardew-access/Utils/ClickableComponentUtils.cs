@@ -89,18 +89,12 @@ public partial class ClickableComponentUtils
 
     public static void NarrateComponent(ClickableComponent clickableComponent, CommonUIButton? commonButtonType = null, bool screenReaderInterrupt = true)
     {
-        /* v1.6.9
         if (clickableComponent.ScreenReaderIgnore) return;
 
         string toSpeak = commonButtonType is null
             ? string.IsNullOrWhiteSpace(clickableComponent.ScreenReaderText)
                 ? string.IsNullOrWhiteSpace(clickableComponent.name) ? clickableComponent.label : clickableComponent.name
                 : clickableComponent.ScreenReaderText
-            : commonButtonType.Value;
-        */
-
-        string toSpeak = commonButtonType is null
-            ? string.IsNullOrWhiteSpace(clickableComponent.name) ? clickableComponent.label : clickableComponent.name
             : commonButtonType.Value;
 
         MainClass.ScreenReader.SayWithMenuChecker(toSpeak, interrupt: screenReaderInterrupt);

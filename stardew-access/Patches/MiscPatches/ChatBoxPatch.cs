@@ -32,11 +32,11 @@ internal class ChatBoxPatch : IPatch
     }
 
     /// <summary> Executes the custom commands if matched and skips further execution of original method. </summary>
-    private static bool RunCommandPatch(ChatBox __instance, string command)
+    private static bool RunCommandPatch(ChatBox __instance, string commandText)
     {
         try
         {
-            string[] commandWithArgs = ArgUtility.SplitBySpaceQuoteAware(command);
+            string[] commandWithArgs = ArgUtility.SplitBySpaceQuoteAware(commandText);
             string commandName = commandWithArgs[0];
             string[] args = commandWithArgs.Skip(1).ToArray();
 

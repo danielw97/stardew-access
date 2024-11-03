@@ -369,25 +369,25 @@ internal class TileViewer : FeatureBase
         {
             if (MainClass.Config.TileCursorUpKey.IsDown() && _upKeyFlag)
             {
-                CursorMoveInput(new Vector2(0, -Game1.tileSize));
+                CursorMoveInput(new Vector2(0, -64));
                 _upKeyFlag = false;
                 Task.Delay(200).ContinueWith(_ => { _upKeyFlag = true; });
             }
             else if (MainClass.Config.TileCursorRightKey.IsDown() && _rightKeyFlag)
             {
-                CursorMoveInput(new Vector2(Game1.tileSize, 0));
+                CursorMoveInput(new Vector2(64, 0));
                 _rightKeyFlag = false;
                 Task.Delay(200).ContinueWith(_ => { _rightKeyFlag = true; });
             }
             else if (MainClass.Config.TileCursorDownKey.IsDown() && _downKeyFlag)
             {
-                CursorMoveInput(new Vector2(0, Game1.tileSize));
+                CursorMoveInput(new Vector2(0, 64));
                 _downKeyFlag = false;
                 Task.Delay(200).ContinueWith(_ => { _downKeyFlag = true; });
             }
             else if (MainClass.Config.TileCursorLeftKey.IsDown() && _leftKeyFlag)
             {
-                CursorMoveInput(new Vector2(-Game1.tileSize, 0));
+                CursorMoveInput(new Vector2(-64, 0));
                 _leftKeyFlag = false;
                 Task.Delay(200).ContinueWith(_ => { _leftKeyFlag = true; });
             }
