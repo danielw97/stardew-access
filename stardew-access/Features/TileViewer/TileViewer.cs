@@ -101,7 +101,7 @@ internal class TileViewer : FeatureBase
     internal static bool IsInMenuBuilderViewport() => Game1.activeClickableMenu switch
     {
         CarpenterMenu => CarpenterMenuPatch.isOnFarm,
-        PurchaseAnimalsMenu => PurchaseAnimalsMenuPatch.isOnFarm,
+        PurchaseAnimalsMenu => PurchaseAnimalsMenuPatch.isOnFarm && !PurchaseAnimalsMenuPatch.isNamingAnimal,
         AnimalQueryMenu => AnimalQueryMenuPatch.isOnFarm,
         _ => false
     };

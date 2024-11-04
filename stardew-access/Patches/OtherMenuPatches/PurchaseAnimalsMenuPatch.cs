@@ -11,6 +11,7 @@ internal class PurchaseAnimalsMenuPatch : IPatch
 {
     internal static FarmAnimal? animalBeingPurchased = null;
     internal static bool isOnFarm = false;
+    internal static bool isNamingAnimal = false;
     internal static PurchaseAnimalsMenu? purchaseAnimalsMenu;
     
     private static bool firstTimeInNamingMenu = true;
@@ -32,6 +33,7 @@ internal class PurchaseAnimalsMenuPatch : IPatch
             int x = Game1.getMouseX(true), y = Game1.getMouseY(true); // Mouse x and y position
             purchaseAnimalsMenu = __instance;
             isOnFarm = ___onFarm;
+            isNamingAnimal = ___namingAnimal;
             animalBeingPurchased = ___animalBeingPurchased;
 
             if (___onFarm && ___namingAnimal)

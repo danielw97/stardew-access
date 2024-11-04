@@ -824,7 +824,7 @@ public class TileInfo
                 toReturn.name = $"{toReturn.name} ({obj.QualifiedItemId})";
 
             // TODO Internationalize this...
-            Farmer farmerOwner = Game1.getFarmerMaybeOffline(obj.owner.Value);
+            Farmer? farmerOwner = Game1.GetPlayer(obj.owner.Value);
             string ownerName;
             if (farmerOwner == null)
                 ownerName = "";

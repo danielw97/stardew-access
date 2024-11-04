@@ -132,6 +132,7 @@ internal static class InventoryUtils
         string equippedTackles = (item is FishingRod fishingRod2 && fishingRod2.GetTackle().Count > 0)
             ? string.Join(", ", fishingRod2.GetTackle().Select(x => x is not null ? x.DisplayName : "").Where(x => !string.IsNullOrWhiteSpace(x)))
             : "";
+        string catName = item.getCategoryName();
 
         string details;
         string toReturn = name;
@@ -140,6 +141,7 @@ internal static class InventoryUtils
         {
             details = string.Join(", ", new string[]
             {
+                catName,
                 quality,
                 equippedBait,
                 equippedTackles,
@@ -155,6 +157,7 @@ internal static class InventoryUtils
         {
             details = string.Join(", ", new string[]
             {
+                catName,
                 quality,
                 equippedBait,
                 equippedTackles,
