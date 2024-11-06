@@ -7,15 +7,14 @@
 
 ### Feature Updates
 
-- Allow tile viewer in purchasing and moving animal menus.
-- [Tile Viewer] Add continuous cursor movement when keys are held down. (Doesn't work with precision movement)
+- [Tile Viewer] Allowed tile viewer while purchasing and moving animal menus.
+- [Tile Viewer] Added continuous cursor movement when keys are held down. *Doesn't work with precision movement.*
 
 ### Bug Fixes
 
-- Updated priorities of widget/components fixing #398 (Should be removed from final changelog as it was caused from previous pr)
-- fixed new categories not being loaded because of a bug in  `CATEGORY::AddNewCategory`.
-- [Tile Viewer Builder Menus] Fixed indefinite panning of viewport when cursor reaches map's edges; #309
-- Fix categories for certain items:
+- Fixed new categories not being loaded because of a bug in  `CATEGORY::AddNewCategory`.
+- [Tile Viewer in Menus] Fixed indefinite panning of viewport when cursor reaches map's edges; #309
+- Fixed categories for certain items:
     - Moved workbench and feed hopper to interactable category
     - Fixed empty feeding benches showing up in other category
     - Moved storage furniture (dressers) to containers
@@ -24,18 +23,19 @@
 
 - Retrieve tile information on maps via `TileDesc` tile property. This property can be used in custom maps to describe undetected tiles.
 - Tracked anvil and solar panel as machines
+- Added `Active` suffix to pressed pressure pads
 
 ### Guides And Docs
 
 - Added a fishing guide to the docs. This explains how to fish as a blind Stardew Access player and offers recommendations and resources to make the fishing minigame less painful.
-- added a features showcase and installation section with links to setup instructions and Accessible Stardew Setup to readme.md
-- broke out docs/guides.md into docs/guides with several files containing guides on various aspects of playing Stardew Valley
-- modified relevant page links in all docs files to point to the new guides subdirectory
-- added official guide heading to the readme to give users easy access to the new guides
-- - created docs/guides/guides-home.md to serve as the main page for all guides
-- created docs/guides/mining-guide.md for a future mining guide in progress
-- added the fishing guide back into docs/guides/general-guides.md
-- added guides for the mines, quarry mine, skull cavvern, and relevant ancillary info to docs/guides/mining-guides.md
+- Added a features showcase and installation section with links to setup instructions and Accessible Stardew Setup to readme.md
+- Broke out docs/guides.md into docs/guides with several files containing guides on various aspects of playing Stardew Valley
+- Modified relevant page links in all docs files to point to the new guides subdirectory
+- Added official guide heading to the readme to give users easy access to the new guides
+- Created docs/guides/guides-home.md to serve as the main page for all guides
+- Created docs/guides/mining-guide.md for a future mining guide in progress
+- Added the fishing guide back into docs/guides/general-guides.md
+- Added guides for the mines, quarry mine, skull cavvern, and relevant ancillary info to docs/guides/mining-guides.md
 
 ### Misc
 
@@ -48,7 +48,6 @@
 - The methods used for making custom menus accessible automatically have been improved, given that the menus follow certain guidelines.
 - Exposed `PrimaryInfoKey` to the public api. This can be used in custom menus to speak extra info on key press for 3rd party mods.
 - Speak HUD messages even if player isn't free to move.
-- Add `Active` suffix to pressed pressure pads
 
 ### Translation Changes
 
