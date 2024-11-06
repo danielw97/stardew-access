@@ -18,6 +18,7 @@
     - Moved workbench and feed hopper to interactable category
     - Fixed empty feeding benches showing up in other category
     - Moved storage furniture (dressers) to containers
+- [Tile Viewer in menus] Fixed ui scaling issue; #347
 
 ### Tile Tracker Changes
 
@@ -48,6 +49,7 @@
 - The methods used for making custom menus accessible automatically have been improved, given that the menus follow certain guidelines.
 - Exposed `PrimaryInfoKey` to the public api. This can be used in custom menus to speak extra info on key press for 3rd party mods.
 - Speak HUD messages even if player isn't free to move.
+- Speak category of items in inventory.
 
 ### Translation Changes
 
