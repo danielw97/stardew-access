@@ -250,6 +250,7 @@ tile-volcano_dungeon-pressure_pad = Pressure Pad {$active ->
 tile-volcano_dungeon-gate = Gate
 tile-forest-giant_tree_sump = Giant Tree Stump
 tile-town-bookseller = Bookseller
+tile-town-krobus_hiding_bush = Strange Bush
 
 ## Entrances
 

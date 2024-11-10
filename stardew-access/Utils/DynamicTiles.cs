@@ -918,6 +918,11 @@ public class DynamicTiles
             return ("tile-town-bookseller", CATEGORY.Interactables);
         }
 
+        if (x is 28 or 29 or 30 && y is 14 && Game1.player.hasQuest("31"))
+        {
+            return ("tile-town-krobus_hiding_bush", CATEGORY.Quest);
+        }
+
         return (null, null);
     }
 
