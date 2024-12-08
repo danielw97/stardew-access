@@ -1,4 +1,24 @@
 {
+  "AbandonedJojaMart": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        12
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    }
+  ],
   "AdventureGuild": [
     {
       "NameOrTranslationKey": "static_tile-adventure_guild-goals_board",
@@ -329,6 +349,26 @@
       "Category": "decor"
     }
   ],
+  "Backwoods": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-roadside_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        27
+      ],
+      "Y": [
+        27
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    }
+  ],
   "Barn": [
     {
       "NameOrTranslationKey": "static_tile-common-hay_hopper",
@@ -449,6 +489,24 @@
       "X": [87],
       "Y": [41],
       "Category": "Fishing"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-beach_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        90
+      ],
+      "Y": [
+        4
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "BeachNightMarket": [
@@ -547,6 +605,24 @@
   ],
   "BugLand": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        48
+      ],
+      "Y": [
+        46
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-common-dark_pool",
       "X": [10],
       "Y": [50],
@@ -554,6 +630,24 @@
     }
   ],
   "BusStop": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-bus_stop_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        13
+      ],
+      "Y": [
+        12
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-bus_stop-ticket_machine",
       "X": [17],
@@ -582,6 +676,24 @@
     }
   ],
   "Club": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        14
+      ],
+      "Y": [
+        4
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-club-coin_machine",
       "X": [12],
@@ -637,6 +749,28 @@
       "Category": "interactables"
     }
   ],
+  "CommunityCenter": [
+    {
+      "NameOrTranslationKey": "Trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        63
+      ],
+      "Y": [
+        16
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": [
+        "JojaMember"
+      ],
+      "IsEvent": null,
+      "Suffix": null
+    }
+  ],
   "Coop": [
     {
       "NameOrTranslationKey": "static_tile-common-hay_hopper",
@@ -678,6 +812,24 @@
     }
   ],
   "Desert": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-sandy_house_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        9
+      ],
+      "Y": [
+        52
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-desert-bus",
       "X": [18],
@@ -795,6 +947,60 @@
     }
   ],
   "Forest": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-abandoned_house_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        37
+      ],
+      "Y": [
+        94
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-ranch_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        79
+      ],
+      "Y": [
+        14
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-wizards_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        3
+      ],
+      "Y": [
+        34
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-forest-bridge_1",
       "X": [77, 82],
@@ -1028,6 +1234,24 @@
   ],
   "IslandNorth": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-field_office_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        49
+      ],
+      "Y": [
+        48
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-island_north-dig_site_parrot_express",
       "X": [5],
       "Y": [48],
@@ -1110,6 +1334,26 @@
       "X": [21],
       "Y": [45],
       "Category": "Fishing"
+    }
+  ],
+  "IslandSouthEastCave": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        34
+      ],
+      "Y": [
+        8
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "IslandWest": [
@@ -2093,6 +2337,42 @@
   ],
   "Mountain": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-adventurers_guild_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        80
+      ],
+      "Y": [
+        9
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-carpenter_shop_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        20
+      ],
+      "Y": [
+        26
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-mountain-mine_bridge",
       "X": [47],
       "Y": [7],
@@ -2150,6 +2430,24 @@
   ],
   "MovieTheater": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        19
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-movie_theater-concessions_counter",
       "X": [7],
       "Y": [6],
@@ -2182,6 +2480,24 @@
   ],
   "QiNutRoom": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        4
+      ],
+      "Y": [
+        6
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-qi_nut_room-perfection_tracker",
       "X": [13],
       "Y": [4],
@@ -2201,6 +2517,42 @@
     }
   ],
   "Railroad": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-spa_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        5
+      ],
+      "Y": [
+        56
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-summit_path_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        31
+      ],
+      "Y": [
+        25
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-railroad-empty_box",
       "X": [45],
@@ -2568,6 +2920,24 @@
   ],
   "SeedShop": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        20
+      ],
+      "Y": [
+        28
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-common-shop_counter",
       "X": [4, 5],
       "Y": [18],
@@ -2685,6 +3055,42 @@
     }
   ],
   "Town": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-cliffside_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        101
+      ],
+      "Y": [
+        40
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-park_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        29
+      ],
+      "Y": [
+        38
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-town-calender_board",
       "X": [41],
@@ -3034,6 +3440,24 @@
   ],
   "WitchSwamp": [
     {
+      "NameOrTranslationKey": "static_tile-binning_skill-witchs_trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        22
+      ],
+      "Y": [
+        21
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-witch_swamp-witch_cave_rune",
       "X": [20],
       "Y": [42],
@@ -3089,6 +3513,24 @@
     }
   ],
   "Woods": [
+    {
+      "NameOrTranslationKey": "static_tile-binning_skill-trash",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        45
+      ],
+      "Y": [
+        18
+      ],
+      "DynamicCoordinates": null,
+      "Category": "containers",
+      "WithMods": [
+        "drbirbdev.BinningSkill"
+      ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-woods-old_master_cannoli",
       "X": [8, 9],

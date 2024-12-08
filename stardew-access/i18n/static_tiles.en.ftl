@@ -587,3 +587,21 @@ static_tile-wizard_house_basement-shrine_of_illusions = Shrine of Illusions
 static_tile-tunnel-safe = Safe
 static_tile-undergroundmine77377-grim_reaper_statue = Grim Reaper Statue
 static_tile-woods-old_master_cannoli = Old Master Cannoli
+
+# drbirbdev.BinningSkill
+static_tile-binning_skill-trash = Trash
+static_tile-binning_skill-roadside_trash = Roadside Trash
+static_tile-binning_skill-beach_trash = Beach Trash
+static_tile-binning_skill-bus_stop_trash = Bus Stop Trash
+static_tile-binning_skill-sandy_house_trash = Sandy House Trash
+static_tile-binning_skill-abandoned_house_trash = Abandoned House Trash
+static_tile-binning_skill-ranch_trash = Ranch Trash
+static_tile-binning_skill-wizards_trash = Wizard's Trash
+static_tile-binning_skill-field_office_trash = Field Office Trash
+static_tile-binning_skill-adventurers_guild_trash = Adventurer's Guild Trash
+static_tile-binning_skill-carpenter_shop_trash = Carpenter Shop Trash
+static_tile-binning_skill-spa_trash = Spa Trash
+static_tile-binning_skill-summit_path_trash = Summit Path Trash
+static_tile-binning_skill-cliffside_trash = Cliffside Trash
+static_tile-binning_skill-park_trash = Park Trash
+static_tile-binning_skill-witchs_trash = Witch's Trash
