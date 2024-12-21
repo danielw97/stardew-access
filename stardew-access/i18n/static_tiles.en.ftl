@@ -9,10 +9,14 @@ static_tile-common-oven = Oven
 static_tile-common-bench = Bench
 static_tile-common-bookshelf = Bookshelf
 static_tile-common-dark_pool = Dark Pool
-static_tile-common-pond = Pond
 static_tile-common-lake = Lake
+static_tile-common-ocean = Ocean
+static_tile-common-pond = Pond
 static_tile-common-river = River
+static_tile-common-small_pool = Small Pool
+static_tile-common-swamp = Swamp
 static_tile-common-waterfall = Waterfall
+static_tile-common-driftwood = Driftwood
 
 # NPCs
 
@@ -127,6 +131,10 @@ static_tile-blacksmith-anvil = Anvil
 static_tile-blacksmith-cassette_deck = Cassette Deck
 static_tile-blacksmith-clints_drawer = Clint's Drawer
 
+# Boat Tunnel
+
+static_tile-boat_tunnel-docks_edge = Dock's Edge
+
 # Bus stop
 
 static_tile-bus_stop-ticket_machine = Ticket Machine
@@ -134,6 +142,7 @@ static_tile-bus_stop-ticket_machine = Ticket Machine
 # Caldera
 
 static_tile-caldera-rare_chest = Rare Chest
+static_tile-caldera-edge_of_the_lava_pool = Edge of the Lava Pool
 static_tile-caldera-forge = Forge
 
 # Casino (Qi's club)
@@ -151,6 +160,7 @@ static_tile-desert-three_pillars = Three Pillars
 static_tile-desert-three_pillars_center = Three Pillars Center
 static_tile-desert-desert_warp_statue = Desert Warp Statue
 static_tile-desert-sand_dragon_skull = Sand Dragon Skull
+static_tile-desert-southern_pond_overlook = Southern Pond Overlook
 
 # Elliott House
 
@@ -171,6 +181,7 @@ static_tile-fishshop-tackle_box = Tackle Box
 
 # Forest
 
+static_tile-forest-arrow_head_island_south = South Tip of Arrow Head Island
 static_tile-forest-bridge_1 = Bridge 1
 static_tile-forest-bridge_2 = Bridge 2
 static_tile-forest-bridge_3 = Bridge 3
@@ -216,6 +227,11 @@ static_tile-hospital-main_area_door = Main Area
 static_tile-island_east-banana_shrine = Banana Shrine
 static_tile-island_east-jungle_parrot_express = Jungle Parrot Express
 
+## Island Farm Cave
+
+static_tile-island_farm_cave-east_pool =Easst Pool
+static_tile-island_farm_cave-west_pool = West Pool
+
 ## Island Field Office
 
 static_tile-island_field_office-counter = Counter
@@ -224,6 +240,11 @@ static_tile-island_field_office-island_survey = Island Survey
 ## Island North
 
 static_tile-island_north-dig_site_parrot_express = Dig Site Parrot Express
+static_tile-island_north-dig_site_stairs = Dig Site Stairs
+static_tile-island_north-plank_bridge_north = Plank Bridge (North)
+static_tile-island_north-plank_bridge_south = Plank Bridge (South)
+static_tile-island_north-river_bend = River Bend
+static_tile-island_north-rope_bridge = Rope Bridge
 static_tile-island_north-volcano_parrot_express = Volcano Parrot Express
 static_tile-island_north-volcano_entrance_east = Volcano Entrance (East)
 static_tile-island_north-volcano_entrance_west = Volcano Entrance (West)
@@ -242,6 +263,10 @@ static_tile-island_south-ginger_island_warp_statue = Ginger Island Warp Statue
 static_tile-island_south-docks_parrot_express = Docks Parrot Express
 static_tile-island_south-return_boat = Return Boat
 static_tile-island_south-south_coast = south coast
+
+## Island Southeast
+
+static_tile-island_southeast-starfish_tide_pool = Starfish Tide Pool
 
 ## Island West
 
@@ -443,9 +468,10 @@ static_tile-qi_nut_room-special_order_board = Special Order Board
 
 # Railroad
 
+static_tile-railroad-boulder = Boulder
 static_tile-railroad-empty_box = Empty Box
 static_tile-railroad-dumpster = Dumpster
-static_tile-railroad-boulder = Boulder
+static_tile-railroad-spa_ponnd = Spa Pond
 static_tile-railroad-summit_boulder = Summit Boulder
 static_tile-railroad-water = Water
 

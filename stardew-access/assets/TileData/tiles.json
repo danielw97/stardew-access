@@ -557,8 +557,20 @@
       "X": [48],
       "Y": [34],
       "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-beach-west_pier",
+      "X": [11],
+      "Y": [40],
+      "Category": "Fishing"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-beach-east_pier",
+      "X": [87],
+      "Y": [41],
+      "Category": "Fishing"
     }
-  ],
+     ],
   "Blacksmith": [
     {
       "NameOrTranslationKey": "static_tile-common-shop_counter",
@@ -601,6 +613,24 @@
       "X": [5, 6],
       "Y": [4],
       "Category": "decor"
+    }
+  ],
+  "BoatTunnel": [
+    {
+      "NameOrTranslationKey": "static_tile-boat_tunnel-docks_edge",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        5
+      ],
+      "Y": [
+        9
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "BugLand": [
@@ -667,6 +697,22 @@
       "X": [25],
       "Y": [28],
       "Category": "containers"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-caldera-edge_of_the_lava_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        9
+      ],
+      "Y": [
+        32
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     },
     {
       "NameOrTranslationKey": "static_tile-caldera-forge",
@@ -867,6 +913,22 @@
       "Category": "decor"
     },
     {
+      "NameOrTranslationKey": "static_tile-desert-southern_pond_overlook",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        39
+      ],
+      "Y": [
+        55
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-desert-sand_dragon_skull",
       "X": [9, 10],
       "Y": [35, 36],
@@ -997,6 +1059,22 @@
       "WithMods": [
         "drbirbdev.BinningSkill"
       ],
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-forest-arrow_head_island_south",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        58
+      ],
+      "Y": [
+        88
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
       "Conditions": null,
       "IsEvent": null,
       "Suffix": null
@@ -1212,6 +1290,38 @@
   ],
   "IslandFarmCave": [
     {
+      "NameOrTranslationKey": "static_tile-island_farm_cave-east_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        6
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_farm_cave-west_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        3
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-npc-gourmand_frog",
       "X": [5],
       "Y": [4],
@@ -1256,6 +1366,62 @@
       "X": [5],
       "Y": [48],
       "Category": "interactables"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-dig_site_stairs",
+      "X": [18, 19],
+      "Y": [42, 43, 44, 45],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-plank_bridge_north",
+      "X": [12, 13, 14],
+      "Y": [49],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-plank_bridge_south",
+      "X": [12, 13, 14],
+      "Y": [63],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-river_bend",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        4
+      ],
+      "Y": [
+        67
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_north-rope_bridge",
+      "X": [11, 12, 13, 14, 15],
+      "Y": [39],
+      "Category": "bridges"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-common-small_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        12
+      ],
+      "Y": [
+        34
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     },
     {
       "NameOrTranslationKey": "static_tile-island_north-volcano_parrot_express",
@@ -1336,6 +1502,40 @@
       "Category": "Fishing"
     }
   ],
+  "IslandSouthEast": [
+    {
+      "NameOrTranslationKey": "static_tile-common-ocean",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        21
+      ],
+      "Y": [
+        30
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-island_southeast-starfish_tide_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        18
+      ],
+      "Y": [
+        22
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    }
+  ],
   "IslandSouthEastCave": [
     {
       "NameOrTranslationKey": "static_tile-binning_skill-trash",
@@ -1354,9 +1554,41 @@
       "Conditions": null,
       "IsEvent": null,
       "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-common-small_pool",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        9
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "IslandWest": [
+    {
+      "NameOrTranslationKey": "static_tile-common-ocean",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        13
+      ],
+      "Y": [
+        40
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
     {
       "NameOrTranslationKey": "static_tile-island_west-farm_parrot_express",
       "X": [74],
@@ -2588,6 +2820,22 @@
       "X": [14,15,16],
       "Y": [54,55,56],
       "Category": "water"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-railroad-spa_ponnd",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        16
+      ],
+      "Y": [
+        56
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "Saloon": [
@@ -3468,6 +3716,22 @@
       "X": [20],
       "Y": [20],
       "Category": "doors"
+    },
+    {
+      "NameOrTranslationKey": "static_tile-common-swamp",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        21
+      ],
+      "Y": [
+        43
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
     }
   ],
   "WitchWarpCave": [
