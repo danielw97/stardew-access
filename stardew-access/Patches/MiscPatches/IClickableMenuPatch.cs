@@ -2,6 +2,8 @@ using System.Text;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using StardewModdingAPI;
 using stardew_access.Features;
 using stardew_access.Translation;
 using stardew_access.Utils;
@@ -66,7 +68,7 @@ internal class IClickableMenuPatch : IPatch
         typeof(CoopMenu),
         typeof(FarmhandMenu),
         typeof(LoadGameMenu),
-
+  
         /*********
         ** Other Menus
         *********/
@@ -103,9 +105,9 @@ internal class IClickableMenuPatch : IPatch
     internal static string? CurrentMenu;
     internal static bool ManuallyCallingDrawPatch = false;
 
-#if DEBUG
+    #if DEBUG
     private static bool _justOpened = true;
-#endif
+    #endif
 
     public void Apply(Harmony harmony)
     {
@@ -115,18 +117,23 @@ internal class IClickableMenuPatch : IPatch
         );
 
         harmony.Patch(
-            original: AccessTools.Method(typeof(IClickableMenu), "draw", new Type[] { typeof(SpriteBatch) }),
+            original: AccessTools.Method(typeof(IClickableMenu), "draw", [typeof(SpriteBatch)]),
             postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawPatch))
         );
 
         harmony.Patch(
-            original: AccessTools.Method(typeof(IClickableMenu), "draw", new Type[] { typeof(SpriteBatch), typeof(int), typeof(int), typeof(int) }),
+            original: AccessTools.Method(typeof(IClickableMenu), "draw", 
+            [typeof(SpriteBatch), typeof(int), typeof(int), typeof(int)]),
             postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawPatch))
         );
 
         harmony.Patch(
-            original: AccessTools.Method(typeof(IClickableMenu), "drawHoverText", new Type[] { typeof(SpriteBatch), typeof(StringBuilder), typeof(SpriteFont), typeof(int), typeof(int), typeof(int), typeof(string), typeof(int), typeof(string[]), typeof(Item), typeof(int), typeof(string), typeof(int), typeof(int), typeof(int), typeof(float), typeof(CraftingRecipe), typeof(IList<Item>), typeof(Texture2D), typeof(Rectangle?), typeof(Color?), typeof(Color?), typeof(float), typeof(int), typeof(int) }),
+            original: AccessTools.Method(typeof(IClickableMenu), "drawHoverText", [typeof(SpriteBatch), typeof(StringBuilder), typeof(SpriteFont), typeof(int), typeof(int), typeof(int), typeof(string), typeof(int), typeof(string[]), typeof(Item), typeof(int), typeof(string), typeof(int), typeof(int), typeof(int), typeof(float), typeof(CraftingRecipe), typeof(IList<Item>), typeof(Texture2D), typeof(Rectangle?), typeof(Color?), typeof(Color?), typeof(float), typeof(int), typeof(int)]),
             postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawHoverTextPatch))
+        );
+        harmony.Patch(
+            original: AccessTools.Method(typeof(IClickableMenu), nameof(IClickableMenu.receiveKeyPress), [typeof(Keys)]),
+            prefix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.ReceiveKeyPressPatch))
         );
     }
 
@@ -153,13 +160,13 @@ internal class IClickableMenuPatch : IPatch
                 return;
             }
 
-#if DEBUG
+            #if DEBUG
             if (_justOpened)
             {
                 _justOpened = false;
                 Log.Debug($"[IClickableMenuPatch.DrawPatch] Attempting to patch menu {{ManuallyCalled:{ManuallyCallingDrawPatch}}}: {activeMenuType?.FullName}");
             }
-#endif
+            #endif
 
             if (activeMenu.currentlySnappedComponent == null || string.IsNullOrWhiteSpace(activeMenu!.currentlySnappedComponent.ScreenReaderText))
             {
@@ -270,6 +277,44 @@ internal class IClickableMenuPatch : IPatch
         }
     }
 
+    internal static bool HandleMenuMovementKeyPress(IClickableMenu activeMenu, ref Keys key)
+    {
+        var pressedInput = new InputButton(key);
+        if (Game1.options.moveUpButton.Contains(pressedInput))
+        {
+            activeMenu.applyMovementKey(0);
+            return false;
+        }
+        else if (Game1.options.moveRightButton.Contains(pressedInput))
+        {
+            activeMenu.applyMovementKey(1);
+            return false;
+        }
+        else if (Game1.options.moveDownButton.Contains(pressedInput))
+        {
+            activeMenu.applyMovementKey(2);
+            return false;
+        }
+        else if (Game1.options.moveLeftButton.Contains(pressedInput))
+        {
+            activeMenu.applyMovementKey(3);
+            return false;
+        }
+
+        // For any other key, let the original method process it
+        return true;
+    }
+
+    private static bool ReceiveKeyPressPatch(IClickableMenu __instance, ref Keys key)
+    {
+        var activeMenu = GetActiveMenu();
+                return activeMenu switch
+        {
+            LoadGameMenu loadGameMenu => LoadGameMenuPatch.ReceiveKeyPressPatch(loadGameMenu, ref key),
+            _ => true // Returns true for null and any other unmatched type; handle normally.
+        };
+    }
+
     private static void ExitThisMenuPatch(IClickableMenu __instance)
     {
         try
@@ -332,8 +377,8 @@ internal class IClickableMenuPatch : IPatch
         ManuallyCallingDrawPatch = false;
         _tryHoverPatch = false;
 
-#if DEBUG
+        #if DEBUG
         _justOpened = true;
-#endif
+        #endif
     }
 }
