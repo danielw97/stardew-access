@@ -118,5 +118,7 @@ internal class TitleMenuPatch : IPatch
     private static void ReturnToMainTitleScreenPatch()
     {
         shouldSnapToDefault = true;
+        Game1.options.setGamepadMode("force_on");
+        Game1.options.snappyMenus = true;
     }
 }
