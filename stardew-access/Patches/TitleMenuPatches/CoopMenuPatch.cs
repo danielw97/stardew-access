@@ -12,17 +12,17 @@ namespace stardew_access.Patches
         public void Apply(Harmony harmony)
         {
             harmony.Patch(
-                original: AccessTools.Method(typeof(CoopMenu), nameof(CoopMenu.update), new Type[] { typeof(GameTime) }),
+                original: AccessTools.Method(typeof(CoopMenu), nameof(CoopMenu.update), [typeof(GameTime)]),
                 postfix: new HarmonyMethod(typeof(CoopMenuPatch), nameof(UpdatePatch))
             );
 
             harmony.Patch(
-                original: AccessTools.Method(typeof(CoopMenu).GetNestedType("LabeledSlot", BindingFlags.NonPublic | BindingFlags.Instance), "Draw", new Type[] { typeof(SpriteBatch), typeof(int) }),
+                original: AccessTools.Method(typeof(CoopMenu).GetNestedType("LabeledSlot", BindingFlags.NonPublic | BindingFlags.Instance), "Draw", [typeof(SpriteBatch), typeof(int)]),
                 postfix: new HarmonyMethod(typeof(CoopMenuPatch), nameof(LabeledSlot_DrawPatch))
             );
 
             harmony.Patch(
-                original: AccessTools.Method(typeof(CoopMenu).GetNestedType("FriendFarmSlot", BindingFlags.NonPublic | BindingFlags.Instance), "Draw", new Type[] { typeof(SpriteBatch), typeof(int) }),
+                original: AccessTools.Method(typeof(CoopMenu).GetNestedType("FriendFarmSlot", BindingFlags.NonPublic | BindingFlags.Instance), "Draw", [typeof(SpriteBatch), typeof(int)]),
                 postfix: new HarmonyMethod(typeof(CoopMenuPatch), nameof(FriendFarmSlot_DrawPatch))
             );
         }

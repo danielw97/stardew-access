@@ -12,7 +12,7 @@ internal class SpecialOrdersBoardPatch : IPatch
     public void Apply(Harmony harmony)
     {
         harmony.Patch(
-                original: AccessTools.Method(typeof(SpecialOrdersBoard), nameof(SpecialOrdersBoard.draw), new Type[] { typeof(SpriteBatch) }),
+                original: AccessTools.Method(typeof(SpecialOrdersBoard), nameof(SpecialOrdersBoard.draw), [typeof(SpriteBatch)]),
                 postfix: new HarmonyMethod(typeof(SpecialOrdersBoardPatch), nameof(SpecialOrdersBoardPatch.DrawPatch))
         );
     }

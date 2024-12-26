@@ -13,7 +13,7 @@ namespace stardew_access.Patches
         {
             harmony.Patch(
                 original: AccessTools.Method(typeof(FieldOfficeMenu), nameof(FieldOfficeMenu.draw),
-                    new Type[] { typeof(SpriteBatch) }),
+                    [typeof(SpriteBatch)]),
                 postfix: new HarmonyMethod(typeof(FieldOfficeMenuPatch), nameof(FieldOfficeMenuPatch.DrawPatch))
             );
         }

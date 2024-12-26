@@ -12,7 +12,7 @@ namespace stardew_access.Patches
         {
             harmony.Patch(
                 original: AccessTools.Method(typeof(JojaCDMenu), nameof(JojaCDMenu.draw),
-                    new Type[] { typeof(SpriteBatch) }),
+                    [typeof(SpriteBatch)]),
                 postfix: new HarmonyMethod(typeof(JojaCDMenuPatch), nameof(JojaCDMenuPatch.DrawPatch))
             );
         }

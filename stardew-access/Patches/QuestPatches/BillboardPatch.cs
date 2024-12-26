@@ -12,7 +12,7 @@ internal class BillboardPatch : IPatch
     {
         harmony.Patch(
             original: AccessTools.Method(typeof(Billboard), nameof(Billboard.draw),
-                new Type[] { typeof(SpriteBatch) }),
+                [typeof(SpriteBatch)]),
             postfix: new HarmonyMethod(typeof(BillboardPatch), nameof(BillboardPatch.DrawPatch))
         );
     }

@@ -11,7 +11,7 @@ using StardewValley.Menus;
 
 namespace stardew_access.Features;
 
-public class TileInfoMenu(int tileX, int tileY) : DialogueBox("", new Response[] { MarkTileResponse, AddToUserTilesResponse, SpeakDetailedInfoResponse })
+public class TileInfoMenu(int tileX, int tileY) : DialogueBox("", [MarkTileResponse, AddToUserTilesResponse, SpeakDetailedInfoResponse])
 {
     private const string MarkTileI18NKey = "menu-tile_info-mark_tile";
     private static readonly Response MarkTileResponse = new(MarkTileI18NKey,
@@ -65,10 +65,10 @@ public class TileInfoMenu(int tileX, int tileY) : DialogueBox("", new Response[]
                     if (UserTilesUtils.TryAndGetTileDataAt(out AccessibleTile.JsonSerializerFormat? tileData, _tileX, _tileY))
                     {
                         _tempDefaultData = tileData;
-                        responses = new Response[]
-                        {
+                        responses =
+                        [
                         EditExistingResponse, DeleteExistingResponse
-                        };
+                        ];
                         selectedResponse = 0;
                         dialogues =
                         [

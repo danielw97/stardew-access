@@ -10,7 +10,7 @@ namespace stardew_access.Patches
         public void Apply(Harmony harmony)
         {
             harmony.Patch(
-                    original: AccessTools.Method(typeof(TextEntryMenu), nameof(TextEntryMenu.draw), new Type[] { typeof(SpriteBatch) }),
+                    original: AccessTools.Method(typeof(TextEntryMenu), nameof(TextEntryMenu.draw), [typeof(SpriteBatch)]),
                     prefix: new HarmonyMethod(typeof(TextEntryMenuPatch), nameof(TextEntryMenuPatch.DrawPatch))
             );
 

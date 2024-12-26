@@ -10,7 +10,7 @@ namespace stardew_access.Patches
         public void Apply(Harmony harmony)
         {
             harmony.Patch(
-                original: AccessTools.Method(typeof(ConfirmationDialog), nameof(ConfirmationDialog.draw), new Type[] { typeof(SpriteBatch) }),
+                original: AccessTools.Method(typeof(ConfirmationDialog), nameof(ConfirmationDialog.draw), [typeof(SpriteBatch)]),
                 postfix: new HarmonyMethod(typeof(ConfirmationDialogMenuPatch), nameof(ConfirmationDialogMenuPatch.DrawPatch))
             );
         }

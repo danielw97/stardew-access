@@ -11,7 +11,7 @@ internal class ForgeMenuPatch : IPatch
     public void Apply(Harmony harmony)
     {
         harmony.Patch(
-            original: AccessTools.Method(typeof(ForgeMenu), nameof(ForgeMenu.draw), new Type[] { typeof(SpriteBatch) }),
+            original: AccessTools.Method(typeof(ForgeMenu), nameof(ForgeMenu.draw), [typeof(SpriteBatch)]),
             postfix: new HarmonyMethod(typeof(ForgeMenuPatch), nameof(ForgeMenuPatch.DrawPatch))
         );
     }

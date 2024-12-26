@@ -12,7 +12,7 @@ internal class AdvancedGameOptionsPatch : IPatch
     {
         harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(AdvancedGameOptions), nameof(AdvancedGameOptions.draw),
-                new Type[] { typeof(SpriteBatch) }),
+                [typeof(SpriteBatch)]),
             postfix: new HarmonyMethod(typeof(AdvancedGameOptionsPatch), nameof(DrawPatch))
         );
 

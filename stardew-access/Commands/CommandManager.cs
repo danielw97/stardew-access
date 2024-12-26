@@ -54,12 +54,12 @@ public class CommandManager
     public static void RegisterAll(IModHelper modHelper)
     {
         Type[] CommandsGroups =
-        {
+        [
             typeof(ReadTileCommands),
             typeof(TileMarkingCommands),
             typeof(OtherCommands),
             typeof(RadarCommands),
-        };
+        ];
 
         foreach (var commandsGroup in CommandsGroups)
         {

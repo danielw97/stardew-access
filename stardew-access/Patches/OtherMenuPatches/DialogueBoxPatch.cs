@@ -14,7 +14,7 @@ internal class DialogueBoxPatch : IPatch
     {
         harmony.Patch(
             original: AccessTools.Method(typeof(DialogueBox), nameof(DialogueBox.draw),
-                new Type[] { typeof(SpriteBatch) }),
+                [typeof(SpriteBatch)]),
             postfix: new HarmonyMethod(typeof(DialogueBoxPatch), nameof(DialogueBoxPatch.DrawPatch))
         );
     }

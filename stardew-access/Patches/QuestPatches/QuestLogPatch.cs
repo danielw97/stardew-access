@@ -18,7 +18,7 @@ namespace stardew_access.Patches
         public void Apply(Harmony harmony)
         {
             harmony.Patch(
-                original: AccessTools.Method(typeof(QuestLog), nameof(QuestLog.draw), new Type[] { typeof(SpriteBatch) }),
+                original: AccessTools.Method(typeof(QuestLog), nameof(QuestLog.draw), [typeof(SpriteBatch)]),
                 postfix: new HarmonyMethod(typeof(QuestLogPatch), nameof(QuestLogPatch.DrawPatch))
             );
         }
