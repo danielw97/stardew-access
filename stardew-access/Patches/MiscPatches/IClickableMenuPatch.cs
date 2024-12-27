@@ -201,6 +201,8 @@ internal class IClickableMenuPatch : IPatch
     {
         var activeMenu = Game1.activeClickableMenu;
 
+        if (activeMenu == null) return null;
+
         if (activeMenu.GetParentMenu() != null)
         {
             // To let the parent menu's draw() call set `activeMenu` to the child menu, in the next if condition.
@@ -307,6 +309,7 @@ internal class IClickableMenuPatch : IPatch
 
     private static bool ReceiveKeyPressPatch(IClickableMenu __instance, ref Keys key)
     {
+        if (__instance == null) return true;
         var activeMenu = GetActiveMenu();
                 return activeMenu switch
         {
