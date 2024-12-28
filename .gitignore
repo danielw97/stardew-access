@@ -7,6 +7,7 @@ stardew-access/assets/custom-tiles.json
 stardew-access/compiled-docs/
 act_out/
 *.patch
+.idea/
 
 .vscode/*
 .git-old/
