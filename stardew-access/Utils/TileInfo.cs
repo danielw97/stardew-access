@@ -23,6 +23,9 @@ public class TileInfo
     private static readonly Dictionary<string, Dictionary<(int, int), string>> BundleLocations = [];
     private static HashSet<Vector2> _visitedCollisionTiles = new HashSet<Vector2>();
 
+    private static HashSet<string> _farmAnimalDroppedProduces =
+        ["430", "174", "176", "180", "182", "289", "305", "442", "928", "107", "444", "446"];
+
     private static readonly Dictionary<Color, int> colorToSelectionMap = new()
     {
         { Color.Black, 0 },
@@ -327,10 +330,10 @@ public class TileInfo
             return (characterName, characterCategory);
         }
 
-        string? farmAnimal = GetFarmAnimalAt(currentLocation, x, y);
-        if (farmAnimal is not null)
+        var farmAnimal = GetFarmAnimalAt(currentLocation, x, y);
+        if (farmAnimal.name is not null)
         {
-            return (farmAnimal, CATEGORY.Animals);
+            return (farmAnimal.name, farmAnimal.category);
         }
 
         string? door = GetDoorAtTile(currentLocation, x, y);
@@ -563,15 +566,16 @@ public class TileInfo
     /// <param name="x">The x-coordinate of the tile to check.</param>
     /// <param name="y">The y-coordinate of the tile to check.</param>
     /// <returns>
-    /// A string containing the farm animal's name, type, and age if a farm animal is found at the specified tile;
+    /// A tuple containing the farm animal's name (with type, age, and hungry, pettable and harvestable states), if a farm animal is found at the specified tile
+    /// and the animal's category ("Pending" if the animal is pettable or has a produce i.e., harvestable otherwise "Animals");
     /// null if no farm animal is found or if the location is not a Farm or an AnimalHouse.
     /// </returns>
-    public static string? GetFarmAnimalAt(GameLocation location, int x, int y)
+    public static (string? name, CATEGORY? category) GetFarmAnimalAt(GameLocation location, int x, int y)
     {
         Dictionary<(int x, int y), FarmAnimal>? animalsByCoordinate = AnimalUtils.GetAnimalsByLocation(location);
 
         if (animalsByCoordinate == null || !animalsByCoordinate.TryGetValue((x, y), out FarmAnimal? foundAnimal))
-            return null;
+            return (null, null);
 
         string name = foundAnimal.displayName;
         string type = foundAnimal.displayType;
@@ -587,9 +591,15 @@ public class TileInfo
             is_hungry = isHungry ? 1 : 0,
             is_baby = foundAnimal.isBaby() ? 1 : 0,
             is_age_in_days = isAgeInDays ? 1 : 0,
+            can_be_pet = !foundAnimal.wasPet.Value ? 1 : 0,
+            has_produce = foundAnimal.currentProduce.Value != null ? 1 : 0,
             age,
         };
-        return Translator.Instance.Translate("npc-farm_animal_info", translationCategory);
+        
+        return (Translator.Instance.Translate("npc-farm_animal_info", translationCategory),
+            !foundAnimal.wasPet.Value || foundAnimal.currentProduce.Value != null
+                ? CATEGORY.Pending
+                : CATEGORY.Animals);
     }
 
     /// <summary>
@@ -797,6 +807,10 @@ public class TileInfo
                 ? $"{correctNameAndCategory.name} (DisplayName: {obj.DisplayName})"
                 : correctNameAndCategory.name;
             toReturn = correctNameAndCategory;
+        }
+        else if (_farmAnimalDroppedProduces.Contains(obj.QualifiedItemId))
+        {
+            toReturn.category = CATEGORY.Ready;
         }
         /*else if (obj.name.Equals("stone", StringComparison.OrdinalIgnoreCase))
             toReturn.category = CATEGORY.Debris;

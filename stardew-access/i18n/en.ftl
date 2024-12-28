@@ -336,7 +336,13 @@ npc_name-ruby_gem_bird = Ruby Gem Bird
 npc_name-amethyst_gem_bird = Amethyst Gem Bird
 npc_name-topaz_gem_bird = Topaz Gem Bird
 npc_name-gem_bird_common = Gem Bird
-npc-farm_animal_info = {$name}, {$is_hungry ->
+npc-farm_animal_info = {$has_produce ->
+    [1] Harvestable
+    *[other] {EMPTYSTRING()}
+  } {$can_be_pet ->
+    [1] Pettable
+    *[other] {EMPTYSTRING()}
+  } {$name}, {$is_hungry ->
     [1] Hungry
     *[other] {EMPTYSTRING()}
   } {$is_baby ->
