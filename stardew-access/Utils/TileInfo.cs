@@ -769,25 +769,17 @@ public class TileInfo
                 }
             }
         }
-        else if ((obj.Type == "Crafting" && obj.bigCraftable.Value) || obj.Name.Equals("crab pot", StringComparison.OrdinalIgnoreCase))
+        else if ((obj.Type == "Crafting" && obj.bigCraftable.Value) ||
+                 obj.QualifiedItemId == "(O)710") // (O)710 == crab pot
         {
-            // TODO optimize this
-            foreach (string machine in trackable_machines)
+            foreach (var machineIds in trackable_machines)
             {
-                if (obj.Name.Contains(machine, StringComparison.OrdinalIgnoreCase))
-                {
-                    MachineState machineState = GetMachineState(obj);
-                    if (obj.heldObject.Value is not null)
-                    {
-                        toReturn.name = $"{obj.DisplayName}, {InventoryUtils.GetItemDetails(obj.heldObject.Value)}";
-                        toReturn.category = (machineState == MachineState.Busy) ? CATEGORY.Machines : CATEGORY.Ready;
-                    }
-                    else
-                    {
-                        toReturn.name = obj.DisplayName;
-                        toReturn.category = CATEGORY.Machines;
-                    }
-                }
+                if (!obj.QualifiedItemId.Equals(machineIds)) continue;
+
+                toReturn.name = obj.heldObject.Value is not null
+                    ? $"{obj.DisplayName}, {InventoryUtils.GetItemDetails(obj.heldObject.Value)}"
+                    : obj.DisplayName;
+                toReturn.category = GetMachineState(obj) == MachineState.Ready ? CATEGORY.Ready : CATEGORY.Machines;
             }
         }
         else if (obj is Fence fence && fence.isGate.Value)
