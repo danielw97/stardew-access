@@ -408,7 +408,7 @@ public class DynamicTiles
         // If the building is a FishPond, prepend the fish name
         else if (building is FishPond fishPond && fishPond.fishType.Value != "0" && fishPond.fishType.Value != "")
         {
-            name = $"{ItemRegistry.GetDataOrErrorItem(fishPond.fishType.Value).DisplayName} {name}";
+            name = $"{ItemRegistry.GetData(fishPond.fishType.Value)?.DisplayName ?? ""}{name}";
             category = CATEGORY.Fishponds;
         }
         // Check if the position matches the human door
