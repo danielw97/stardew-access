@@ -10,7 +10,7 @@ internal class SocialPagePatch : IPatch
     {
         harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(SocialPage), "draw"),
-            postfix: new HarmonyMethod(typeof(SocialPagePatch), nameof(SocialPagePatch.DrawPatch))
+            postfix: new HarmonyMethod(typeof(SocialPagePatch), nameof(DrawPatch))
         );
     }
 
@@ -20,17 +20,17 @@ internal class SocialPagePatch : IPatch
         try
         {
             int x = Game1.getMouseX(true), y = Game1.getMouseY(true); // Mouse x and y position
-            for (int i = ___slotPosition; i < ___slotPosition + 5 && i < ___sprites.Count; i++)
+            for (var i = ___slotPosition; i < ___slotPosition + 5 && i < ___sprites.Count; i++)
             {
                 if (!__instance.characterSlots[i].bounds.Contains(x, y))
                     continue;
-                SocialPage.SocialEntry entry = __instance.GetSocialEntry(i);
-                
-                string name = entry.Character.displayName;
-                int has_talked = !entry.IsMet ? 2 : Game1.player.hasPlayerTalkedToNPC(entry.Character.Name) ? 1 : 0;
-                string? relationship_status = GetRelationshipStatus(entry) ?? "";
-                int gifts_this_week = entry.Friendship?.GiftsThisWeek ?? 0;
-                int heart_level = entry.HeartLevel;
+                var entry = __instance.GetSocialEntry(i);
+
+                var name = entry.Character.displayName;
+                var has_talked = !entry.IsMet ? 2 : Game1.player.hasPlayerTalkedToNPC(entry.Character.Name) ? 1 : 0;
+                var relationship_status = GetRelationshipStatus(entry) ?? "";
+                var gifts_this_week = entry.Friendship?.GiftsThisWeek ?? 0;
+                var heart_level = entry.HeartLevel;
                 if (entry.IsPlayer)
                 {
                     MainClass.ScreenReader.TranslateAndSayWithMenuChecker("menu-social_page-player_info", true, new
@@ -38,7 +38,9 @@ internal class SocialPagePatch : IPatch
                         name,
                         relationship_status
                     });
-                } else {
+                }
+                else
+                {
                     MainClass.ScreenReader.TranslateAndSayWithMenuChecker("menu-social_page-npc_info", true, new
                     {
                         name,
@@ -48,9 +50,9 @@ internal class SocialPagePatch : IPatch
                         gifts_this_week
                     });
                 }
+
                 break;
             }
-            
         }
         catch (Exception e)
         {
@@ -58,61 +60,83 @@ internal class SocialPagePatch : IPatch
         }
     }
 
-    static string? GetRelationshipStatus(SocialPage.SocialEntry entry)
+    private static string? GetRelationshipStatus(SocialPage.SocialEntry entry)
     {
         // Copied (and modified) from StardewValley.Menus.SocialPage.DrawNPCSlot
-        Gender gender = entry.Gender;
-        bool datable = entry.IsDatable;
-        bool isDating = entry.IsDatingCurrentPlayer();
-        bool isCurrentSpouse = entry.IsMarriedToCurrentPlayer();
-        bool housemate = entry.IsRoommateForCurrentPlayer();
-        string? relationship_status = null;
+        var gender = entry.Gender;
+        var isDatable = entry.IsDatable;
+        var currentPlayer = entry.IsMarriedToCurrentPlayer();
+        var isRoommate = entry.IsRoommateForCurrentPlayer();
+        var isDating = entry.IsDatingCurrentPlayer();
+        var isCurrentSpouse = entry.IsMarriedToCurrentPlayer();
+        string? relationshipStatus = null;
+        
         if (!entry.IsPlayer)
         {
-            if (datable || housemate)
-            {
-                relationship_status = ((!Game1.content.ShouldUseGenderedCharacterTranslations()) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635") : ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635").Split('/')[0] : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635").Split('/').Last()));
-                if (housemate)
-                {
-                    relationship_status = Game1.content.LoadString("Strings\\StringsFromCSFiles:Housemate");
-                }
-                else if (isCurrentSpouse)
-                {
-                    relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11636") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11637"));
-                }
-                else if (entry.IsMarriedToAnyone())
-                {
-                    relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\UI:SocialPage_MarriedToOtherPlayer_MaleNPC") : Game1.content.LoadString("Strings\\UI:SocialPage_MarriedToOtherPlayer_FemaleNPC"));
-                }
-                else if (!Game1.player.isMarriedOrRoommates() && isDating)
-                {
-                    relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11639") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11640"));
-                }
-                else if (entry.IsDivorcedFromCurrentPlayer())
-                {
-                    relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11642") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11643"));
-                }
-            }
-        } else {
-            Farmer farmer = (Farmer)entry.Character;
-            relationship_status = ((!Game1.content.ShouldUseGenderedCharacterTranslations()) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635") : ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635").Split('/')[0] : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11635").Split('/').Last()));
-            if (isCurrentSpouse)
-            {
-                relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11636") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11637"));
-            }
-            else if (farmer.isMarriedOrRoommates() && !farmer.hasRoommate())
-            {
-                relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\UI:SocialPage_MarriedToOtherPlayer_MaleNPC") : Game1.content.LoadString("Strings\\UI:SocialPage_MarriedToOtherPlayer_FemaleNPC"));
-            }
-            else if (!Game1.player.isMarriedOrRoommates() && entry.IsDatingCurrentPlayer())
-            {
-                relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11639") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11640"));
-            }
-            else if (entry.IsDivorcedFromCurrentPlayer())
-            {
-                relationship_status = ((gender == Gender.Male) ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11642") : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage.cs.11643"));
-            }
+            if (!(isDatable | isRoommate)) return relationshipStatus;
+            
+            relationshipStatus = !isRoommate
+                ? !currentPlayer
+                    ? !entry.IsMarriedToAnyone()
+                        ? !(!Game1.player.isMarriedOrRoommates() & isDating)
+                            ? !entry.IsDivorcedFromCurrentPlayer()
+                                ? gender == Gender.Female
+                                    ? Game1.content.LoadString(
+                                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_Single_Female")
+                                    : Game1.content.LoadString(
+                                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_Single_Male")
+                                : gender == Gender.Female
+                                    ? Game1.content.LoadString(
+                                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_ExWife")
+                                    : Game1.content.LoadString(
+                                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_ExHusband")
+                            : gender == Gender.Female
+                                ? Game1.content.LoadString(
+                                    "Strings\\StringsFromCSFiles:SocialPage_Relationship_Girlfriend")
+                                : Game1.content.LoadString(
+                                    "Strings\\StringsFromCSFiles:SocialPage_Relationship_Boyfriend")
+                        : gender == Gender.Female
+                            ? Game1.content.LoadString(
+                                "Strings\\UI:SocialPage_Relationship_MarriedToOtherPlayer_FemaleNpc")
+                            : Game1.content.LoadString(
+                                "Strings\\UI:SocialPage_Relationship_MarriedToOtherPlayer_MaleNpc")
+                    : gender == Gender.Female
+                        ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Wife")
+                        : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Husband")
+                : gender == Gender.Female
+                    ? Game1.content.LoadString(
+                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_Housemate_Female")
+                    : Game1.content.LoadString(
+                        "Strings\\StringsFromCSFiles:SocialPage_Relationship_Housemate_Male");
+
+            return relationshipStatus;
         }
-        return !String.IsNullOrWhiteSpace(relationship_status) ? relationship_status : null;
+
+        var farmer = (Farmer)entry.Character;
+        relationshipStatus = !Game1.content.ShouldUseGenderedCharacterTranslations()
+            ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Single_Female")
+            : gender == Gender.Male
+                ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Single_Female")
+                    .Split('/')[0]
+                : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Single_Female")
+                    .Split('/').Last();
+        if (isCurrentSpouse)
+            relationshipStatus = gender == Gender.Male
+                ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Husband")
+                : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Wife");
+        else if (farmer.isMarriedOrRoommates() && !farmer.hasRoommate())
+            relationshipStatus = gender == Gender.Male
+                ? Game1.content.LoadString("Strings\\UI:SocialPage_Relationship_MarriedToOtherPlayer_MaleNpc")
+                : Game1.content.LoadString("Strings\\UI:SocialPage_Relationship_MarriedToOtherPlayer_FemaleNpc");
+        else if (!Game1.player.isMarriedOrRoommates() && entry.IsDatingCurrentPlayer())
+            relationshipStatus = gender == Gender.Male
+                ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Boyfriend")
+                : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_Girlfriend");
+        else if (entry.IsDivorcedFromCurrentPlayer())
+            relationshipStatus = gender == Gender.Male
+                ? Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_ExHusband")
+                : Game1.content.LoadString("Strings\\StringsFromCSFiles:SocialPage_Relationship_ExWife");
+
+        return relationshipStatus;
     }
 }
