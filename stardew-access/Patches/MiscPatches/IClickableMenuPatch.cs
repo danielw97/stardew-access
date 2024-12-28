@@ -122,8 +122,7 @@ internal class IClickableMenuPatch : IPatch
         );
 
         harmony.Patch(
-            original: AccessTools.Method(typeof(IClickableMenu), "draw", 
-            [typeof(SpriteBatch), typeof(int), typeof(int), typeof(int)]),
+            original: AccessTools.Method(typeof(IClickableMenu), "draw", [typeof(SpriteBatch), typeof(int), typeof(int), typeof(int)]),
             postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawPatch))
         );
 
@@ -154,8 +153,7 @@ internal class IClickableMenuPatch : IPatch
             else ManuallyCallingDrawPatch = false;
 
             var activeMenuType = activeMenu.GetType();
-            if (activeMenuType is not null
-                    && (SkipMenuTypes.Contains(activeMenuType) || ManuallyPatchedCustomMenus.Contains(activeMenuType.FullName ?? "")))
+            if ((SkipMenuTypes.Contains(activeMenuType) || ManuallyPatchedCustomMenus.Contains(activeMenuType.FullName ?? "")))
             {
                 return;
             }

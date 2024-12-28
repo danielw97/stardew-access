@@ -21,6 +21,7 @@ internal class PatchManager
             new ExitPagePatch(),
             new GameMenuPatch(),
             new InventoryPagePatch(),
+            new MapPagePatch(),
             new PowersTabPatch(),
             new SkillsPagePatch(),
             new SocialPagePatch(),
