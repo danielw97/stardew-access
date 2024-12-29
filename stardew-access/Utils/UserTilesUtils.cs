@@ -41,11 +41,12 @@ public class UserTilesUtils
             root = [];
         }
 
-        if (!root.TryGetValue(Game1.currentLocation.NameOrUniqueName, out JToken? locationToken))
+        string locationName = Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName;
+        if (!root.TryGetValue(locationName, out JToken? locationToken))
         {
             // Creates the location property if not exists
-            Log.Trace($"Entry for location {Game1.currentLocation.NameOrUniqueName} not found, adding one...");
-            locationToken = new JProperty(Game1.currentLocation.NameOrUniqueName, new JArray());
+            Log.Trace($"Entry for location {locationName} not found, adding one...");
+            locationToken = new JProperty(locationName, new JArray());
             root.Add(locationToken);
         }
 
@@ -74,7 +75,7 @@ public class UserTilesUtils
             return;
         }
 
-        if (!root.TryGetValue(Game1.currentLocation.NameOrUniqueName, out JToken? locationToken))
+        if (!root.TryGetValue(locationName, out JToken? locationToken))
         {
             // Creates the location property if not exists
             Log.Trace($"Cannot find location data with name: {locationName}");

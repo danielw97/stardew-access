@@ -571,6 +571,14 @@
       "Category": "Fishing"
     }
      ],
+  "Big Coop": [
+    {
+      "NameOrTranslationKey": "static_tile-common-hay_hopper",
+      "X": [3],
+      "Y": [3],
+      "Category": "interactables"
+    }
+  ],
   "Blacksmith": [
     {
       "NameOrTranslationKey": "static_tile-common-shop_counter",
@@ -833,7 +841,7 @@
       "Category": "interactables"
     }
   ],
-  "Big Coop": [
+  "Coop3": [
     {
       "NameOrTranslationKey": "static_tile-common-hay_hopper",
       "X": [3],
@@ -841,12 +849,25 @@
       "Category": "interactables"
     }
   ],
-  "Coop3": [
+  "Dance Of The Moonlight Jellies": [
     {
-      "NameOrTranslationKey": "static_tile-common-hay_hopper",
-      "X": [3],
-      "Y": [3],
-      "Category": "interactables"
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        10,
+        11
+      ],
+      "Y": [
+        6
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_summer28"
+      ],
+      "IsEvent": true,
+      "Suffix": null
     }
   ],
   "Deluxe Coop": [
@@ -947,6 +968,27 @@
       "Category": "Fishing"
     }
   ],
+  "Egg Festival": [
+    {
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        20,
+        21
+      ],
+      "Y": [
+        53
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_spring13"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    }
+  ],
   "EliottHouse": [
     {
       "NameOrTranslationKey": "static_tile-elliott_house-piano_key_1",
@@ -982,6 +1024,105 @@
       "Conditions": ["FarmHouse:3"]
     }
   ],
+  "Feast of the Winter Star": [
+    {
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        18,
+        19
+      ],
+      "Y": [
+        61
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_winter25"
+      ],
+      "IsEvent": null,
+      "Suffix": null
+    }
+  ],
+  "Festival of Ice": [
+    {
+      "NameOrTranslationKey": "static_tile-festival_of_ice-pool1",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        74,
+        75
+      ],
+      "Y": [
+        32,
+        33
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_winter8"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-festival_of_ice-pool2",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        76
+      ],
+      "Y": [
+        38
+      ],
+      "DynamicCoordinates": null,
+      "Category": "fishing",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_winter8"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "tile_name-traveling_cart",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        55,
+        56
+      ],
+      "Y": [
+        31
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_winter8"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "tile_name-traveling_cart_pig",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        58,
+        59
+      ],
+      "Y": [
+        31
+      ],
+      "DynamicCoordinates": null,
+      "Category": "npcs",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_winter8"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    }
+  ],
   "FishShop": [
     {
       "NameOrTranslationKey": "static_tile-common-shop_counter",
@@ -1006,6 +1147,27 @@
       "X": [8],
       "Y": [4],
       "Category": "decor"
+    }
+  ],
+  "Flower Dance": [
+    {
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        28,
+        29
+      ],
+      "Y": [
+        37
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_spring24"
+      ],
+      "IsEvent": true,
+      "Suffix": null
     }
   ],
   "Forest": [
@@ -2424,6 +2586,46 @@
       "Category": "containers"
     }
   ],
+  "Luau": [
+    {
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        43
+      ],
+      "Y": [
+        7
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_summer11"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-luau-soup_pot",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        35,
+        36
+      ],
+      "Y": [
+        12,
+        13
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_summer11"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    }
+  ],
   "ManorHouse": [
     {
       "NameOrTranslationKey": "static_tile-manor_house-town_ledger_book",
@@ -3286,6 +3488,280 @@
       "X": [16],
       "Y": [9],
       "Category": "other"
+    }
+  ],
+  "Spirit's Eve": [
+    {
+      "NameOrTranslationKey": "static_tile-festival-pierres_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        25,
+        26
+      ],
+      "Y": [
+        49
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall27"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-spirits_eve-start_of_maze",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        20,
+        21
+      ],
+      "Y": [
+        42
+      ],
+      "DynamicCoordinates": null,
+      "Category": "other",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall27"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    }
+  ],
+  "Stardew Valley Fair": [
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-fishing_challenge",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        23,
+        24
+      ],
+      "Y": [
+        70
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-fortune_teller",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        46,
+        47
+      ],
+      "Y": [
+        87
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-free_burgers",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "Y": [
+        33
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-grange_display",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        37,
+        38,
+        39
+      ],
+      "Y": [
+        59
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-purchase_star_tokens",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        34,
+        35
+      ],
+      "Y": [
+        65
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-prize_booth",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        16,
+        17
+      ],
+      "Y": [
+        52
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-slingshot_game",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        23,
+        24
+      ],
+      "Y": [
+        62
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-strength_game",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        30
+      ],
+      "Y": [
+        56
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-strength_game_arrow",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        29
+      ],
+      "Y": [
+        56
+      ],
+      "DynamicCoordinates": null,
+      "Category": "other",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-strength_game_sign",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        28
+      ],
+      "Y": [
+        55
+      ],
+      "DynamicCoordinates": null,
+      "Category": "decor",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-the_wheel",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        33
+      ],
+      "Y": [
+        70
+      ],
+      "DynamicCoordinates": null,
+      "Category": "interactables",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
+    },
+    {
+      "NameOrTranslationKey": "static_tile-stardew_valley_fair-tourist",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        28
+      ],
+      "Y": [
+        64
+      ],
+      "DynamicCoordinates": null,
+      "Category": "npcs",
+      "WithMods": null,
+      "Conditions": [
+        "ActiveEvent:festival_fall16"
+      ],
+      "IsEvent": true,
+      "Suffix": null
     }
   ],
   "Submarine": [

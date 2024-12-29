@@ -138,13 +138,18 @@ public class AccessibleTileManager
     public AccessibleLocation CreateLocation(GameLocation gameLocation)
     {
         string locationName = gameLocation.NameOrUniqueName;
-        Log.Trace($"AccessibleTileManager.CreateLocation: Creating new AccessibleLocation {locationName}");
+        bool isEvent = gameLocation.currentEvent is not null;
+        string eventName = gameLocation.currentEvent?.FestivalName ?? "";
+        if (isEvent)
+            Log.Trace($"AccessibleTileManager.CreateLocation: Creating new event AccessibleLocation {eventName}");
+        else
+            Log.Trace($"AccessibleTileManager.CreateLocation: Creating new AccessibleLocation {locationName}");
 
         JArray? jsonData = null;
         JArray? userJsonData = null;
 
         // Check if location data exists in the JSON objects
-        if (tilesJson != null && tilesJson.TryGetValue(locationName, out JToken? locationJsonToken) && locationJsonToken is JArray array)
+        if (tilesJson != null && tilesJson.TryGetValue(isEvent ? eventName : locationName, out JToken? locationJsonToken) && locationJsonToken is JArray array)
         {
             jsonData = array;
         }
@@ -170,7 +175,7 @@ public class AccessibleTileManager
         AddFromTileProperties(location, gameLocation);
 
         // Add the location to the Locations dictionary
-        Locations.Add(locationName, location);
+        Locations.Add(isEvent ? eventName : locationName, location);
 
         return location;
     }
@@ -180,7 +185,7 @@ public class AccessibleTileManager
     {
         if (string.IsNullOrEmpty(locationName))
         {
-            locationName = Game1.currentLocation.NameOrUniqueName;
+            locationName = Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName;
         }
 
         EnsureLocationLoaded(Game1.currentLocation);
@@ -197,14 +202,15 @@ public class AccessibleTileManager
     public AccessibleLocation? GetLocation(GameLocation? location = null)
     {
         location ??= Game1.currentLocation;
-        return GetLocation(location!.NameOrUniqueName);
+        string locationName = location.currentEvent is not null ? location.currentEvent.FestivalName : location.NameOrUniqueName;
+        return GetLocation(locationName);
     }
 
     public void EnsureLocationLoaded(GameLocation gameLocation)
     {
         if (gameLocation == null) return;
 
-        string locationName = gameLocation.NameOrUniqueName;
+        string locationName = Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName;
 
         // Use negated TryGetValue to create an AccessibleLocation instance if it doesn't exist
         if (!Locations.TryGetValue(locationName, out _))
@@ -216,14 +222,14 @@ public class AccessibleTileManager
 
     public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt(Vector2 coordinates, string? layerName = null, string? locationName = null)
     {
-        locationName ??= Game1.currentLocation.NameOrUniqueName;
+        locationName ??= Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName;
         return GetLocation(locationName)?.GetNameAndCategoryAt(coordinates, layerName);
     }
 
-    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt(Vector2 coordinates, string? layerName = null) => GetNameAndCategoryAt(coordinates, layerName, Game1.currentLocation.NameOrUniqueName);
-    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt(Vector2 coordinates, string? layerName = null, GameLocation? location = null) => GetNameAndCategoryAt(coordinates, layerName, location?.NameOrUniqueName);
+    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt(Vector2 coordinates, string? layerName = null) => GetNameAndCategoryAt(coordinates, layerName, Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName);
+    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt(Vector2 coordinates, string? layerName = null, GameLocation? location = null) => GetNameAndCategoryAt(coordinates, layerName, Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName);
     public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt((int x, int y) coordinates, string? layerName = null, string? locationName = null) => GetNameAndCategoryAt(new Vector2(coordinates.x, coordinates.y), layerName, locationName);
-    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt((int x, int y) coordinates, string? layerName = null, GameLocation? location = null) => GetNameAndCategoryAt(new Vector2(coordinates.x, coordinates.y), layerName, location?.NameOrUniqueName);
+    public (string nameOrTranslationKey, CATEGORY category)? GetNameAndCategoryAt((int x, int y) coordinates, string? layerName = null, GameLocation? location = null) => GetNameAndCategoryAt(new Vector2(coordinates.x, coordinates.y), layerName, Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName);
 
     public HashSet<AccessibleTile> GetTilesByCategory(CATEGORY category, string? layerName = null) => GetLocation()?.GetTilesByCategory(category, layerName) ?? [];
     public HashSet<AccessibleTile> GetTilesByCategory(CATEGORY category, string? layerName = null, string? locationName = null) => GetLocation(locationName)?.GetTilesByCategory(category, layerName) ?? [];
@@ -251,7 +257,7 @@ public class AccessibleTileManager
                             ? Translator.Instance.Translate(valArray[2])
                             : valArray[1];
 #if DEBUG
-                    Log.Debug($"[AccessibleTileManager::AddFromTileProperties {{{gameLocation.NameOrUniqueName}}}] Adding a tile: {name}, {x}x {y}y, category={category.Value}, layer={layer.Id}");
+                    Log.Debug($"[AccessibleTileManager::AddFromTileProperties {{{(Game1.currentLocation.currentEvent is not null ? Game1.currentLocation.currentEvent.FestivalName : Game1.currentLocation.NameOrUniqueName)}}}] Adding a tile: {name}, {x}x {y}y, category={category.Value}, layer={layer.Id}");
 #endif
                     location.AddTile(new(staticNameOrTranslationKey: name, staticCoordinates: [new(x, y)], category: category));
                 }

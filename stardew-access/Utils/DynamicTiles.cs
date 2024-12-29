@@ -150,65 +150,11 @@ public class DynamicTiles
         { "Deluxe Coop", (6, 17, 3) }
     };
 
-    // Dictionary to hold event info
-    private static readonly Dictionary<string, Dictionary<(int X, int Y), string>> EventInteractables;
-
     /// <summary>
     /// Initializes a new instance of the <see cref="DynamicTiles"/> class.
-    /// Loads the event file.
     /// </summary>
     static DynamicTiles()
     {
-        EventInteractables = LoadEventTiles();
-    }
-
-    /// <summary>
-    /// Loads event tiles from the "event-tiles.json" file and returns a dictionary representation of the data.
-    /// </summary>
-    /// <returns>
-    /// A dictionary with event names as keys and nested dictionaries as values, where nested dictionaries have
-    /// coordinate tuples (x, y) as keys and tile names as values.
-    /// </returns>
-    private static Dictionary<string, Dictionary<(int x, int y), string>> LoadEventTiles()
-    {
-        const string EventTilesFileName = "event-tiles.json";
-        bool loaded = JsonLoader.TryLoadJsonFile(EventTilesFileName, out JToken? json, subdir: "assets/TileData");
-
-        if (!loaded || json == null || json.Type != JTokenType.Object)
-        {
-            // If the JSON couldn't be loaded, parsed, or is not a JSON object, return an empty dictionary
-            return [];
-        }
-
-        var eventTiles = new Dictionary<string, Dictionary<(int x, int y), string>>();
-
-        // Iterate over the JSON properties to create a dictionary representation of the data
-        foreach (var eventProperty in ((JObject)json).Properties())
-        {
-            string eventName = eventProperty.Name;
-            var coordinates = new Dictionary<(int x, int y), string>();
-
-            // Iterate over the coordinate properties to create a nested dictionary with coordinate tuples as keys
-            if (eventProperty.Value is JObject coordinatesObject)
-            {
-                foreach (var coordinateProperty in coordinatesObject.Properties())
-                {
-                    string[] xy = coordinateProperty.Name.Split(',');
-                    if (xy.Length == 2 && int.TryParse(xy[0], out int x) && int.TryParse(xy[1], out int y))
-                    {
-                        coordinates.Add((x, y), value: coordinateProperty.Value.ToString() ?? string.Empty);
-                    }
-                    else
-                    {
-                        Log.Warn($"Invalid coordinate format '{coordinateProperty.Name}' in {EventTilesFileName}.");
-                    }
-                }
-            }
-
-            eventTiles.Add(eventName, coordinates);
-        }
-
-        return eventTiles;
     }
 
     /// <summary>
@@ -1082,21 +1028,6 @@ public class DynamicTiles
         if (currentLocation.orePanPoint.Value != Point.Zero && currentLocation.orePanPoint.Value == new Point(x, y))
         {
             return ("tile_name-panning_spot", CATEGORY.Interactables);
-        }
-        // Check if the current location has an event
-        else if (currentLocation.currentEvent is not null)
-        {
-            string eventName = currentLocation.currentEvent.FestivalName;
-            // Attempt to retrieve the nested dictionary for the event name from the EventInteractables dictionary
-            if (EventInteractables.TryGetValue(eventName, out var coordinateDictionary))
-            {
-                // Attempt to retrieve the interactable value from the nested dictionary using the coordinates (x, y) as the key
-                if (coordinateDictionary.TryGetValue((x, y), value: out var interactable))
-                {
-                    // If the interactable value is found, return the corresponding category and interactable name
-                    return (interactable, CATEGORY.Interactables);
-                }
-            }
         }
 
         // Retrieve dynamic tile information based on the current location type
