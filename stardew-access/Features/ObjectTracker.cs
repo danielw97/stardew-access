@@ -195,7 +195,7 @@ internal class ObjectTracker : FeatureBase
             if (countHasChanged)
             {
                 Log.Debug("Refreshing ObjectTracker; changes detected.");
-                GetLocationObjects(resetFocus: false);
+                GetLocationObjects(resetFocus: SortByProximity);
                 countHasChanged = false;  // Reset the flag for the next cycle
             }
 
@@ -240,6 +240,7 @@ internal class ObjectTracker : FeatureBase
         FixCharacterMovement();
         if (lastTargetedTile != null) FacePlayerToTargetTile(lastTargetedTile.Value);
         ReadCurrentlySelectedObject();
+        GetLocationObjects(resetFocus: SortByProximity);
         pathfinder?.Dispose();
     }
 
