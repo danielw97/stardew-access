@@ -91,7 +91,7 @@ internal class ObjectTracker : FeatureBase
         // The event with id 13 is the Haley's six heart event, the one at the beach requiring the player to find the bracelet
         // *** Exiting here will cause GridMovement and ObjectTracker functionality to not work during this event, making the bracelet impossible to track ***
         if (!Context.IsPlayerFree && !(Game1.CurrentEvent is not null && Game1.CurrentEvent.id == "13"))
-            return;
+            return; // so ... why are we exiting here? _^_
 
         if (Game1.activeClickableMenu != null && pathfinder != null && pathfinder.IsActive)
         {
@@ -103,7 +103,7 @@ internal class ObjectTracker : FeatureBase
             return;
         }
 
-        if (!e.IsMultipleOf(15) || !MainClass.Config.OTAutoRefreshing) return;
+        if (!e.IsMultipleOf(15));
 
         Tick();
     }
@@ -177,7 +177,7 @@ internal class ObjectTracker : FeatureBase
 
     public void Tick()
     {
-        if (MainClass.Config.OTAutoRefreshing || Game1.currentLocation == null) return;
+        if (!MainClass.Config.OTAutoRefreshing || Game1.currentLocation == null) return;
 
         if (updateActions.Count == 0)
         {
