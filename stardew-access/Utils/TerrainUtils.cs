@@ -91,7 +91,7 @@ public static class TerrainUtils
     {
         var treeStage = tree.growthStage.Value;
         var treeType = tree.treeType.Value;
-        string seedName = ItemRegistry.GetDataOrErrorItem(tree.GetData().SeedItemId).DisplayName;
+        string seedName = ItemRegistry.GetDataOrErrorItem(tree.GetData()?.SeedItemId ?? "ERROR").DisplayName ?? "ERROR";
         return (treeType, treeStage, seedName, tree.fertilized.Value, tree.stump.Value, tree.hasMoss.Value);
     }
 

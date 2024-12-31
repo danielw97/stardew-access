@@ -103,7 +103,7 @@ internal class ObjectTracker : FeatureBase
             return;
         }
 
-        if (!e.IsMultipleOf(15));
+        if (!e.IsMultipleOf(15)) return;
 
         Tick();
     }
@@ -415,7 +415,7 @@ internal class ObjectTracker : FeatureBase
         else
         {
             string[] objectKeys = SelectedCategory != null && objects?.ContainsKey(SelectedCategory) == true
-                ? objects[SelectedCategory].Keys.ToArray()
+                ? [.. objects[SelectedCategory].Keys]
                 : [];
             CycleHelper(ref SelectedObject, objectKeys);
         }
@@ -792,7 +792,7 @@ internal class ObjectTracker : FeatureBase
                     }
                     else
                     {
-                        favorites = new Dictionary<string, Dictionary<string, Dictionary<int, (string?, string?)>>>();
+                        favorites = [];
                     }
                 }
 
@@ -809,7 +809,7 @@ internal class ObjectTracker : FeatureBase
         catch (Exception ex)
         {
             Log.Warn(ex.Message);
-            favorites = new Dictionary<string, Dictionary<string, Dictionary<int, (string?, string?)>>>();
+            favorites = [];
         }
     }
 
