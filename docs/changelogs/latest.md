@@ -7,6 +7,7 @@
 
 ### Feature Updates
 
+When "Sort By Proximity" is enabled, the ObjectTracker will focus on the closest item after map updates. E.G., after harvesting a specific crop, focus moves to the next closest crop, rather than the next closest crop of the same kind. Sorting alphabetically retains the old behavior.
 
 ### Bug Fixes
 
@@ -15,6 +16,7 @@
 - Fixed empty fish ponds being prefixed with "Error Item"; #424
 - Fixed social page reading tokenized string in place of relationship status.
 - Fixed map page not being read.
+ObjectTracker autorefresh is fixed! No more mashing the home button to force a refresh.
 
 ### Tile Tracker Changes
 
