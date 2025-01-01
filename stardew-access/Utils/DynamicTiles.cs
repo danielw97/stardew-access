@@ -173,7 +173,7 @@ public class DynamicTiles
         }
         if (MainClass.ModHelper.Reflection.GetField<NPC>(beach, "oldMariner").GetValue() is NPC mariner && mariner.Tile == new Vector2(x, y))
         {
-            return ("npc_name-old_mariner", CATEGORY.NPCs);
+            return ("dynamic_tile-beach-old_mariner", CATEGORY.NPCs);
         }
         else if (x == 58 && y == 13)
         {
@@ -560,6 +560,25 @@ public class DynamicTiles
     /// <param name="y">The y-coordinate to search.</param>
     /// <param name="lessInfo">Optional. If true, returns information only if the tile coordinates match the resource clump's origin. Default is false.</param>
     /// <returns>A tuple containing the name and CATEGORY of the object found, or (null, null) if no relevant object is found.</returns>
+    private static (string? name, CATEGORY? category) GetIslandHutInfo(IslandHut islandHut, int x, int y, bool lessInfo = false)
+    {
+        if (x == 10 && y == 8)
+        {
+            return ("dynamic_tile-island_hut-potted_tree", islandHut.treeHitLocal ? CATEGORY.Decor : CATEGORY.Ready);
+        }
+
+        // Return (null, null) if no relevant object is found
+        return (null, null);
+    }
+
+    /// <summary>
+    /// Retrieves information about interactables, NPCs, or other features at a given coordinate in an IslandNorth.
+    /// </summary>
+    /// <param name="islandNorth">The IslandNorth to search.</param>
+    /// <param name="x">The x-coordinate to search.</param>
+    /// <param name="y">The y-coordinate to search.</param>
+    /// <param name="lessInfo">Optional. If true, returns information only if the tile coordinates match the resource clump's origin. Default is false.</param>
+    /// <returns>A tuple containing the name and CATEGORY of the object found, or (null, null) if no relevant object is found.</returns>
     private static (string? name, CATEGORY? category) GetIslandNorthInfo(IslandNorth islandNorth, int x, int y, bool lessInfo = false)
     {
         // Check if the trader is activated and the coordinates match the trader's location
@@ -776,6 +795,7 @@ public class DynamicTiles
 
         return islandLocation switch
         {
+            IslandHut islandHut => GetIslandHutInfo(islandHut, x, y, lessInfo),
             IslandNorth islandNorth => GetIslandNorthInfo(islandNorth, x, y, lessInfo),
             IslandWest islandWest => GetIslandWestInfo(islandWest, x, y, lessInfo),
             VolcanoDungeon dungeon => GetVolcanoDungeonInfo(dungeon, x, y, lessInfo),

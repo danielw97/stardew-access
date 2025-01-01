@@ -356,7 +356,7 @@ public class TileInfo
         (string? name, CATEGORY? category) dynamicTile = DynamicTiles.GetDynamicTileAt(currentLocation, x, y, lessInfo);
         if (dynamicTile.name != null)
         {
-            return (dynamicTile.name, dynamicTile.category);
+            return (Translator.Instance.Translate(dynamicTile.name, TranslationCategory.DynamicTiles), dynamicTile.category);
         }
 
         if (currentLocation.isObjectAtTile(x, y))
@@ -585,7 +585,7 @@ public class TileInfo
         bool isAgeInDays = age <= 1;
         age = age <= 1 ? foundAnimal.GetDaysOwned() + 1 : age;
 
-        object? translationCategory = new
+        object? token = new
         {
             name,
             type,
@@ -597,7 +597,7 @@ public class TileInfo
             age,
         };
         
-        return (Translator.Instance.Translate("npc-farm_animal_info", translationCategory),
+        return (Translator.Instance.Translate("npc-farm_animal_info", token),
             !foundAnimal.wasPet.Value || foundAnimal.currentProduce.Value != null
                 ? CATEGORY.Pending
                 : CATEGORY.Animals);

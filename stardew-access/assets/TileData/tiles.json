@@ -1524,6 +1524,26 @@
       "Suffix": null
     },
     {
+      "NameOrTranslationKey": "island_north-cliffside_tree",
+      "DynamicNameOrTranslationKey": null,
+      "X": [
+        58
+      ],
+      "Y": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "DynamicCoordinates": null,
+      "Category": "decor",
+      "WithMods": null,
+      "Conditions": null,
+      "IsEvent": null,
+      "Suffix": null
+    },
+    {
       "NameOrTranslationKey": "static_tile-island_north-dig_site_parrot_express",
       "X": [5],
       "Y": [48],

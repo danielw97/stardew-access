@@ -201,11 +201,6 @@ tile-pet_bowl-prefix = {$is_in_use ->
       *[1] Empty
     }
   } {$name}
-dynamic_tile-mastery_cave-pedestal = {$has_hat ->
-    [0] Empty Pedestal
-    *[1] Pedestal with a Hat
-  }
-dynamic_tile-farm-lumber_pile = Lumber Pile
 
 
 ## Interactable Tiles
@@ -329,7 +324,6 @@ building-golden_parrot = Golden Parrot
 
 # NPCs
 
-npc_name-old_mariner = Old Mariner
 npc_name-island_trader = Island Trader
 npc_name-emerald_gem_bird = Emerald Gem Bird
 npc_name-aquamarine_gem_bird = Aquamarine Gem Bird
