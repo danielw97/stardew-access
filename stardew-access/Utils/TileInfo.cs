@@ -12,6 +12,7 @@ using StardewValley.Monsters;
 using StardewValley.Objects;
 using StardewValley.TerrainFeatures;
 using StardewValley.TokenizableStrings;
+using System.ComponentModel;
 
 namespace stardew_access.Utils;
 
@@ -717,10 +718,30 @@ public class TileInfo
         }
         else if (obj is IndoorPot indoorPot)
         {
-            string? potContent = indoorPot.bush.Value != null
-                ? TerrainUtils.GetBushInfoString(indoorPot.bush.Value)
-                : TerrainUtils.GetDirtInfoString(indoorPot.hoeDirt.Value, true);
+            string? potContent;
+            CATEGORY potCategory = CATEGORY.Pending;
+            if (indoorPot.bush.Value != null)
+            {
+                // this branch is followed only when a tea bush has been planted in a pot.
+                potContent = TerrainUtils.GetBushInfoString(indoorPot.bush.Value);
+                potCategory = TerrainUtils.GetBushInfo(indoorPot.bush.Value).IsHarvestable
+                    ? CATEGORY.Ready
+                    : CATEGORY.Bushes;
+            }
+            else
+            {
+                potContent = TerrainUtils.GetDirtInfoString(indoorPot.hoeDirt.Value, true);
+                if (TerrainUtils.GetDirtInfo(indoorPot.hoeDirt.Value).IsReadyForHarvest)
+                {
+                    potCategory = CATEGORY.Ready;
+                }
+                else if (TerrainUtils.GetDirtInfo(indoorPot.hoeDirt.Value).IsWatered && TerrainUtils.GetDirtInfo(indoorPot.hoeDirt.Value).CropType != null)
+                {
+                    potCategory = CATEGORY.Crops;
+                }
+            }
             toReturn.name = $"{obj.DisplayName}, {potContent}";
+            toReturn.category = potCategory;
         }
         else if (obj is Sign sign && sign.displayItem.Value != null)
         {
