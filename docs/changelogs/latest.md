@@ -17,6 +17,10 @@ When "Sort By Proximity" is enabled, the ObjectTracker will focus on the closest
 - Fixed social page reading tokenized string in place of relationship status.
 - Fixed map page not being read.
 ObjectTracker autorefresh is fixed! No more mashing the home button to force a refresh.
+Garden Pots have been moved from the "Other" category to the "Pending" category to better reflect their role.
+When holding a crop, pots will stay in "Pending" if they are unwatered. They will move to "Crops" once watered.
+When holding a bush such as a tea sapling, pots will appear in "Bushes".
+When any pot can be harvested, it will appear in "Ready".
 
 ### Tile Tracker Changes
 
