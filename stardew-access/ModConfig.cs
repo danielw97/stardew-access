@@ -546,6 +546,17 @@ internal class ModConfig
     /// </summary>
     public bool Use24HourFormat { get; set; } = false;
 
+    private float _EggHuntTimerMultiplier = 1f;
+
+    /// <summary>
+    /// Multiplier on default timer length for the Egg Hunt
+    /// </summary>
+    public float EggHuntTimerMultiplier
+    {
+        get { return Math.Clamp(_EggHuntTimerMultiplier, 1f, 3f); }
+        set { _EggHuntTimerMultiplier = Math.Clamp(value, 1f, 3f); }
+    }
+
     // TODO Add the exclusion and focus list too
     // public String ExclusionList { get; set; } = "test";
 }

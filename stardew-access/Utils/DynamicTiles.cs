@@ -150,6 +150,9 @@ public class DynamicTiles
         { "Deluxe Coop", (6, 17, 3) }
     };
 
+    // List to hold Egg Festival eggs
+    private static List<Prop>? eggs;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DynamicTiles"/> class.
     /// </summary>
@@ -1041,6 +1044,89 @@ public class DynamicTiles
         return (translationKeyOrName, category);
     }
 
+    public static (string? translationKeyOrName, CATEGORY? category) GetEggFestivalInfo(
+        GameLocation currentLocation, 
+        int x, 
+        int y, 
+        bool lessInfo
+    )
+    {
+        if (currentLocation.currentEvent is null || currentLocation.currentEvent.id != "festival_spring13")
+            throw new InvalidOperationException("GetEggFestivalInfo requires an active event");
+        var currentEvent = currentLocation.currentEvent!;
+        if (currentEvent.festivalProps.Count > 0)
+        {
+            if (eggs == null)
+            {
+                Log.Trace("Copying eggs list");
+                eggs = new(currentEvent.festivalProps);
+                currentEvent.festivalTimer = (int)(52000f * MainClass.Config.EggHuntTimerMultiplier);
+            }
+            //currentEvent.festivalTimer = 52000;
+            Microsoft.Xna.Framework.Rectangle tile = new(x * 64, y * 64, 64, 64);
+            for (int i = currentEvent.festivalProps.Count - 1; i >= 0; i--)
+            {
+                if (currentEvent.festivalProps[i].isColliding(tile))
+                {
+                    var currentEgg = currentEvent.festivalProps[i];
+                    return ($"Egg {eggs.IndexOf(currentEgg)+1}", CATEGORY.Quest);
+                }
+            }
+        }
+        else
+        {
+            eggs = null;
+        }
+        return (null, null);
+    }
+
+    public static (string? translationKeyOrName, CATEGORY? category) GetUnknownEventInfo(
+        GameLocation currentLocation, 
+        int x, 
+        int y, 
+        bool lessInfo
+    )
+    {
+        // If there's somehow no event, bail early
+        if (currentLocation.currentEvent is null)
+            throw new InvalidOperationException("GetUnknownEventInfo requires an active event");
+
+        // Null-forgiveness since we just checked
+        var currentEvent = currentLocation.currentEvent!;
+
+        // Figure out what flavor of "unknown" event this is:
+        string eventTypeDescription = "Unknown event";
+        if (currentEvent.isFestival)
+            eventTypeDescription += $", festival \"{currentEvent.FestivalName}\"";
+        else if (currentEvent.isWedding)
+            eventTypeDescription += ", wedding";
+        else if (currentEvent.isMemory)
+            eventTypeDescription += ", memory";
+
+        // Fire off an Info-level log in a single statement
+        Log.Info($"{eventTypeDescription} [ID: {currentEvent.id}]", true);
+
+        // Gather up some actor info
+        var actorList = currentEvent.actors;
+        string actorNames = actorList?.Count > 0
+            ? string.Join(", ", actorList.Select(npc => npc.displayName ?? npc.Name))
+            : "None";
+
+        // Log everything else in one tidy Debug call
+        Log.Debug($@"
+            Actors: {actorNames}
+            Props Count: {currentEvent.props?.Count ?? 0}
+            Festival Props Count: {currentEvent.festivalProps?.Count ?? 0}
+            int_useMeForAnything: {currentEvent.int_useMeForAnything}
+            int_useMeForAnything2: {currentEvent.int_useMeForAnything2}
+            float_useMeForAnything: {currentEvent.float_useMeForAnything}
+            specialEventVariable1: {currentEvent.specialEventVariable1}
+            specialEventVariable2: {currentEvent.specialEventVariable2}
+        ", true);
+
+
+        return (null, null);
+    }
 
     public static (string? translationKeyOrName, CATEGORY? category) GetDynamicTileWithTranslationKeyOrNameAt(GameLocation currentLocation, int x, int y, bool lessInfo = false)
     {
@@ -1053,19 +1139,29 @@ public class DynamicTiles
         // Retrieve dynamic tile information based on the current location type
         return currentLocation switch
         {
-            Beach beach => GetBeachInfo(beach, x, y, lessInfo),
-            BoatTunnel boatTunnel => GetBoatTunnelInfo(boatTunnel, x, y, lessInfo),
-            CommunityCenter communityCenter => GetCommunityCenterInfo(communityCenter, x, y, lessInfo),
-            Farm farm => GetFarmInfo(farm, x, y, lessInfo),
-            FarmHouse farmHouse => GetFarmHouseInfo(farmHouse, x, y, lessInfo),
-            Forest forest => GetForestInfo(forest, x, y, lessInfo),
-            IslandFarmHouse islandFarmHouse => GetIslandFarmHouseInfo(islandFarmHouse, x, y, lessInfo),
-            IslandLocation islandLocation => GetIslandLocationInfo(islandLocation, x, y, lessInfo),
-            LibraryMuseum libraryMuseum => GetLibraryMuseumInfo(libraryMuseum, x, y, lessInfo),
-            Town town => GetTownInfo(town, x, y, lessInfo),
-            Railroad railroad => GetRailroadInfo(railroad, x, y, lessInfo),
-            MineShaft mineShaft => GetMineShaftInfo(mineShaft, x, y, lessInfo),
-            _ => GetLocationByNameInfo(currentLocation, x, y, lessInfo)
+            // No event; handle real location
+            { currentEvent: null } => currentLocation switch
+            {
+                Beach beach => GetBeachInfo(beach, x, y, lessInfo),
+                BoatTunnel boatTunnel => GetBoatTunnelInfo(boatTunnel, x, y, lessInfo),
+                CommunityCenter communityCenter => GetCommunityCenterInfo(communityCenter, x, y, lessInfo),
+                Farm farm => GetFarmInfo(farm, x, y, lessInfo),
+                FarmHouse farmHouse => GetFarmHouseInfo(farmHouse, x, y, lessInfo),
+                Forest forest => GetForestInfo(forest, x, y, lessInfo),
+                IslandFarmHouse islandFarmHouse => GetIslandFarmHouseInfo(islandFarmHouse, x, y, lessInfo),
+                IslandLocation islandLocation => GetIslandLocationInfo(islandLocation, x, y, lessInfo),
+                LibraryMuseum libraryMuseum => GetLibraryMuseumInfo(libraryMuseum, x, y, lessInfo),
+                Town town => GetTownInfo(town, x, y, lessInfo),
+                Railroad railroad => GetRailroadInfo(railroad, x, y, lessInfo),
+                MineShaft mineShaft => GetMineShaftInfo(mineShaft, x, y, lessInfo),
+                _ => GetLocationByNameInfo(currentLocation, x, y, lessInfo)
+            },
+            // Running events
+            _ => currentLocation.currentEvent.id switch
+            {
+                "festival_spring13" => GetEggFestivalInfo(currentLocation, x, y, lessInfo),
+                _ => GetUnknownEventInfo(currentLocation, x, y, lessInfo)
+            }
         };
     }
 }

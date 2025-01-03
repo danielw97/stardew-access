@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Locations;
 
 namespace stardew_access.Features;
 using System.Timers;
@@ -40,7 +41,7 @@ internal class ObjectTracker : FeatureBase
     }
     bool SaveCoordinatesToggle = false;
 
-    private readonly int[] objectCounts = [0, 0, 0, 0, 0, 0];
+    private readonly int[] objectCounts = [0, 0, 0, 0, 0, 0, 0];
     private readonly List<Action> updateActions;
     private int currentActionIndex = 0;
     private bool countHasChanged = false;
@@ -70,6 +71,7 @@ internal class ObjectTracker : FeatureBase
             () => UpdateAndRunIfChanged(ref objectCounts[3], Game1.currentLocation.resourceClumps.Count, () => { Log.Debug("ResourceClumps count has changed."); countHasChanged = true; }),
             () => UpdateAndRunIfChanged(ref objectCounts[4], Game1.currentLocation.terrainFeatures.Count(), () => { Log.Debug("TerrainFeatures count has changed."); countHasChanged = true; }),
             () => UpdateAndRunIfChanged(ref objectCounts[5], Game1.currentLocation.largeTerrainFeatures.Count, () => { Log.Debug("LargeTerrainFeatures count has changed."); countHasChanged = true; }),
+            () => UpdateSpecialAction()
         ];
         LoadFavorites();
     }
@@ -103,9 +105,8 @@ internal class ObjectTracker : FeatureBase
             return;
         }
 
-        if (!e.IsMultipleOf(15)) return;
-
-        Tick();
+        if (e.IsMultipleOf(5))
+            Tick();
     }
 
     public override bool OnButtonPressed(object? sender, ButtonPressedEventArgs e)
@@ -173,6 +174,31 @@ internal class ObjectTracker : FeatureBase
         GetLocationObjects(resetFocus: true);
         // reset favorites stack to the first stack for new location.
         FavoriteStack = 0;
+    }
+
+    private void UpdateSpecialAction()
+    {
+        // Early exit if no location
+        if (Game1.currentLocation == null) return;
+        // Handle any special event refresh logic here
+        if (Game1.currentLocation!.currentEvent != null)
+        {
+            switch(Game1.currentLocation!.currentEvent!.id)
+            {
+                case "festival_spring13":
+                    UpdateAndRunIfChanged(ref objectCounts[6], Game1.currentLocation.currentEvent.festivalProps.Count, () => { Log.Debug("Eggs count has changed."); countHasChanged = true; });
+                    return;
+            }
+        }
+        else
+        {
+            switch (Game1.currentLocation)
+            {
+                case  IslandHut islandHut:
+                    UpdateAndRunIfChanged(ref objectCounts[6], islandHut.treeHitLocal ? 1 : 0, () => { Log.Debug("Potted tree state has changed."); countHasChanged = true; });
+                    return;
+            }
+        }
     }
 
     public void Tick()
