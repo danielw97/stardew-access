@@ -58,6 +58,7 @@ public sealed class CATEGORY
         {"fishing", new CATEGORY("fishing")},
         {"fishponds", new CATEGORY("fish ponds")},
         {"flooring", new CATEGORY("flooring")},
+        {"forageables", new CATEGORY("forageables")},
         {"furniture", new CATEGORY("furniture")},
         {"interactables", new CATEGORY("interactables")},
         {"machines", new CATEGORY("machines")},
@@ -141,6 +142,7 @@ public sealed class CATEGORY
     public static readonly CATEGORY Fishing = FromString("fishing");
     public static readonly CATEGORY Fishponds = FromString("fishponds");
     public static readonly CATEGORY Flooring = FromString("flooring");
+    public static readonly CATEGORY Forageables = FromString("forageables");
     public static readonly CATEGORY Furniture = FromString("furniture");
     public static readonly CATEGORY Interactables = FromString("interactables");
     public static readonly CATEGORY Machines = FromString("machines");

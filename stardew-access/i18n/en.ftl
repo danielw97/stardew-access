@@ -119,6 +119,7 @@ tile-water-name = Water
 tile-cooled_lava-name = Cooled Lava
 tile-lava-name = Lava
 tile-fertile_weed_name = Fertile weed
+tile-seed_spot_name = Seed Spot
 tile-grass-name = {$grass_type ->
     *[1] Grass
     [2] Cave grass

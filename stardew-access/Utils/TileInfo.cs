@@ -670,8 +670,14 @@ public class TileInfo
 
         // Get object names and categories based on qualified item id
         (string? name, CATEGORY category) correctNameAndCategory = GetCorrectNameAndCategoryFromQualifiedItemId(qualifiedItemId);
-        if (correctNameAndCategory.name == "")
+        #if DEBUG
+            Log.Verbose($" GetObjectNameAndCategory initial {qualifiedItemId} {correctNameAndCategory} {toReturn}", true);
+        #endif
+        if (String.IsNullOrEmpty(correctNameAndCategory.name))
+        {
             correctNameAndCategory.name = obj.DisplayName;
+            toReturn.category = correctNameAndCategory.category; 
+        }
 
         // Check the object type and assign the appropriate name and category
         if (obj is Chest chest)
@@ -749,13 +755,14 @@ public class TileInfo
         }
         else if (obj is Furniture furniture)
         {
-            toReturn.category = furniture is StorageFurniture ? CATEGORY.Containers: CATEGORY.Furniture;
+            // if furniture ID is not present in QualifiedItemIds.json, perform container check to set category, otherwise do nothing
+            if (!QualifiedItemIds.TryGetValue(qualifiedItemId, out var info)) toReturn.category = furniture is StorageFurniture ? CATEGORY.Containers: CATEGORY.Furniture;
         }
         else if (obj is Workbench)
         {
             toReturn.category = CATEGORY.Interactables;
         }
-        else if (obj.QualifiedItemId == "(BC)99") // Default Feed Hopprt
+        else if (obj.QualifiedItemId == "(BC)99") // Default Feed Hopper
         {
             toReturn.category = CATEGORY.Interactables;
         }
@@ -825,16 +832,6 @@ public class TileInfo
         {
             toReturn.category = CATEGORY.Ready;
         }
-        /*else if (obj.name.Equals("stone", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.Debris;
-        else if (obj.name.Equals("twig", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.Debris;
-        else if (obj.name.Contains("quartz", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.MineItems;
-        else if (obj.name.Contains("earth crystal", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.MineItems;
-        else if (obj.name.Contains("frozen tear", StringComparison.OrdinalIgnoreCase))
-            toReturn.category = CATEGORY.MineItems;*/
 
         if (toReturn.category == CATEGORY.Machines || toReturn.category == CATEGORY.Ready || toReturn.category == CATEGORY.Pending) // Fix for `Harvestable table` and `Busy nodes`
         {
@@ -848,7 +845,9 @@ public class TileInfo
         if (MainClass.Config.ReadTileDebug && !string.IsNullOrEmpty(toReturn.name))
         {
             if (!string.IsNullOrEmpty(obj.QualifiedItemId))
+            {
                 toReturn.name = $"{toReturn.name} ({obj.QualifiedItemId})";
+            }
 
             // TODO Internationalize this...
             Farmer? farmerOwner = Game1.GetPlayer(obj.owner.Value);
@@ -878,6 +877,9 @@ public class TileInfo
         {
             object token;
             string qualified_item_id = NormalizeQualifiedItemID(qualifiedItemId);
+            #if DEBUG
+                Log.Verbose($"Fast lookup. ID: {qualified_item_id} {info}", true);
+            #endif
             if (DescriptiveFluentTokens.Contains(info.itemName))
                 token = new { qualified_item_id, described = MainClass.Config.DisableDescriptiveDebris ? 0 : 1 };
             else

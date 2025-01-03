@@ -233,14 +233,10 @@ public static class TerrainUtils
             case LargeTerrainFeature largeTerrainFeature:
                 return GetTerrainFeatureInfoAndCategory(largeTerrainFeature, ignoreIfEmpty);
             case HoeDirt dirt:
-                CATEGORY cropCategory = CATEGORY.Crops;
-                if (dirt.crop != null && dirt.readyForHarvest())
+                CATEGORY cropCategory = CATEGORY.Pending;
+                if (dirt.readyForHarvest())
                 {
                     cropCategory = CATEGORY.Ready;
-                }
-                else if (dirt.state.Value != HoeDirt.watered)
-                { 
-                    cropCategory = CATEGORY.Pending;
                 }
                 return (GetDirtInfoString(dirt, ignoreIfEmpty), cropCategory);
             case CosmeticPlant cosmeticPlant:
