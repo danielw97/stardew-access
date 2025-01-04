@@ -87,6 +87,7 @@ internal class PurchaseAnimalsMenuPatch : IPatch
         {
             MainClass.ScreenReader.MenuPrefixNoQueryText = Translator.Instance.Translate("menu-purchase_animal-first_time_in_menu_info", TranslationCategory.Menu);
             firstTimeInNamingMenu = false;
+            __instance.textBoxCC?.snapMouseCursorToCenter();
         }
 
         MainClass.ScreenReader.TranslateAndSayWithMenuChecker(translationKey, true, translationTokens);
