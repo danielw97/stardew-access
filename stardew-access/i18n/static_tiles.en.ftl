@@ -617,29 +617,6 @@ static_tile-woods-old_master_cannoli = Old Master Cannoli
 
 # Festivals
 
-## common
-
-static_tile-festival-pierres_booth = Pierre's Booth
-
-## Luau
-
-static_tile-luau-soup_pot = Soup Pot
-
-## Stardew Valley Fair
-
-static_tile-stardew_valley_fair-fishing_challenge = Fishing Challenge
-static_tile-stardew_valley_fair-fortune_teller = Fortune Teller
-static_tile-stardew_valley_fair-free_burgers = Free Burgers
-static_tile-stardew_valley_fair-grange_display = Grange Display
-static_tile-stardew_valley_fair-prize_booth = Prize Booth
-static_tile-stardew_valley_fair-purchase_star_tokens = Purchase Star Tokens
-static_tile-stardew_valley_fair-slingshot_game = Slingshot Game
-static_tile-stardew_valley_fair-strength_game = Strength Game
-static_tile-stardew_valley_fair-strength_game_sign = Strength Game Sign
-static_tile-stardew_valley_fair-strength_game_arrow = Strength Game Arrow
-static_tile-stardew_valley_fair-the_wheel = The Wheel
-static_tile-stardew_valley_fair-tourist = Tourist
-
 ## Spirit's Eve
 
 static_tile-spirits_eve-start_of_maze = Start Of maze
