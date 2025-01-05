@@ -21,12 +21,16 @@ Garden Pots have been moved from the "Other" category to the "Pending" category 
 When holding a crop, pots will stay in "Pending" if they are unwatered. They will move to "Crops" once watered.
 When holding a bush such as a tea sapling, pots will appear in "Bushes".
 When any pot can be harvested, it will appear in "Ready".
+- Fixed a bug where the categories of certain items were not being applied correctly from `stardew-access/assets/TileData/QualifiedItemIds.json`
 
 ### Tile Tracker Changes
 
 - Tracked Krobus' hiding bush. #359
 - Moved animals with produce or pettable animals to pending category. Also changed the translation to prefix harvestable and/or pettable accordingly.
 - Moved dropped animal produces (eggs, truffles, rabbit's foot & duck feathers) in ready category.
+- Added new forageables category
+- Moved major forageable items into forageables category
+- Moved various items into new categories to better reflect their role as part of a category sweep
 
 ### Guides And Docs
 
