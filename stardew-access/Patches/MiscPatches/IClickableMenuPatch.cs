@@ -77,6 +77,7 @@ internal class IClickableMenuPatch : IPatch
         typeof(BuildingSkinMenu),
         typeof(CarpenterMenu),
         typeof(ChooseFromIconsMenu),
+        typeof(ChooseFromListMenu),
         typeof(ConfirmationDialog),
         typeof(DialogueBox),
         typeof(ItemListMenu),
