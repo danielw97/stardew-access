@@ -6,6 +6,7 @@ using StardewValley.Menus;
 
 namespace stardew_access;
 
+// TODO: Update doc comments
 public interface IStardewAccessApi
 {
     #region Screen reader related
@@ -55,7 +56,9 @@ public interface IStardewAccessApi
     /// <param name="text">The text to be narrated.</param>
     /// <param name="interrupt">Whether to skip the currently speaking text or not.</param>
     /// <returns>true if the text was spoken otherwise false.</returns>
-    public bool Say(String text, Boolean interrupt);
+    public bool Say(string text, bool interrupt);
+    
+    public bool TranslateAndSay(string translationKey, bool interrupt, object? translationTokens = null, string translationCategory = "Default", bool disableTranslationWarnings = false);
 
     /// <summary>Speaks the text via the loaded screen reader (if any).
     /// <br/>Skips the text narration if the previously narrated text was the same as the one provided.</summary>
@@ -63,7 +66,9 @@ public interface IStardewAccessApi
     /// <param name="interrupt">Whether to skip the currently speaking text or not.</param>
     /// <param name="customQuery">If set, uses this instead of <paramref name="text"/> as query to check whether to speak the text or not.</param>
     /// <returns>true if the text was spoken otherwise false.</returns>
-    public bool SayWithChecker(String text, Boolean interrupt, String? customQuery = null);
+    public bool SayWithChecker(string text, bool interrupt, string? customQuery = null);
+    
+    public bool TranslateAndSayWithChecker(string translationKey, bool interrupt, object? translationTokens = null, string translationCategory = "Default", string? customQuery = null, bool disableTranslationWarnings = false);
 
     /// <summary>Speaks the text via the loaded screen reader (if any).
     /// <br/>Skips the text narration if the previously narrated text was the same as the one provided.
@@ -72,7 +77,9 @@ public interface IStardewAccessApi
     /// <param name="interrupt">Whether to skip the currently speaking text or not.</param>
     /// <param name="customQuery">If set, uses this instead of <paramref name="text"/> as query to check whether to speak the text or not.</param>
     /// <returns>true if the text was spoken otherwise false.</returns>
-    public bool SayWithMenuChecker(String text, Boolean interrupt, String? customQuery = null);
+    public bool SayWithMenuChecker(string text, bool interrupt, string? customQuery = null);
+    
+    public bool TranslateAndSayWithMenuChecker(string translationKey, bool interrupt, object? translationTokens = null, string translationCategory = "Menu", string? customQuery = null, bool disableTranslationWarnings = false);
 
     /// <summary>Speaks the text via the loaded screen reader (if any).
     /// <br/>Skips the text narration if the previously narrated text was the same as the one provided.
@@ -80,7 +87,7 @@ public interface IStardewAccessApi
     /// <param name="text">The text to be narrated.</param>
     /// <param name="interrupt">Whether to skip the currently speaking text or not.</param>
     /// <returns>true if the text was spoken otherwise false.</returns>
-    public bool SayWithChatChecker(String text, Boolean interrupt);
+    public bool SayWithChatChecker(string text, bool interrupt);
 
     /// <summary>Speaks the text via the loaded screen reader (if any).
     /// <br/>Skips the text narration if the previously narrated text was the same as the one provided.
@@ -90,7 +97,7 @@ public interface IStardewAccessApi
     /// <param name="y">The Y location of tile.</param>
     /// <param name="interrupt">Whether to skip the currently speaking text or not.</param>
     /// <returns>true if the text was spoken otherwise false.</returns>
-    public bool SayWithTileQuery(String text, int x, int y, Boolean interrupt);
+    public bool SayWithTileQuery(string text, int x, int y, bool interrupt);
 
     #endregion
 
