@@ -234,7 +234,7 @@ internal class GridMovement : FeatureBase
         if (Game1.player.FacingDirection == direction) return false;
 
         Game1.player.faceDirection(direction);
-        Game1.playSound("dwop");
+        // Game1.playSound("dwop");
         is_moving = true;
 
         timer.Start();
@@ -290,7 +290,7 @@ internal class GridMovement : FeatureBase
                 timer.Interval = TimerInterval;
                 timer.Start();
 
-                Game1.playSound("doorOpen");
+                // Game1.playSound("doorOpen");
                 Game1.player.warpFarmer(warp);
                 is_warping = true;
             }
@@ -311,7 +311,7 @@ internal class GridMovement : FeatureBase
             }
             else
             {
-                Game1.playSound("doorClose");
+                // Game1.playSound("doorClose");
             }
         }
     }
