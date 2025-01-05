@@ -22,6 +22,7 @@ When holding a crop, pots will stay in "Pending" if they are unwatered. They wil
 When holding a bush such as a tea sapling, pots will appear in "Bushes".
 When any pot can be harvested, it will appear in "Ready".
 - Fixed a bug where the categories of certain items were not being applied correctly from `stardew-access/assets/TileData/QualifiedItemIds.json`
+- Removed incorrect door sound that plays when changing maps with grid movement on even when no door has been passed through.
 
 ### Tile Tracker Changes
 
