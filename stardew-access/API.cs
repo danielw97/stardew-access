@@ -94,6 +94,10 @@ public class API : IStardewAccessApi
     public bool SayWithTileQuery(string text, int x, int y, bool interrupt)
         => MainClass.ScreenReader.SayWithTileQuery(text, x, y, interrupt);
 
+    public string Translate(string translationKey, object? tokens = null,
+        string translationCategory = "Default", bool disableWarning = false)
+        => Translator.Instance.Translate(translationKey, tokens, ToTranslationCategory(translationCategory), disableWarning);
+    
     #endregion
 
     #region Tiles related

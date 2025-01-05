@@ -13,7 +13,7 @@ internal class SkillsPagePatch : IPatch
     {
         harmony.Patch(
             original: AccessTools.DeclaredMethod(typeof(SkillsPage), "draw"),
-            postfix: new HarmonyMethod(typeof(SkillsPagePatch), nameof(SkillsPagePatch.DrawPatch))
+            postfix: new HarmonyMethod(typeof(SkillsPagePatch), nameof(DrawPatch))
         );
     }
 
@@ -72,7 +72,6 @@ internal class SkillsPagePatch : IPatch
 
             if (string.IsNullOrWhiteSpace(___hoverTitle) && string.IsNullOrWhiteSpace(___hoverText)) return;
             MainClass.ScreenReader.SayWithMenuChecker($"{___hoverTitle},\n{___hoverText}".Trim(), true);
-            return;
         }
         catch (Exception e)
         {

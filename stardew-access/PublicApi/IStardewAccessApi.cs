@@ -99,6 +99,8 @@ public interface IStardewAccessApi
     /// <returns>true if the text was spoken otherwise false.</returns>
     public bool SayWithTileQuery(string text, int x, int y, bool interrupt);
 
+    public string Translate(string translationKey, object? tokens = null, string translationCategory = "Default", bool disableWarning = false);
+    
     #endregion
 
     #region Tiles related
