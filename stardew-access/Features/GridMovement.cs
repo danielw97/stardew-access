@@ -234,7 +234,7 @@ internal class GridMovement : FeatureBase
         if (Game1.player.FacingDirection == direction) return false;
 
         Game1.player.faceDirection(direction);
-        // Game1.playSound("dwop");
+        Game1.playSound("dwop");
         is_moving = true;
 
         timer.Start();
