@@ -233,10 +233,17 @@ public static class TerrainUtils
             case LargeTerrainFeature largeTerrainFeature:
                 return GetTerrainFeatureInfoAndCategory(largeTerrainFeature, ignoreIfEmpty);
             case HoeDirt dirt:
+                // all dirt/crop tiles default to pending
                 CATEGORY cropCategory = CATEGORY.Pending;
+                // if dirt is ready for harvest, move to ready (implicit crop presence check)
                 if (dirt.readyForHarvest())
                 {
                     cropCategory = CATEGORY.Ready;
+                }
+                // if there is a watered crop that is not ready for harvest, move it to crops
+                else if (dirt.isWatered() && dirt.crop != null && !dirt.readyForHarvest())
+                {
+                    cropCategory = CATEGORY.Crops;
                 }
                 return (GetDirtInfoString(dirt, ignoreIfEmpty), cropCategory);
             case CosmeticPlant cosmeticPlant:
