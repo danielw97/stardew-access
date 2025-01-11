@@ -28,6 +28,7 @@ When any pot can be harvested, it will appear in "Ready".
 - Fix null references that crashed the object tracker  if a 3rd party mod added trees and then the 3rd party mod was removed. Now  trees are reported as 'unknown"
 - Fixed a bug  causing the object tracker to not refresh on schedule.
 - Added more events to trigger object tracker refresh
+- Fixed the change of direction sound whilst using grid movement.
 
 ### Tile Tracker Changes
 
