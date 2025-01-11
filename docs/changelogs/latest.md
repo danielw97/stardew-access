@@ -29,6 +29,7 @@ When any pot can be harvested, it will appear in "Ready".
 - Fixed a bug  causing the object tracker to not refresh on schedule.
 - Added more events to trigger object tracker refresh
 - Fixed the change of direction sound whilst using grid movement.
+- Fixed a bug where watered crops would remain in the pending category instead of moving to the crops category.
 
 ### Tile Tracker Changes
 
