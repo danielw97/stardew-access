@@ -1,9 +1,9 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StardewModdingAPI;
 using stardew_access.Features;
 using stardew_access.Translation;
 using stardew_access.Utils;
@@ -13,7 +13,6 @@ using StardewValley.Menus;
 namespace stardew_access.Patches;
 
 // These patches are global, i.e. work on every menus
-[SuppressMessage("ReSharper", "InconsistentNaming")]
 internal class IClickableMenuPatch : IPatch
 {
     private static readonly HashSet<Type> SkipMenuTypes =
@@ -115,26 +114,26 @@ internal class IClickableMenuPatch : IPatch
     {
         harmony.Patch(
                 original: AccessTools.Method(typeof(IClickableMenu), "exitThisMenu"),
-                postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(ExitThisMenuPatch))
+                postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.ExitThisMenuPatch))
         );
 
         harmony.Patch(
             original: AccessTools.Method(typeof(IClickableMenu), "draw", [typeof(SpriteBatch)]),
-            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(DrawPatch))
+            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawPatch))
         );
 
         harmony.Patch(
             original: AccessTools.Method(typeof(IClickableMenu), "draw", [typeof(SpriteBatch), typeof(int), typeof(int), typeof(int)]),
-            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(DrawPatch))
+            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawPatch))
         );
 
         harmony.Patch(
             original: AccessTools.Method(typeof(IClickableMenu), "drawHoverText", [typeof(SpriteBatch), typeof(StringBuilder), typeof(SpriteFont), typeof(int), typeof(int), typeof(int), typeof(string), typeof(int), typeof(string[]), typeof(Item), typeof(int), typeof(string), typeof(int), typeof(int), typeof(int), typeof(float), typeof(CraftingRecipe), typeof(IList<Item>), typeof(Texture2D), typeof(Rectangle?), typeof(Color?), typeof(Color?), typeof(float), typeof(int), typeof(int)]),
-            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(DrawHoverTextPatch))
+            postfix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.DrawHoverTextPatch))
         );
         harmony.Patch(
             original: AccessTools.Method(typeof(IClickableMenu), nameof(IClickableMenu.receiveKeyPress), [typeof(Keys)]),
-            prefix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(ReceiveKeyPressPatch))
+            prefix: new HarmonyMethod(typeof(IClickableMenuPatch), nameof(IClickableMenuPatch.ReceiveKeyPressPatch))
         );
     }
 
@@ -175,8 +174,8 @@ internal class IClickableMenuPatch : IPatch
             }
             else
             {
-                if (ClickableComponentUtils.NarrateComponent(activeMenu.currentlySnappedComponent))
-                    return;
+                ClickableComponentUtils.NarrateComponent(activeMenu.currentlySnappedComponent);
+                return;
             }
 
             if (ClickableComponentUtils.NarrateHoveredComponentUsingReflectionInMenu(activeMenu))

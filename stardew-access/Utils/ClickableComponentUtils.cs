@@ -5,9 +5,9 @@ using StardewValley.Menus;
 
 namespace stardew_access.Utils;
 
-public class ClickableComponentUtils
+public partial class ClickableComponentUtils
 {
-    public static bool NarrateHoveredComponentUsingReflectionInMenu(IClickableMenu? menu, bool skipAllClickableComponents = true)
+    public static bool NarrateHoveredComponentUsingReflectionInMenu(IClickableMenu menu, bool skipAllClickableComponents = true)
     {
         if (menu is null) return false;
 
@@ -36,7 +36,8 @@ public class ClickableComponentUtils
             if (!IsHovered(cc, x, y)) continue;
 
             CommonUIButton? commonButtonType = CommonUIButton.FromFieldInfo(fieldInfo);
-            return NarrateComponent(cc!, commonButtonType: commonButtonType);
+            NarrateComponent(cc!, commonButtonType: commonButtonType);
+            return true;
         }
 
         foreach (var fieldInfo in ccFieldInfos)
@@ -53,7 +54,8 @@ public class ClickableComponentUtils
                 if (cco is not ClickableComponent cc) continue;
                 if (!IsHovered(cc, x, y)) continue;
 
-                return NarrateComponent(cc!);
+                NarrateComponent(cc!);
+                return true;
             }
         }
 
@@ -76,7 +78,8 @@ public class ClickableComponentUtils
         {
             if (!IsHovered(clickableComponents[i], x, y)) continue;
 
-            return NarrateComponent(clickableComponents[i]);
+            NarrateComponent(clickableComponents[i]);
+            return true;
         }
 
         return false;
@@ -84,14 +87,16 @@ public class ClickableComponentUtils
 
     private static bool IsHovered(ClickableComponent? cc, int x, int y) => cc is not null && cc.visible && cc.bounds.Contains(x, y);
 
-    public static bool NarrateComponent(ClickableComponent clickableComponent, CommonUIButton? commonButtonType = null, bool screenReaderInterrupt = true)
+    public static void NarrateComponent(ClickableComponent clickableComponent, CommonUIButton? commonButtonType = null, bool screenReaderInterrupt = true)
     {
-        if (clickableComponent.ScreenReaderIgnore) return false;
+        if (clickableComponent.ScreenReaderIgnore) return;
 
-        string toSpeak = commonButtonType is null ? clickableComponent.ScreenReaderText : commonButtonType.Value;
-        if (commonButtonType is null && string.IsNullOrWhiteSpace(toSpeak)) return false;
+        string toSpeak = commonButtonType is null
+            ? string.IsNullOrWhiteSpace(clickableComponent.ScreenReaderText)
+                ? string.IsNullOrWhiteSpace(clickableComponent.name) ? clickableComponent.label : clickableComponent.name
+                : clickableComponent.ScreenReaderText
+            : commonButtonType.Value;
 
         MainClass.ScreenReader.SayWithMenuChecker(toSpeak, interrupt: screenReaderInterrupt);
-        return true;
     }
 }

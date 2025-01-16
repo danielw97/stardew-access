@@ -7,7 +7,7 @@ namespace stardew_access.Utils;
 
 public static class OptionsElementUtils
 {
-    public static bool NarrateOptionSlotsInMenuUsingReflection(IClickableMenu? menu)
+    public static bool NarrateOptionSlotsInMenuUsingReflection(IClickableMenu menu)
     {
         if (menu is null) return false;
 
@@ -66,7 +66,8 @@ public static class OptionsElementUtils
             if (currentItemIndex + i >= options.Count || currentItemIndex < 0 || !optionSlots[i].bounds.Contains(x, y))
                 continue;
 
-            return NarrateElement(options[currentItemIndex + i]);
+            NarrateElement(options[currentItemIndex + i], true);
+            return true;
         }
 
         return false;
@@ -80,28 +81,24 @@ public static class OptionsElementUtils
             if (!options[i].bounds.Contains(x, y))
                 continue;
 
-            return NarrateElement(options[i]);
+            NarrateElement(options[i], true);
+            return true;
         }
 
         return false;
     }
 
-    // Returns true only if the element has something in "ScreenReaderText"
-    public static bool NarrateElement(OptionsElement optionsElement, bool screenReaderInterrupt = true)
+    public static void NarrateElement(OptionsElement optionsElement, bool screenReaderInterrupt = true)
     {
-        if (optionsElement.ScreenReaderIgnore) return false;
+        if (optionsElement.ScreenReaderIgnore) return;
 
-        var nameOfElement = GetNameOfElement(optionsElement);
-        if (string.IsNullOrWhiteSpace(nameOfElement)) return false;
-        
-        MainClass.ScreenReader.SayWithMenuChecker(nameOfElement, interrupt: screenReaderInterrupt);
-        return true;
+        MainClass.ScreenReader.SayWithMenuChecker(GetNameOfElement(optionsElement), interrupt: screenReaderInterrupt);
     }
 
     public static string GetNameOfElement(OptionsElement optionsElement)
     {
         string translationKey;
-        string label = optionsElement.ScreenReaderText;
+        string label = string.IsNullOrWhiteSpace(optionsElement.ScreenReaderText) ? optionsElement.label : optionsElement.ScreenReaderText;
         object? tokens = new { label };
 
         switch (optionsElement)
