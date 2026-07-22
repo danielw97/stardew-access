@@ -65,32 +65,23 @@ namespace stardew_access.Utils
 			try
 			{
 				Farmer player = Game1.player;
-				GameLocation location = Game1.currentLocation;
 				if (player.controller != null && (Game1.activeClickableMenu == null || Game1.IsMultiplayer))
 				{
 					if (player.controller.timerSinceLastCheckPoint > CheckPointTimeout)
 					{
-						if (pathfindingRetryAttempts < MaxRetryAttempts)
+						pathfindingRetryAttempts++;
+						Log.Debug($"Attempting to restart pathfinding; attempt {pathfindingRetryAttempts} of {MaxRetryAttempts}.");
+
+						if (pathfindingRetryAttempts == 1)
 						{
-							pathfindingRetryAttempts++;
-							Log.Debug($"Attempting to restart pathfinding; attempt {pathfindingRetryAttempts} of {MaxRetryAttempts}.");
-
-							if (pathfindingRetryAttempts > MaxRetryAttempts)
-							{
-								pathfindingRetryAttempts = 0;
-								IsActive = false;
-								MainClass.ScreenReader.Say("Pathfinding forcibly stopped. Target Lost.", true);
-
-								player.controller.endBehaviorFunction(player, location);
-								player.controller = null;
-								return;
-							}
-							else 							if (pathfindingRetryAttempts == 1)
-							{
-								MainClass.ScreenReader.Say($"Target unreachable, re-trying...", true);
-							}
-							bool shouldContinue = retryAction.Invoke(pathfindingRetryAttempts, MaxRetryAttempts, LastTargetedTile);
-							if (!shouldContinue) pathfindingRetryAttempts = MaxRetryAttempts + 1;
+							MainClass.ScreenReader.Say($"Target unreachable, re-trying...", true);
+						}
+						bool shouldContinue = retryAction.Invoke(pathfindingRetryAttempts, MaxRetryAttempts, LastTargetedTile);
+						if (!shouldContinue || pathfindingRetryAttempts >= MaxRetryAttempts)
+						{
+							pathfindingRetryAttempts = 0;
+							MainClass.ScreenReader.Say("Pathfinding forcibly stopped. Target Lost.", true);
+							StopPathfinding();
 						}
 					}
 				}
@@ -107,6 +98,7 @@ namespace stardew_access.Utils
 			lock (pathfindingLock)
 			{
 				IsActive = true;
+				pathfindingRetryAttempts = 0;
 				LastTargetedTile = targetTile.ToVector2();
 				StopTimers();
 				StartTimers();
