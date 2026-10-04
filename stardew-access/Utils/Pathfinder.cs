@@ -65,7 +65,22 @@ namespace stardew_access.Utils
 			try
 			{
 				Farmer player = Game1.player;
-				if (player.controller != null && (Game1.activeClickableMenu == null || Game1.IsMultiplayer))
+				// The game clears the controller without calling our end behavior when no path was found
+				// or the player has been stuck for 5 seconds; treat that the same as running out of retries.
+				if (player.controller == null)
+				{
+					lock (pathfindingLock)
+					{
+						if (IsActive && player.controller == null)
+						{
+							Log.Debug("Pathfinding controller was cleared by the game; stopping.");
+							StopAndAnnounceTargetLost();
+						}
+					}
+					return;
+				}
+
+				if (Game1.activeClickableMenu == null || Game1.IsMultiplayer)
 				{
 					if (player.controller.timerSinceLastCheckPoint > CheckPointTimeout)
 					{
@@ -79,9 +94,7 @@ namespace stardew_access.Utils
 						bool shouldContinue = retryAction.Invoke(pathfindingRetryAttempts, MaxRetryAttempts, LastTargetedTile);
 						if (!shouldContinue || pathfindingRetryAttempts >= MaxRetryAttempts)
 						{
-							pathfindingRetryAttempts = 0;
-							MainClass.ScreenReader.Say("Pathfinding forcibly stopped. Target Lost.", true);
-							StopPathfinding();
+							StopAndAnnounceTargetLost();
 						}
 					}
 				}
@@ -90,6 +103,13 @@ namespace stardew_access.Utils
 			{
 				Log.Error($"Unhandled exception {ex} in CheckPathingTimer_Elapsed.");
 			}
+		}
+
+		private void StopAndAnnounceTargetLost()
+		{
+			pathfindingRetryAttempts = 0;
+			MainClass.ScreenReader.Say("Pathfinding forcibly stopped. Target Lost.", true);
+			StopPathfinding();
 		}
 
 		internal void StartPathfinding(Farmer player, GameLocation location, Point targetTile, int? direction = null)
